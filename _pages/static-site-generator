@@ -1,0 +1,12 @@
+The Static Site Generator
+-------------------------
+
+This page is an example of what a page that isn't incldued on the main page is. It will also server as documentation for the script.
+
+The following directories are required for the script to operate:
+
+* `_pages` - ~This contains two folders, `top`, which contains the pages linked from the top menu of the front page, and `other`, which contains pages such as this one that are not specifically linked from anywhere and must be explicitly linked to~ All pages are just that, no special treatment unless explicitly linked in a template / post.
+* `_posts` - This contains a list of posts that are included on the front page as a sort of blog. The file name of the blog is teh date of which it was posted and will be used as part of the link. The first line of the file is used as part of the link and the title.
+* `_output` - Created automatically, this is where the compiled site is stored.
+* `_assets` - This is a folder of static files (css, js, images etc) that will be copied to the `_output` folder.
+* `_templates` - A set of html files such as the footer and header that is required to construct the site itself.

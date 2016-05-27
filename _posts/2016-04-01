@@ -1,0 +1,12 @@
+Another day another post - Installing OpenBSD
+---------------------------------------------
+
+Decided in some spare time to setup a VM using OpenBSD, it's been a **long** time since I have used the OS and I think it's time I gave it another shot. Hopefully I can run this static site generator on there since it's just a shell script I don't see why it wouldn't work.
+
+I initially setup an old Lenovo laptop with OpenBSD, but really, I have my main laptop that can run a buttload of virtual machines, so it seems quite pointless to have something else to carry around
+
+The next step in the site generator is to add a couple more features and optimizations.
+
+* Some of the `HTML` is embedded for generating the links. I might implement a really basic templating engine so I can take out the presentation of the page elements like the menu links and the post links to a template file
+* Add an optional command that can automatically upload to the host (ie scp the files)
+* Name it, because even if only I use it, I would like to be able to type something shorter than Static Site Generator

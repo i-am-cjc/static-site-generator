@@ -1,0 +1,8 @@
+I bought a cheap vps to log what interactions it had
+----------------------------------------------------
+
+The other day I have bought a mega-super-dirt-cheap VPS ($10 for the year!) without advertising the ip or allocating a hostname to it (yet) with the intention of logging all attempts to access it (either via ssh or http for now). 
+
+In a couple of days it has accrued over 10 thousand ssh login attempts and quite a few interesting urls on the httpd. 
+
+My intention is to write up a little entry about the access and discuss anything interesting that comes out of this experiment every month or so.

@@ -1,0 +1,9 @@
+OpenBSD running the static site generator
+-----------------------------------------
+
+This is the first post written from within the OpenBSD install. [screenshot](img/2016-04-02.png)
+
+Definitely bares bones right now, using xterm which doesn't really seem very swish, and using `links -g` as a browser since it works ;).
+
+I need to sort out the wm, and decide if I am going to keep using the default fvwm. Decide if I am going to use a browser outside of `links -g`. I mostly read a few news sites and nothing that might really require much more.
+

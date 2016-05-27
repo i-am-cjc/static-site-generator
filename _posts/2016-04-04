@@ -1,0 +1,14 @@
+Why I chose to write and use a static site generator
+----------------------------------------------------
+
+In this post I am going to write up the reasons behind using a static website generator. And also why I chose to develop my own script to generate it.
+
+A lot of the posts I have read online that list the pros and cons of static websites seem to date from about 10 years ago. They tend to go into pushing new technologies such as wordpress being the next best thing. 
+
+The obvious issues with static site generators is the lack of interactions with your users and the potential slower turn around time in updating. Both of which are non-issues for me since I don't think I want interaction given there is 0 people looking at this, and the turn around time issue isn't really an issue at all...
+
+The benefits generally are considered to be the lower resources required to serve static content and the security benefits of not running any code to show a page. No SQL injection, no XSS. Fantastic.
+
+The reason I chose to write my own static site generator is because I like the idea of static websites, and I like developing simple software, Jekyll and Hexo and all those functional popular generators are just too complex for what I want to acheive.
+
+Finally, the site is extremely basic at the moment, and that's because the content is the most important thing. **Content is King**. 

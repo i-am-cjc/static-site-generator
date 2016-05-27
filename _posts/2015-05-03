@@ -1,0 +1,57 @@
+I trawled through the logs of the honeypot vps
+----------------------------------------------
+
+As specified in the last post, I bought a VPS with the simple intention of letting it sit idle to see what (I can only guess) automated attempts at log in and access.
+
+For this first little attempt, I left ssh running on the default port, and a bare httpd with no content to see what users attempted to log in, where from and what web addresses were attempted.
+
+SSH login attempts
+------------------
+
+First off, lets look at the very predictable top 10 username attempts.
+
+```
+Attempts | Login
+  189762 | root
+      82 | admin
+      46 | guest
+      44 | test
+      33 | oracle
+      26 | git
+      20 | mysql
+      19 | support
+      19 | info
+      18 | ftpuser
+```
+
+A major win for root login attempts, no surprises there, same with the other in the top 10. An honourable mention should go out to he username `pi` which had 9 attempts over the course of the week. `pi` of course is the default username for the raspian linux distro. Pretty cool that it is on the list of default usernames to try.
+
+IP Address access
+------------------
+
+There are literally too many IP addresses to list, or even do a top ten. Over the course of the week, there were around 190,000 login attempts to the VPS. A couple of interesting points to note about the addesses is that there was a significant chunk from the same subnet, which according to a quick search shows that it is a Hong Kong based ISP. Each of the IP addresses in the same subnet scanned between a few hundred and a few thousand times. 
+The majority of the other addresses came from China. I have yet to really look up every single IP address, this might be an improvement for future reports.
+
+HTTP Access addresses
+------------------
+
+Given that there is no hostname associated with the VPS (yet) there wasnt all that much traffic.
+
+```
+Amount | URL
+    44 | /manager/html
+    17 | http://www.******.com/
+    18 | /
+     3 | /phph/php/ph.php
+     2 | /rom-0
+```
+
+Tackling these interesting requests in reverse order. 
+
+* rom-0 appears to be releated to some router exploit. 
+* phph/php/ph.php apparently is an attempt to force a 404 not found error in order to extract information from the webserver, makes sense I guess (there was a couple more of these requests following a similar pattern further down the request logs). 
+* / is just access the root of the ip address, guess that is something to check. Some of these will be myself making sure that the webserver was indeed running.
+* Then we hit an interesting form of advertising, spamming my request logs with a domain name (obfuscated because fuck advertising for them) 
+* /manager/html is related to Tomcat, guessing there is enough exploits for this to be worth scanning for
+
+Interesting mention on the httpd logs was that there was 5 scans from masscan which is pretty cool. 

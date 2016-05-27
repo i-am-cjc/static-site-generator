@@ -1,0 +1,11 @@
+Bit of a folder structure change
+--------------------------------
+
+Each post and page now has a date and a folder. Pages go into `page/` and posts into `log/` This could be customisible in the future perhaps.
+
+Started to get some standard formatting for the posts.
+
+* The file name is the date of the post, which is also used in the index and on the front page.
+* The first line of the file is the title which is on the index and it's folder name to produce the nicer looking URLs
+
+58 lines of code and counting. Still to style the page.

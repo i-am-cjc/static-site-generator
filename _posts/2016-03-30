@@ -1,0 +1,20 @@
+Minimal static site generator
+-----------------------------
+
+...and it's what generated this page!
+
+I have been looking at a lot of the static site generators out there, but most if not all I can find are just too much and too feature rich for what I want.
+
+The plan is to slowly improve this over time to fit what **I** Need it to do and nothing more as I am selfish like that.
+
+Written as a single shell script, it currently features:
+
+* Markdown support thanks to the script provided from [Daring Fireball](https://daringfireball.net/projects/markdown/)
+* Page support (such as that very slim about page)
+* "Blog" support ie generating another bunch of pages in descending time order
+
+Current TODO
+
+* Add a limit to the number of blog posts and add in an archive page
+* Upload to github
+* Add in some basic styling

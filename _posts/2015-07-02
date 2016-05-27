@@ -1,0 +1,24 @@
+Running denyhosts on the honeypot
+---------------------------------
+
+Unsurprisingly, there was a significant reduction in the number of attempts as the denyhosts daemon bans IP addresses after a specific number of attempts. Overall there was 277 IP Addresses that were added to the blacklist. From the blacklisted hosts, there was a further 1673 attempts rejected. There was a total of 2117 failed attempts, down from the usual numbers in the 100,000 sort of range.
+
+SSH Login attempts
+------------------
+
+Even quieter over this period
+
+```
+Attempts | Login
+1270     | root
+103      | ubnt
+69       | admin
+49       | support
+27       | guest
+20       | pi
+13       | ftpuser
+```
+
+Trailing off very quickly thanks to deny hosts, the pi username has shot up the rankings this week! 
+
+Next week, different port, no denyhosts.

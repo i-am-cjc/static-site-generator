@@ -1,0 +1,36 @@
+body {
+    font-family: "helvetica", "serif";
+    color: rgb(0, 5, 0);
+    line-height: 1.33;
+    text-decoration: none;
+}
+
+#header > h1 {
+    text-decoration: none;
+    font-size: 1.666em;
+}
+
+a.about {
+    color: grey;
+}
+
+h2 {
+    color: #333;
+    font-size: 24px;
+}
+
+#wrap {
+    width: 760px;
+    margin: 95px auto;
+    text-color: rgb(0, 5, 0)
+}
+
+a:link, a:visited, a:active {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: grey;
+    text-decoration: none;
+}

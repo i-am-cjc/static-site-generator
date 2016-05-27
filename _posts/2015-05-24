@@ -1,0 +1,56 @@
+Another weeks worth of logs from my honeypot VPS
+------------------------------------------------
+
+SSH Login attempts
+------------------
+
+A little quieter over this period
+
+```
+Attempts | Login
+129410   | root
+668      | admin
+181      | ubnt
+116      | nagios
+94       | user
+91       | ftp
+85       | alex
+83       | apache
+83       | PlcmSpIp
+78       | backup
+78       | Library
+```
+
+Tailing off pretty quickly there as expected, compared to the last week of logging. Interesting new appearences in the top 10 of ubnt (ubuntu?) [nagios](http://en.wikipedia.org/wiki/Nagios), alex (No idea) and PlcmSp1p, which apparently is the default username that Polycom SIP phones use to download a config from an ftp server.
+
+IP Address access
+------------------
+
+Nothing much different here from last time, ideally I want to implement so automated geolookup to create a graph or something sexy! (Perhaps for the next report)
+
+httpd Access
+------------------
+
+In a shocking turn of events. 
+
+```
+Amount | URL / Attack vector?
+114    | /phpmyadmin/scripts/setup.php (or variants of, phpmyadmin)
+51     | /manager/html (Tomcat)
+4      | /wp/wp-login.php (or variants of, Wordpress login)
+```
+
+In a shocking turn of events, phpmyadmin has arrived to the number on this week, with Tomcat taking the second place. A couple of one of other interesting things were attempted, including a couple more /cycy/cy/cy.php a-like requests. Finally, an interesting request was made to 
+
+`/%70%68%70%70%61%74%68/%70%68%70?%2D%64+%61%6C%6C%6F%77%5F%75%72%6C%5F%69%6E%63%6C%75%64%65%3D%6F%6E+%2D%64+%73%61%66%65%5F%6D%6F%64%65%3D%6F%66%66+%2D%64+%73%75%68%6F%73%69%6E%2E%73%69%6D%75%6C%61%74%69%6F%6E%3D%6F%6E+%2D%64+%64%69%73%61%62%6C%65%5F%66%75%6E%63%74%69%6F%6E%73%3D%22%22+%2D%64+%6F%70%65%6E%5F%62%61%73%65%64%69%72%3D%6E%6F%6E%65+%2D%64+%61%75%74%6F%5F%70%72%65%70%65%6E%64%5F%66%69%6C%65%3D%70%68%70%3A%2F%2F%69%6E%70%75%74+%2D%6E` 
+
+which after some url decoding turns into 
+
+`/phppath/php?-d allow_url_include=on -d safe_mode=off -d suhosin.simulation=on -d disable_functions="" -d open_basedir=none -d auto_prepend_file=php://input -n` 
+
+Guessing that is has been url encoded as an attempt to not trigger an IDS? 
+Now, I am no expert on php config, but allowing url includes would lead to allowing a remote file includes. Not good.
+
+Only 3 hits from masscan on the httpd this week :(
+
+For the next week of logging, I am going to install something like denyhosts to see how much that tails off the login attempts, and maybe change the ssh port the week after!
