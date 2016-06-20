@@ -1,0 +1,6 @@
+The Intel Compute Stick lives
+-----------------------------
+
+After some attempts to get arch linux installed onto the compute stick, I have acquiesced and gone with the available Ubuntu install. This was mostly due to my own lack of understanding when it comes to booting computers with EFI.
+
+I obviously removed unity and installed the xubuntu-desktop package and all is running well. The static-site-generator is alive and well and should be creating this post.

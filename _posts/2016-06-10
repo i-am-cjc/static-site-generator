@@ -1,0 +1,16 @@
+Ransomware, or Why I am on the wrong side
+------------------------------------------
+
+I just read that the University of Calgary paid roughtly 10,000 GBP after falling victim to a ransomware incident [here] [1]. Now, whilst the title of this post is made in jest, I am rather shocked at the amounts of payouts that are happening and the lack of a decent backup policy these places have.
+
+> University IT workers tried to crack the ransomware for more than a week before the payment 
+
+I bet that wasn't a fun week for the IT team, not only did either the lack of backup policy become apparent, or the backups were writable by the ransomware to make them also encrypted, but they also failed to recover anything.
+
+Finally announcing this incident has a couple of effects.
+
+1. Ransomware is profitable.
+2. We are a viable target, hopefully taking steps to prevent this in the future.
+3. But positively, helps raise awareness of ransomware, at a bit of loss to our reputation
+
+[1]: http://www.bbc.co.uk/news/technology-36478650
