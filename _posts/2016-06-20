@@ -1,0 +1,10 @@
+Docker tor client
+-----------------
+
+I have been playing with Docker as a lightweight alternative to using full on virtual machines for specific tasks as the Compute Stick isn't exactly the most powerful machine in the world.
+
+For my first little image I built a very minimal tor client that uses elinks and torify to be able to connect to websites via tor, or access onion addresses.
+
+You can find the source for the Docker file [here](https://github.com/i-am-cjc/docker-tor) or run it with:
+
+`docker run -it iamcjc/docker-tor`
