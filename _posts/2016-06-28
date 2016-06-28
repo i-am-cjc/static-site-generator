@@ -1,0 +1,10 @@
+Lighttpd and Lets Encrypt
+-------------------------
+
+Mostly notes for myself the next time I need to do this.
+
+# Install certbot via packagemanger of choice, ie `pacman -S cerbot`
+# Use the webroot option of certbot to verify the domain and get certs: `certbot certonly --webroot -w /path/to/webroot -d www.example.com -d example.com
+# Create a pemfile that lighttpd requires: `cd /etc/letsencrypt/live/example.com; cat privkey.pem cert.pem > ssl.pem`
+# Create lighttpd config as required, with the ssl.pemfile pointing to ssl.pem, and ssl.ca-file pointing to fullchain.pem, both of which should be in /etc/letsencrypt/live/example.com
+# Restart lighttpd and have some SSL/TLS goodness
