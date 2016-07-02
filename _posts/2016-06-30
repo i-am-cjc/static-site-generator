@@ -1,0 +1,56 @@
+Firefox privacy and settings
+----------------------------
+
+A guide on setting up Firefox for better privacy than default. This is mostly for the next time I have to set this up, ideally I need to write or use a pre-made user.js file that will do as much of this as possible.
+
+## Basic Settings
+
+* General -> When firefox starts -> Use a blank page
+* Search -> Remove all besides DuckduckGo and wikipedia, set ddg to be default, untick provide search suggestions.
+* Privacy -> Enable Do not Track
+* Security -> Disable Remember logins for sites
+* Advanced -> Data Choices -> disable firefox health report
+
+## Settings in about:config
+
+### Disable Firefox Hello
+
+In about:config, search for `loop.enabled` and set this to `false`, I guess the only way to get this sort of thing used in the current market is to bundle it by default. bad.
+
+### Disable Pocket
+
+In about:config, search for `pocket.enabled` and set this to `false`. Should really be an addon, must have been paid a lot for this. Disable it!
+
+### Social nonsense
+
+In about:config, search for `social` and set the booleans to `false`. Set the whitelist string to `""`.
+
+### Or, get a pre-made user.js
+
+There are plenty of customer user.js files for firefox that store all your preferences instead of doing them manually like above such as at [this one](https://github.com/pyllyukko/user.js).
+
+## Addons
+
+### uBlock origin
+
+[link](https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/)
+
+Blocks adverts, not only for the reason of not seeing them, or saving bandwidth, or stopping tracking.. but also since advertisers are used to deliver malware as of late, that too! see [Malvertising](https://en.wikipedia.org/wiki/Malvertising).
+
+### Disconnect.me
+
+[link](https://addons.mozilla.org/en-GB/firefox/addon/disconnect/)
+
+Stops social media sites such as facebook tracking you across the internet. Facebook tracks users regardless of if they are logged in or not. See [here](http://www.makeuseof.com/tag/doesnt-matter-youre-not-facebook-theyre-still-tracking/).
+
+### HTTPS Everywhere
+
+[link](https://www.eff.org/https-everywhere)
+
+Attempts to use SSL for sites known to support it to avoid using unencrypted connections.
+
+### Noscript
+
+[link](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
+
+Blacklist javascript from running, whitelist as required. Generally disruptive to web browsing, but better to be safe than sorry right?
