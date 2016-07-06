@@ -79,7 +79,7 @@ for A in $(ls -r _advisories/); do
     then
         echo $LINK >> $INDEX
     fi
-    echo $LINK >> $ARCHIVE
+    echo $LINK >> $ADV
 
     count=$(($count+1))
     FILE=_output/advisories/$A/index.html
