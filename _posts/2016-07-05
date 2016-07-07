@@ -1,36 +1,4 @@
-Open redirect in PieRegister Wordpress plugin
----------------------------------------------
+Vulnerabilily and Advisory log
+------------------------------
 
-### About
-
-PieRegister as described on their site:
-
-> A WordPress Registration Plugin. Use it to create Registration Pages and Forms for your WordPress site.
-
-### Description
-
-The logout functionality of PieRegister 2.0.21 contains an open redirect allowing an attacker to redirect to a malicious page to conduct phishing or malware install attempts
-
-### Vendor
-[GeneTech Solutions](http://www.genetechsolutions.com)
-
-Vendor Notified: _2016-07-05_
-
-### Vulnerability
-pie-register.php doesn't require authentication to use the redirect option when logging out:
-
-`/////////////// PIEREG LOGOUT ////////////////
-if( (isset($_GET['piereg_logout_url']) and isset($_GET['redirect_to'])) and ($_GET['piereg_logout_url'] == "true") ){
-	$redirect_to = (!empty($_GET['redirect_to']))? urldecode($_GET['redirect_to']) : home_url();
-        wp_logout();
-        wp_redirect($redirect_to);
-        exit;
-}
-`
-
-### Proof of Concept
-
-Simply modifying the redirect_to GET parameter:  `http://wordpresshost/?piereg_logout_url=true&redirect_to=https://example.com`
-
-### Further Reading
-More information on open redirects [here](https://www.owasp.org/index.php/Top_10_2013-A10-Unvalidated_Redirects_and_Forwards)
+I found a vulnerability in a Wordpress Plugin recently, it was fun, so I have started a list of advisories for issues I discover that I can keep track of them on here. The list of advisories can be found [here](/advisories), with the one I discovered recently [here](/advisories/0001/)

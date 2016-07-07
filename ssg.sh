@@ -88,9 +88,6 @@ for A in $(ls -r _advisories/); do
     cat $FOOTER >> $FILE
 done
 
-echo "<br><a href=\"archive\">posts</a> " >> $INDEX
-echo "| <a href=\"advisories\">advisories</a> " >> $INDEX
-
 cat $FOOTER >> $INDEX
 cat $FOOTER >> $ARCHIVE
 cat $FOOTER >> $ADV
