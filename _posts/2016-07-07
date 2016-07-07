@@ -1,0 +1,6 @@
+Tiny shell script to download WP plugins
+----------------------------------------
+
+Wrote a small shell script that scrapes the newest plugins from Wordpress and downloads them. I figure this would be a quick way to find some low hanging fruit whilst practicing looking for vulnerabilities.
+
+You can find it [here](https://github.com/i-am-cjc/wp-plugin-downloader) on GitHub
