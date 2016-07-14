@@ -1,0 +1,6 @@
+wp-plugin-downloader can either search or get newest
+----------------------------------------------------
+
+The shell script that I wrote to download the newest wordpress plugins now has the option to search for a term to make it a little more interesting.
+
+You can find it [here](https://github.com/i-am-cjc/wp-plugin-downloader) on GitHub
