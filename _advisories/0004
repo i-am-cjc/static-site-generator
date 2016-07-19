@@ -1,0 +1,19 @@
+Stored XSS in WP User Notes 
+----------------------------------
+
+*About*
+
+> This plugin adds a text editor area to each User Profile in the dashboard for Administrators to keep private notes about each User.
+
+*Author*: https://minglecommunities.com/ 
+
+*Timeline*
+
+*Vulnerability*: The notes field for each user isn't properly sanitized and can contain javascript. Given that this only affects admins this really isn't a major issue. However, 
+
+	  $notes = (!empty($_POST['user_notes_note']))?stripslashes($_POST['user_notes_note']):'';
+	update_user_meta($user_id, 'user-notes-note', $notes);
+
+*Proof of Concept*: Simply entering the notes with javascript in `<script>` tags is enough to execute code against other administrators. 
+
+*Further Reading*: More information on XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
