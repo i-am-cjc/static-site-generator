@@ -1,0 +1,11 @@
+Wordpress and MySQL with Docker
+-------------------------------
+
+In order for me to play with wordpress plugin vulnerabilities, I have found that using docker over a full on vm is quicker for spinning up fresh instances.  It also allows me to use hardware such as the Intel Compute Stick when out and about which is quite limited in memory and disk space.
+
+These notes are as usual for myself, but might be of use to someone somewhere.
+
+* `docker run --name mysql-test -e MYSQL_ROOT_PASSWORD=thisIsASecurePassword -d mysql`
+* `docker run --name wordpress-test --link mysql-test:mysql -p 8080:80 -d wordpress`
+
+This will give a nice wordpress install, running in a container on port 8080 from which plugins can be installed as usual and played with. (The Compute stick is still slow, but is still quite usable for this sort of thing)
