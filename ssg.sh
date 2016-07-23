@@ -6,7 +6,7 @@ INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/archive/index.html
 PREPROCESSOR=Markdown.pl
-POSTCOUNT=6
+POSTCOUNT=5
 
 echo ">> Wiping _output"
 mkdir -p _output
