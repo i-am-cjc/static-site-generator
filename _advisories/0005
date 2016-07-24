@@ -9,7 +9,8 @@ Backdoor in Social Sticky Animated Wordpress Plugin
 
 *Timeline*
 
-* Vendor Notified not yet 
+* 2016-07-22: Wordpress informed
+* 2016-07-23: Plugin Removed
 
 *Vulnerability*: The initial setup of the plugin calls the function settings in the Admin.php file. This runs the following code 
 
