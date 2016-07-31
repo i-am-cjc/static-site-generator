@@ -10,6 +10,7 @@ Reflected XSS in wp-mail plugin
 *Timeline*
 
 * 2016-07-23: Vendor Notified
+* 2016-07-26: Fixed in version 1.2 
 
 *Vulnerability*: The `replyto` parameter when composing a mail allows for a reflected XSS. 
 

@@ -11,7 +11,7 @@ SQL Injection in Photo Gallery  Wordpress plugin
 
 *Timeline*
 
-* 2016-10-05: Vendor Notified
+* 2016-07-05: Vendor Notified
 
 *Vulnerability*: The file `AYS_Gall_Main.php`'s edit function fails to sanitize the gall_id url parameter, allowing SQL injection:
 
