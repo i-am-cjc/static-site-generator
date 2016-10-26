@@ -5,14 +5,11 @@ An ever evolving file, my vim config is generally tailored towards development u
 
 ### Plugins
 
-> set rtp+=~/.vim/bundle/Vundle.vim
-> call vundle#rc()
-> 
-> Plugin 'gmarik/Vundle.vim'
-> Plugin 'itchyny/lightline.vim'
-> Plugin 'sjl/gundo.vim'
-> Plugin 'scrooloose/nerdtree'
-> Plugin 'jeetsukumaran/vim-buffergator'
+    Plugin 'gmarik/Vundle.vim'
+    Plugin 'itchyny/lightline.vim'
+    Plugin 'sjl/gundo.vim'
+    Plugin 'scrooloose/nerdtree'
+    Plugin 'jeetsukumaran/vim-buffergator'
 
 * Vundle - The plugin manager itself
 * Lightline - Have a nice status bar at the bottom of each buffer
@@ -24,30 +21,30 @@ An ever evolving file, my vim config is generally tailored towards development u
 
 The leader key is a great thing, so much so I am considering getting a keyboard that I can program the layout for to use this at a keyboard level rather than just in vim, but I digress...
 
-> let mapleader = "\<Space>"
+    let mapleader = "\<Space>"
 
 Set the leader key to space, since it's always got a thumb on it
 
-> nnoremap <Leader>. :o .<CR>
-> nnoremap <Leader>w :w<CR>
-> nnoremap <Leader>x :wq<CR>
+    nnoremap <Leader>. :o .<CR>
+    nnoremap <Leader>w :w<CR>
+    nnoremap <Leader>x :wq<CR>
 
 Allow opening and saving of files with the leader key.
 
-> imap jj <esc>
+    imap jj <esc>
 
 When in insert mode, pressing j twice will return to normal mode. I saw several solutions to avoid having to reach all the way to the esc key to do this (miles away!) this seemed the quickest, and I don't think there are (m)any words that have jj in it.
 
-> nnoremap <Leader>h <c-w><Left>
-> nnoremap <Leader>l <c-w><Right>
-> nnoremap <Leader>k <c-w><Up>
-> nnoremap <Leader>j <c-w><Down>
+    nnoremap <Leader>h <c-w><Left>
+    nnoremap <Leader>l <c-w><Right>
+    nnoremap <Leader>k <c-w><Up>
+    nnoremap <Leader>j <c-w><Down>
 
 Move around windows with hjkl
 
-> nnoremap <Leader>u :GundoToggle<CR>
-> nnoremap <Leader>b :BuffergatorToggle<CR>
-> nnoremap <Leader>t :NERDTreeToggle<CR>
+    nnoremap <Leader>u :GundoToggle<CR>
+    nnoremap <Leader>b :BuffergatorToggle<CR>
+    nnoremap <Leader>t :NERDTreeToggle<CR>
 
 Have easier access to plugins using the leader key
 
