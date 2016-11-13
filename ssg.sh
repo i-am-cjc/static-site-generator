@@ -45,11 +45,11 @@ count=1
 echo ">> Generating POSTS"
 for POST in $(ls -r _posts/); do 
     LINE=$(cat _posts/$POST | head -n 1)
-    DIR=$(echo $LINE | awk '{ gsub(" ", "-"); print }')
+    TITLE=$(echo $LINE | awk '{ gsub(" ", "-"); print }')
+    DIR=$(echo $POST | awk -F - '{print $1"/"$2"/"$3}')/$TITLE
+    mkdir -p _output/$DIR
 
-    mkdir -p _output/log/$DIR
-
-    LINK="<a href=\"/log/$DIR\">$POST - $LINE</a><br />"
+    LINK="<a href=\"/$DIR\">$POST - $LINE</a><br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
@@ -58,7 +58,8 @@ for POST in $(ls -r _posts/); do
     echo $LINK >> $ARCHIVE
 
     count=$(($count+1))
-    FILE=_output/log/$DIR/index.html
+
+    FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
     cat _posts/$POST | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
