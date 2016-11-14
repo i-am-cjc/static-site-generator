@@ -44,12 +44,13 @@ count=1
 
 echo ">> Generating POSTS"
 for POST in $(ls -r _posts/); do 
+    DATE=$(echo $POST | cut -d"-" -f1,2,3)
     LINE=$(cat _posts/$POST | head -n 1)
     TITLE=$(echo $LINE | awk '{ gsub(" ", "-"); print }')
-    DIR=$(echo $POST | awk -F - '{print $1"/"$2"/"$3}')/$TITLE
+    DIR=$(echo $DATE | awk -F - '{print $1"/"$2"/"$3}')/$TITLE
     mkdir -p _output/$DIR
 
-    LINK="<a href=\"/$DIR\">$POST - $LINE</a><br />"
+    LINK="<a href=\"/$DIR\">$DATE - $LINE</a><br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
