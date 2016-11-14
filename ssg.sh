@@ -5,7 +5,7 @@ PAGEFOOTER=_templates/pagefooter.html
 INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/archive/index.html
-TAGINDEX=_output/tag/index.html
+TAGINDEX=_output/tags/index.html
 PREPROCESSOR=Markdown.pl
 POSTCOUNT=5
 
@@ -72,20 +72,20 @@ for POST in $(ls -r _posts/); do
 
     # TAGS
     for TAG in $(cat _posts/$POST | grep "TAGS" | cut -d":" -f2| tr "," "\n"); do
-        mkdir -p _output/tags/$TAG
-        echo $LINK >> _output/tags/$TAG/body.html 
+        mkdir -p _output/tag/$TAG
+        echo $LINK >> _output/tag/$TAG/body.html 
     done
 done
 
 echo ">> Generating TAGS"
-for TAG in $(ls _output/tags/); do
-    TINDEX=_output/tags/$TAG/index.html
-    BODY=_output/tags/$TAG/body.html
+for TAG in $(ls _output/tag/); do
+    TINDEX=_output/tag/$TAG/index.html
+    BODY=_output/tag/$TAG/body.html
     cat $HEADER > $TINDEX
     cat $BODY >> $TINDEX
     cat $FOOTER >> $TINDEX
     rm $BODY
-    LINK="<a href=\"/tags/$TAG\">$TAG</a><br />"
+    LINK="<a href=\"/tag/$TAG\">$TAG</a><br />"
     echo $LINK >> $TAGINDEX
 done
 count=1
