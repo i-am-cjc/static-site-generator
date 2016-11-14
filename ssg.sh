@@ -5,6 +5,7 @@ PAGEFOOTER=_templates/pagefooter.html
 INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/archive/index.html
+TAGINDEX=_output/tag/index.html
 PREPROCESSOR=Markdown.pl
 POSTCOUNT=5
 
@@ -13,6 +14,8 @@ mkdir -p _output
 rm -rf _output/*
 mkdir -p _output/archive
 mkdir -p _output/advisories
+mkdir -p _output/tags
+mkdir -p _output/tag
 
 echo ">> Copying assets"
 cp -r _assets/* _output
@@ -20,10 +23,12 @@ cp -r _assets/* _output
 cat $HEADER > $INDEX
 cat $HEADER > $ARCHIVE
 cat $HEADER > $ADV
+cat $HEADER > $TAGINDEX
 
 cat $PAGEHEADER >> $INDEX
 cat $PAGEHEADER >> $ARCHIVE
 cat $PAGEHEADER >> $ADV
+cat $PAGEHEADER >> $TAGINDEX
 
 echo ">> Generating PAGES"
 mkdir -p _output/page
@@ -62,10 +67,27 @@ for POST in $(ls -r _posts/); do
 
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
-    cat _posts/$POST | perl $PREPROCESSOR >> $FILE
+    cat _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
+
+    # TAGS
+    for TAG in $(cat _posts/$POST | grep "TAGS" | cut -d":" -f2| tr "," "\n"); do
+        mkdir -p _output/tags/$TAG
+        echo $LINK >> _output/tags/$TAG/body.html 
+    done
 done
 
+echo ">> Generating TAGS"
+for TAG in $(ls _output/tags/); do
+    TINDEX=_output/tags/$TAG/index.html
+    BODY=_output/tags/$TAG/body.html
+    cat $HEADER > $TINDEX
+    cat $BODY >> $TINDEX
+    cat $FOOTER >> $TINDEX
+    rm $BODY
+    LINK="<a href=\"/tags/$TAG\">$TAG</a><br />"
+    echo $LINK >> $TAGINDEX
+done
 count=1
 echo "<br />" >> $INDEX
 
@@ -93,3 +115,4 @@ done
 cat $FOOTER >> $INDEX
 cat $FOOTER >> $ARCHIVE
 cat $FOOTER >> $ADV
+cat $FOOTER >> $TAGINDEX

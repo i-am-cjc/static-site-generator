@@ -26,3 +26,4 @@ count | location
 ```
 
 As opposed to the sshd access logs, which mostly seem to originate in China, the http access seems to come from Eastern Europe sort of area.
+TAGS:infosec

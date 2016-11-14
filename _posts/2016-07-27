@@ -2,3 +2,4 @@ Plugin Download now remembers past plugins
 ------------------------------------------
 
 I run and check some plugins most mornings before work to start my day the best way... However I constantly get the same plugin being downloaded again and again, wasting time and bandwidth. So I added in a basic list that maintains the plugins that have already been downloaded (and looked at).
+TAGS:development,infosec

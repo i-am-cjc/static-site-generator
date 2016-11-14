@@ -10,3 +10,4 @@ The next step in the site generator is to add a couple more features and optimiz
 * Some of the `HTML` is embedded for generating the links. I might implement a really basic templating engine so I can take out the presentation of the page elements like the menu links and the post links to a template file
 * Add an optional command that can automatically upload to the host (ie scp the files)
 * Name it, because even if only I use it, I would like to be able to type something shorter than Static Site Generator
+TAGS:ssg,development

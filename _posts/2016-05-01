@@ -6,3 +6,4 @@ So far I am having a couple of issues with the software I am using for the honey
 However, it's not all doom and gloom. I have had a second, unrelated perl bot downloaded onto one of the honeypot servers which has given me another botnet to look into and have some fun with. Who knew that this sort of thing would happen so often.
 
 I have also switched to using xfce on my OpenBSD box to carry on evaluating if I could use it as a daily driver. I am also thinking of giving qubes-os a try since I like the idea of running things in seperate virtual machines and the idea of disposible ones too.
+TAGS:infosec

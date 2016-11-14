@@ -54,3 +54,4 @@ Now, I am no expert on php config, but allowing url includes would lead to allow
 Only 3 hits from masscan on the httpd this week :(
 
 For the next week of logging, I am going to install something like denyhosts to see how much that tails off the login attempts, and maybe change the ssh port the week after!
+TAGS:infosec

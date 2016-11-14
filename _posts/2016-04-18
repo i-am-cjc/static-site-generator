@@ -2,3 +2,4 @@ Some hits on the honeypot
 -------------------------
 
 The honeypot(s) have been fairly successful in attracting some malicious actors. One of the attackers downloaded a file in a scripting language that acted as the client to join a botnet, very convinient to see what's going on without having to do any RE.
+TAGS:infosec

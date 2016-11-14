@@ -7,4 +7,4 @@ An example of this, which is also linked to from the about page is [here](/page/
 
 The problem that this brings is that all the links are stored in the content, and if that changes the links become dead, this is something that needs adressing in the future.
 
-
+TAGS:development,ssg

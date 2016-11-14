@@ -4,3 +4,5 @@ Some updates to the static site generator
 In a rare turn of events, I have made some changes to the shell script that I use to generate this site. I realised with the last post about "Minimal viable computer" that with the previous post that had the same name it wasn't... viable to have two with the same name.
 
 Updates to the rescue, posts are now put into YY/mm/DD/TITLE folders.
+
+TAGS:development,ssg

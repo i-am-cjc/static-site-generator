@@ -9,3 +9,4 @@ These notes are as usual for myself, but might be of use to someone somewhere.
 * `docker run --name wordpress-test --link mysql-test:mysql -p 8080:80 -d wordpress`
 
 This will give a nice wordpress install, running in a container on port 8080 from which plugins can be installed as usual and played with. (The Compute stick is still slow, but is still quite usable for this sort of thing)
+TAGS:development,infosec

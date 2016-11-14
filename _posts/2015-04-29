@@ -6,3 +6,4 @@ The other day I have bought a mega-super-dirt-cheap VPS ($10 for the year!) with
 In a couple of days it has accrued over 10 thousand ssh login attempts and quite a few interesting urls on the httpd. 
 
 My intention is to write up a little entry about the access and discuss anything interesting that comes out of this experiment every month or so.
+TAGS:infosec

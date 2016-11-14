@@ -54,3 +54,4 @@ Attempts to use SSL for sites known to support it to avoid using unencrypted con
 [link](https://addons.mozilla.org/en-US/firefox/addon/noscript/)
 
 Blacklist javascript from running, whitelist as required. Generally disruptive to web browsing, but better to be safe than sorry right?
+TAGS:privacy,infosec

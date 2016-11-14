@@ -55,3 +55,4 @@ Tackling these interesting requests in reverse order.
 * /manager/html is related to Tomcat, guessing there is enough exploits for this to be worth scanning for
 
 Interesting mention on the httpd logs was that there was 5 scans from masscan which is pretty cool. 
+TAGS:infosec
