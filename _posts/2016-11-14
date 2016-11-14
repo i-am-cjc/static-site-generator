@@ -1,0 +1,6 @@
+Adding the ability to tag posts with ssg
+========================================
+
+The next feature I plan on adding to the static site generator is the ability to tag posts. This will allow the user to see all posts with a certain tag easier, or at least for me to find things easier.
+
+It will mean backtracking through all the current posts and adding tags to them.
