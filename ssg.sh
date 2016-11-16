@@ -68,13 +68,16 @@ for POST in $(ls -r _posts/); do
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
     cat _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
-    cat $FOOTER >> $FILE
 
+    echo "<strong>Tags: </strong>" >> $FILE
     # TAGS
     for TAG in $(cat _posts/$POST | grep "TAGS" | cut -d":" -f2| tr "," "\n"); do
         mkdir -p _output/tag/$TAG
         echo $LINK >> _output/tag/$TAG/body.html 
+        TAGLINK="<i><a href=\"/tag/$TAG\">$TAG</a></i> "
+        echo $TAGLINK >> $FILE
     done
+    cat $FOOTER >> $FILE
 done
 
 echo ">> Generating TAGS"
