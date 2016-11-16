@@ -44,6 +44,7 @@ done
 cat $PAGEFOOTER >> $INDEX
 cat $PAGEFOOTER >> $ARCHIVE
 cat $PAGEFOOTER >> $ADV
+cat $PAGEFOOTER >> $TAGINDEX
 
 count=1
 
@@ -77,6 +78,7 @@ for POST in $(ls -r _posts/); do
         TAGLINK="<i><a href=\"/tag/$TAG\">$TAG</a></i> "
         echo $TAGLINK >> $FILE
     done
+    cat $PAGEFOOTER >> $FILE
     cat $FOOTER >> $FILE
 done
 
