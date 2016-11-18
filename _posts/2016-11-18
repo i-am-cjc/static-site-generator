@@ -1,0 +1,10 @@
+Windows Subsystem for Linux
+===========================
+
+Well, I had heard about this, but not had any experience with it. Being able to have a shell on Windows is a strange feeling. It's also running my static site generator script fine which is handy.
+
+There was some trouble running my Wordpress plugin scraper script, but I will need to look into this as it would be cool to be able to use these tools and then fireup Wordpress in Docker (for windows) without having to fire up any heavyweight virtual machines on the Surface!
+
+Hopefully this is not a case of [Embrace, extend and extinguish](https://en.wikipedia.org/wiki/Embrace,_extend_and_extinguish)!
+
+TAGS:ssg development
