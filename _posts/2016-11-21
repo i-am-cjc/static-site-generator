@@ -1,0 +1,6 @@
+wp-plugin-downloader DOES work on WSL
+=====================================
+
+Turns out the plugin downloader does work on the Windows Subsystem for linux. Huzzah!
+
+TAGS:infosec development
