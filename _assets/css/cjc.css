@@ -34,3 +34,7 @@ a:hover {
     color: grey;
     text-decoration: none;
 }
+
+img {
+    width: 100%;
+}

@@ -68,7 +68,13 @@ for POST in $(ls -r _posts/); do
 
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
-    cat _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+    if [ -f _assets/$POST.jpg ]; then
+        head -n 2 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+        echo "<img class=\"feature\" src=\"/$POST.jpg\" />" >> $FILE
+        tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+    else
+        cat _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+    fi
 
     echo "<strong>Tags: </strong>" >> $FILE
     # TAGS
