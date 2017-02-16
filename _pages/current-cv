@@ -3,16 +3,17 @@
 * email: carl@cjc.im
 * web: https://cjc.im
 * phone: Available upon request.
+* The newest version of this CV is available at: https://cjc.im/current-cv
 
 ## Summary
-Information Security, Software Development, Minimalism and Motorcycle riding.
+Information Security, Software Development and Motorcycle riding.
 
 ## Experience
 
-### Vulnerbility Research
+### Vulnerability Research
 
-* Spend some spare time investigating software to find vulnerabilities to report, focussing on WebApplications.
-* Have had several CVE ids assigned
+* Spend spare time investigating software to find vulnerabilities to report, focussing on WebApplications.
+* Have had several CVE ids assigned, see https://cjc.im/advisories
 
 ### Security Lead - Connect Technology Group
 January 2016 - Present
@@ -32,6 +33,7 @@ July 2014 - July 2015 (Software Developer)
 
 * As part of the team lead improvements to build process that allowed us to deploy to all our supported platforms at once. Implemented automated builds using Jenkins to allow the QA team to self serve device builds
 * Implemented an internal tool to integrate Zendesk and JIRA ticketing systems across the support and development departments
+* Integrated our platform with Amazon S3 to improve performance and backup capabilities.
 
 ### Freelance Work
 March 2013 - September 2014
