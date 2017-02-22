@@ -11,6 +11,7 @@ Information Security, Software Development and Motorcycle riding.
 ## Experience
 
 ### Vulnerability Research
+2016 - Present
 
 * Spend spare time investigating software to find vulnerabilities to report, focussing on WebApplications.
 * Have had several CVE ids assigned, see https://cjc.im/advisories
@@ -24,6 +25,7 @@ Key Responsibilities include:
 * Be the main point of contact regarding security incidents
 * Provide company wide training on topics related to Information Security
 * Perform internal Penetration Tests and liase with suppliers for external tests
+* Setup and manage Vulnerability assessment and remediation program
 
 ### Senior Software Developer - Connect Technology Group
 July 2015 - Present (Senior Software Developer)  
@@ -33,7 +35,7 @@ July 2014 - July 2015 (Software Developer)
 
 * As part of the team lead improvements to build process that allowed us to deploy to all our supported platforms at once. Implemented automated builds using Jenkins to allow the QA team to self serve device builds
 * Implemented an internal tool to integrate Zendesk and JIRA ticketing systems across the support and development departments
-* Integrated our platform with Amazon S3 to improve performance and backup capabilities.
+* Integrated our platform with Amazon S3 to improve performance and increase backup speed.
 
 ### Freelance Work
 March 2013 - September 2014
