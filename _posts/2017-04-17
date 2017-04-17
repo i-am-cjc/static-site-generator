@@ -1,0 +1,7 @@
+Writing a text editor
+---------------------
+
+Decided to get my C back up to scratch and write a text editor, making some nice progress. Based around how I use vim, "envy" is a minimal, dependancy free editor. Initially following a tutorial to make a small text editor, I have added a vi-like modal system and keybindings that match my current vim config.
+
+The source and progress can be found [here](https://github.com/i-am-cjc/envy)
+TAGS:development,minimalism
