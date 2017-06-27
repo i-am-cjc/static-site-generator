@@ -1,19 +1,32 @@
 Stored XSS in WP User Notes 
-----------------------------------
+=====
 
-*About*
+### Credit
+This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)
 
-> This plugin adds a text editor area to each User Profile in the dashboard for Administrators to keep private notes about each User.
+### Timeline
+* 2016-11-06 Vendor Notified
 
-*Author*: https://minglecommunities.com/ 
+### Product
+This plugin adds a text editor area to each User Profile in the dashboard for Administrators to keep private notes about each User.
 
-*Timeline*
+### Risk / Severity Rating
+Not calculated
 
-*Vulnerability*: The notes field for each user isn't properly sanitized and can contain javascript. Given that this only affects admins this really isn't a major issue. However, 
+### Description and Impact
+The notes field for each user isn't properly sanitized and can contain javascript. Given that this only affects admins this really isn't a major issue. However, 
 
 	  $notes = (!empty($_POST['user_notes_note']))?stripslashes($_POST['user_notes_note']):'';
 	update_user_meta($user_id, 'user-notes-note', $notes);
 
-*Proof of Concept*: Simply entering the notes with javascript in `<script>` tags is enough to execute code against other administrators. 
+### Proof of Concept
+Simply entering the notes with javascript in `<script>` tags is enough to execute code in the context of other administrators. 
 
-*Further Reading*: More information on XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
+### Solution
+Disable the plugin until an upgrade is available
+
+### References
+* XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
+
+### Legal
+The information contained within this advisory is supplied "as-is" with no warranties or guarantees of fitness of use or otherwise.

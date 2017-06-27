@@ -1,27 +1,41 @@
 Reflected XSS in wp-mail plugin 
--------------------------------
+=====
 
-*About*
+### Credit
+This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)
 
-> WP Mail plugin is simply a wp network mail or message system. User can send mail or messages to other users over one wp network. 
-
-*Author*: [mndpsingh287](https://profiles.wordpress.org/mndpsingh287)
-
-*Timeline*
-
+### Timeline
 * 2016-07-23: Vendor Notified
 * 2016-07-26: Fixed in version 1.2 
+* 2016-11-21: Advisory Published
 
-*Vulnerability*: The `replyto` parameter when composing a mail allows for a reflected XSS. 
+### Product
+WP Mail plugin is simply a wp network mail or message system. User can send mail or messages to other users over one wp network. 
+
+### Versions Affected
+WP Mail <= 1.2
+
+### Risk / Severity Rating
+Not calculated
+
+### Description and Impact
+The `replyto` parameter when composing a mail allows for a reflected XSS. 
 
 	$replyTo = isset($_GET['replyto']) ? $_GET['replyto'] : '';
 	...
 	<input type="text" class="form-control" placeholder="Enter receiver's wordpress email" name="reciever_mail" required="required" value="<?php echo !empty($replyTo) ? $replyTo : $to; ?>">
  
-*Proof of Concept*: Altering the url would allow for the XSS to be executed
-
+### Proof of Concept
 `http://wordpress.site/wp-admin/admin.php?page=wp_mail_compose&replyto=%22%3E%3Cscript+src%3Ddata%3A%26comma%3Balert%281%29%2F%2F`
 
 would execute `alert(1)` but could be used to run something more malicious
 
-*Further Reading*: More information on XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
+### Solution
+Upgrade to version 1.2
+
+### References
+* XSS [here](https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_\(XSS\))
+* [CVE-2017-5942](http://www.cvedetails.com/cve/CVE-2017-5942/)
+
+### Legal
+The information contained within this advisory is supplied "as-is" with no warranties or guarantees of fitness of use or otherwise.

