@@ -113,7 +113,7 @@ for A in $(ls -r _advisories/); do
     count=$(($count+1))
     FILE=_output/advisories/$A/index.html
     cat $HEADER > $FILE
-    echo " / advisories / $A</h2>" >> $FILE
+    echo " / <a href=\"/advisories\">advisories</a> / $A</h2>" >> $FILE
     cat _advisories/$A | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
