@@ -1,7 +1,5 @@
 HEADER=_templates/header.html
 FOOTER=_templates/footer.html
-PAGEHEADER=_templates/pageheader.html
-PAGEFOOTER=_templates/pagefooter.html
 INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/archive/index.html
@@ -25,10 +23,10 @@ cat $HEADER > $ARCHIVE
 cat $HEADER > $ADV
 cat $HEADER > $TAGINDEX
 
-cat $PAGEHEADER >> $INDEX
-cat $PAGEHEADER >> $ARCHIVE
-cat $PAGEHEADER >> $ADV
-cat $PAGEHEADER >> $TAGINDEX
+echo "</h2>" >> $INDEX
+echo " / archive</h2>" >> $ARCHIVE
+echo " / advisories</h2>" >> $ADV
+echo " / tags</h2>" >> $TAGINDEX
 
 echo ">> Generating PAGES"
 mkdir -p _output/page
@@ -37,14 +35,10 @@ for PAGE in $(ls _pages/); do
     mkdir -p _output/$PAGE
     FILE=_output/$PAGE/index.html
     cat $HEADER > $FILE
+    echo " / $PAGE </h2>" >> $FILE
     cat _pages/$PAGE | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
-
-cat $PAGEFOOTER >> $INDEX
-cat $PAGEFOOTER >> $ARCHIVE
-cat $PAGEFOOTER >> $ADV
-cat $PAGEFOOTER >> $TAGINDEX
 
 count=1
 
@@ -56,7 +50,7 @@ for POST in $(ls -r _posts/); do
     DIR=$(echo $DATE | awk -F - '{print $1"/"$2"/"$3}')/$TITLE
     mkdir -p _output/$DIR
 
-    LINK="<a href=\"/$DIR\">$DATE - $LINE</a><br />"
+    LINK="<a href=\"/$DIR\">$DATE</a> - $LINE<br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
@@ -68,12 +62,12 @@ for POST in $(ls -r _posts/); do
 
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
+    echo " / $TITLE</h2>" >> $FILE
     if [ -f _assets/$POST.jpg ]; then
-        head -n 2 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
         echo "<img class=\"feature\" src=\"/$POST.jpg\" />" >> $FILE
         tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
     else
-        cat _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+        tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
     fi
 
     echo "<strong>Tags: </strong>" >> $FILE
@@ -84,7 +78,6 @@ for POST in $(ls -r _posts/); do
         TAGLINK="<i><a href=\"/tag/$TAG\">$TAG</a></i> "
         echo $TAGLINK >> $FILE
     done
-    cat $PAGEFOOTER >> $FILE
     cat $FOOTER >> $FILE
 done
 
@@ -93,6 +86,7 @@ for TAG in $(ls _output/tag/); do
     TINDEX=_output/tag/$TAG/index.html
     BODY=_output/tag/$TAG/body.html
     cat $HEADER > $TINDEX
+    echo " / <a href=\"/tags\">tags</a> / $TAG</h2>" >> $TINDEX
     cat $BODY >> $TINDEX
     cat $FOOTER >> $TINDEX
     rm $BODY
@@ -108,7 +102,7 @@ for A in $(ls -r _advisories/); do
 
     mkdir -p _output/advisories/$A
 
-    LINK="<a href=\"/advisories/$A\">$A - $LINE</a><br />"
+    LINK="<a href=\"/advisories/$A\">$A</a> - $LINE<br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
@@ -119,6 +113,7 @@ for A in $(ls -r _advisories/); do
     count=$(($count+1))
     FILE=_output/advisories/$A/index.html
     cat $HEADER > $FILE
+    echo " / advisories / $A</h2>" >> $FILE
     cat _advisories/$A | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
