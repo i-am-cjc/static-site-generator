@@ -1,0 +1,9 @@
+Added 2nd CVE and moved host
+---------
+
+One of my other vulnerabilities has had a CVE assigned via the DWF CNA. (Holy acronyms Batman)
+
+I also moved hosting this site to AWS Lightsail rather than using a full server sitting there idle.
+
+
+TAGS:infosec,development,ssg
