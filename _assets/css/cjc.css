@@ -3,11 +3,10 @@ body {
     color:#000000;
     font-family:Cambria,Verdana,"Trebuchet MS",Tahoma,Palatino,"Palatino Linotype",Georgia,Arial,Helvetica,Serif
 }
-pre {
-    overflow:auto;
-    width:auto
+a:link, a:visited {
+    text-decoration: none;
+    color:blue;
 }
-a:link {color:blue}
-a:visited {color:blue}
-a:hover {color:red}
-a:active {color:red}
+a:hover, a:active {
+    color:red;
+}
