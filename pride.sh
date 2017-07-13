@@ -1,16 +1,17 @@
 HEADER=_templates/header.html
 FOOTER=_templates/footer.html
+MENU=_templates/menu.html
 INDEX=_output/index.html
 ADV=_output/advisories/index.html
-ARCHIVE=_output/archive/index.html
+ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PREPROCESSOR=Markdown.pl
-POSTCOUNT=5
+POSTCOUNT=10
 
 echo ">> Wiping _output"
 mkdir -p _output
 rm -rf _output/*
-mkdir -p _output/archive
+mkdir -p _output/posts
 mkdir -p _output/advisories
 mkdir -p _output/tags
 mkdir -p _output/tag
@@ -24,7 +25,8 @@ cat $HEADER > $ADV
 cat $HEADER > $TAGINDEX
 
 echo "</h2>" >> $INDEX
-echo " / archive</h2>" >> $ARCHIVE
+cat $MENU >> $INDEX
+echo " / posts</h2>" >> $ARCHIVE
 echo " / advisories</h2>" >> $ADV
 echo " / tags</h2>" >> $TAGINDEX
 
@@ -62,7 +64,7 @@ for POST in $(ls -r _posts/); do
 
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
-    echo " / $TITLE</h2>" >> $FILE
+    echo " / <a href=\"/posts\">posts</a> / $TITLE</h2>" >> $FILE
     if [ -f _assets/$POST.jpg ]; then
         echo "<img class=\"feature\" src=\"/$POST.jpg\" />" >> $FILE
         tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
