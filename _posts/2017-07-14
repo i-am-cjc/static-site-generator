@@ -1,0 +1,6 @@
+Stripping down vimrc
+---------
+
+Found out I rarely use any of the plugins I have in my vimrc since using gvim, time to strip that shit down. No point having extra stuff there that isn't used.
+
+TAGS:development
