@@ -1,0 +1,21 @@
+Docker Compose for Wordpress
+---------
+
+Ripped directly from their site, here so it's easier for me to find in the future
+
+    version: '2'
+    services:
+
+        wordpress:
+            image: wordpress
+            ports:
+                - 1337:80
+            environment:
+                WORDPRESS_DB_PASSWORD: sup3rs3k4t0ass
+
+        mysql:
+            image: mariadb
+            environment:
+                MYSQL_ROOT_PASSWORD: sup3rs3k4t0ass
+
+TAGS:development,infosec
