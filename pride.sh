@@ -52,7 +52,7 @@ for POST in $(ls -r _posts/); do
     DIR=$(echo $DATE | awk -F - '{print $1"/"$2"/"$3}')/$TITLE
     mkdir -p _output/$DIR
 
-    LINK="<a href=\"/$DIR\">$DATE</a> - $LINE<br />"
+    LINK="<a href=\"/$DIR\">$DATE</a> $LINE<br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
@@ -64,7 +64,7 @@ for POST in $(ls -r _posts/); do
 
     FILE=_output/$DIR/index.html
     cat $HEADER > $FILE
-    echo " / <a href=\"/posts\">posts</a> / $TITLE</h2>" >> $FILE
+    echo " / <a href=\"/posts\">posts</a> / $LINE</h2>" >> $FILE
     if [ -f _assets/$POST.jpg ]; then
         echo "<img class=\"feature\" src=\"/$POST.jpg\" />" >> $FILE
         tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
@@ -104,7 +104,7 @@ for A in $(ls -r _advisories/); do
 
     mkdir -p _output/advisories/$A
 
-    LINK="<a href=\"/advisories/$A\">$A</a> - $LINE<br />"
+    LINK="<a href=\"/advisories/$A\">$A</a> $LINE<br />"
     
     if [ "$count" -le "$POSTCOUNT" ] 
     then
