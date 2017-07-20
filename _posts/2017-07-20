@@ -1,0 +1,44 @@
+Link Dump
+---------
+Trying to summarise some of these link dumps so I can actually remember what they are.
+
+Data shredding!   
+<https://www.pogowasright.org/uk-police-delete-half-a-billion-records-of-drivers-plates/>
+
+Another day, another data breach   
+<http://seclists.org/dataloss/2017/q3/13>
+
+Morals or Cash, you decide   
+<https://motherboard.vice.com/en_us/article/gybppx/iphone-bugs-are-too-valuable-to-report-to-apple>
+
+Mitre CVE stuff   
+<http://www.csoonline.com/article/3204568/application-security/closing-the-cve-gap-is-mitre-up-to-it.html>
+
+Yay HTTPS   
+<https://www.troyhunt.com/life-is-about-to-get-harder-for-websites-without-https/>
+
+Similar to the .io takeover   
+<https://www.theregister.co.uk/2017/07/13/swiss_domain_name_hijack/>
+
+Ellon Musk fears the zombie car scene from The Fate of the Furious   
+<http://www.csoonline.com/article/3208035/security/elon-musk-s-top-cybersecurity-concern-preventing-a-fleet-wide-hack-of-teslas.html>
+
+Authentication Bypass allows alarm's commands execution in iSmartAlarm   
+<http://seclists.org/bugtraq/2017/Jul/39>
+
+Simple Blockchain example   
+<https://medium.com/crypto-currently/lets-build-the-tiniest-blockchain-e70965a248b>
+
+Free phishing test   
+<https://info.knowbe4.com/phishing-security-test-cv>
+
+Impending Crypto doom   
+<https://www.btcforkmonitor.info/>
+
+RCE when fragging a player in source based games!   
+<https://oneupsecurity.com/research/remote-code-execution-in-source-games?t=r>
+
+Apple fixes a bunch of security issues in iOS   
+<https://support.apple.com/en-us/HT207923>
+
+TAGS:infosec,linkdump,development
