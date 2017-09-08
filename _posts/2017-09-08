@@ -1,0 +1,7 @@
+Updated the WP Plugin Downloader
+---------
+Finally got around to updating "sloth" which downloads wordpress plugins and generates basic reports that will give an impression of what might be vulnerable for simple things.
+
+<https://github.com/i-am-cjc/sloth>
+
+TAGS:infosec,development
