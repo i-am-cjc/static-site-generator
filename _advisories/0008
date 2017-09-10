@@ -1,0 +1,30 @@
+Open redirect in Furikake
+=====
+
+### Credit
+This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)
+
+### Timeline
+* 2017-09-10: Vendor Notified
+
+### Product
+
+### Description and Impact
+The `furikake-redirect` parameter on a page allows for a redirect to an attacker controlled page
+
+	classes/Furigana.php:		header('location:'.urldecode($_GET['furikake-redirect']));
+
+### Proof of Concept
+`http://wp-site/?furikake-redirect=https%3A%2F%2Fcjc.im%2Fadvisories`
+
+would redirect the user to the site specified in the furikake-redirect variable
+
+### Solution
+Not yet determined.
+
+### References
+* [Plugin](https://wordpress.org/plugins/furikake/)
+* [CWE Definition of Open Redirects](http://cwe.mitre.org/data/definitions/601.html)
+
+### Legal
+The information contained within this advisory is supplied "as-is" with no warranties or guarantees of fitness of use or otherwise.
