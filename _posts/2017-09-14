@@ -1,0 +1,32 @@
+Biometrics and Pragmatic Threat Modelling
+---------
+
+With all the dicussion about FaceID and the same arguments being used against TouchID when Apple first introduced it...
+
+# Pragmatic Threat Modelling
+
+    Threat modeling is a process by which potential threats can be identified, enumerated, and prioritized  all from a hypothetical attackers point of view
+    (From [wikipedia](https://en.wikipedia.org/wiki/Threat_model)
+
+In my personal life, threats are primarily composed of theft and loss of data/hardware. In the "western" world almost everyone has a smart phone, and this is (if you're under 50) is most likely your life. Be it facebook, snapchat, email, banking or personal photos. 
+
+I know in my case, my phone has my email on it, which is basically the keys to my world. So stopping a thief from accessing them is my number one concern, at least until I can change passwords and remote wipe the device.
+
+
+# FaceID / TouchID / PIN / Password
+
+Placing these items on a sliding scale a 128 character password is going to be more secure than faceID, especially if I can be compelled to look at the phone. However, I am not going to use a long password as I want to access my message, or instagram or whatever quickly. TouchID (and perhaps FaceID) are a fantastic and quick way for me to access my data, and in my threat model, stops the thief from getting at my data. 
+
+But if someone is going to bash me with a wrench or hold a gun to my head, I am probably going to give them access. 
+
+![Security](https://imgs.xkcd.com/comics/security.png)
+
+# iOS 11 Improved Security
+
+When iOS 11 is released, a new feature that allows you to disable Touch/FaceID by pressing the power button 5 times will improve security for those who can be compelled to give over biometric authentication. Additionally, letting a computer access the device will require the pin/password when the phone is unlocked, rather than just tapping yes, which might slow down accessing of data.
+
+# Conclusion
+
+For my Threat models, Touch ID is fine, with the abililty to disable it quickly even better. Be interesting to see how well FaceID stands up when its in the hands of talented people.
+
+TAGS:infosec,privacy
