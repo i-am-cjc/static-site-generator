@@ -6,7 +6,7 @@ With all the dicussion about FaceID and the same arguments being used against To
 ### Pragmatic Threat Modelling
 
     Threat modeling is a process by which potential threats can be identified, enumerated, and prioritized  all from a hypothetical attackers point of view
-    (From [wikipedia](https://en.wikipedia.org/wiki/Threat_model)
+(From [wikipedia](https://en.wikipedia.org/wiki/Threat_model))
 
 In my personal life, threats are primarily composed of theft and loss of data/hardware. In the "western" world almost everyone has a smart phone, and this is (if you're under 50) is most likely your life. Be it facebook, snapchat, email, banking or personal photos. 
 
