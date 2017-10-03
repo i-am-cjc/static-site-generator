@@ -1,0 +1,16 @@
+GDPR for Dummies Part 1 - Consent
+---------
+
+Whilst not the only lawful justification for collecting a Data Subject's information, The idea of using consent as the lawful basis for data collection has changed in the GDPR compared with the old Data Protection Directive (implemented as the Data Protection Act in the UK), and is defined as:
+
+    any freely given, specific, informed and unambiguous indication of the data subject's wishes by which he or she by statement or by a clear affirmative action, signifies agreement to the processing of personal data relating to him or her.
+    (Article 4(11))
+
+
+_Unambiguous Indication of the data subjects wishes_ means that you can no longer have a pre-ticked checkbox or assume consent when a button is clicked when someone is signing up for a service, or at any point that you collect Personally Identifable Information. They must have to perform an action, even if its still ticking a box (that box just can't be pre-ticked)
+
+If you do use consent as the basis for collecting a Data Subject's information, than they must be able to withdraw at any time, and it must be easy to revoke consent as it was to give consent.
+
+Children, defined as those under the age of 16 (although member states of the EU can change this!) will be required to obtain consent from an adult (parent/guardian) rather than themselves.
+
+TAGS:privacy,infosec,GDPR
