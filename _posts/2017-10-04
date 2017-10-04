@@ -1,0 +1,14 @@
+GDPR for Dummies Part 2 - Data Subject Rights
+---------
+
+The rights for Data Subjects in the GDPR mostly stay the same as those rights granted by the Data Protection Directive.
+
+The main changes are:
+
+* The right to be forgotton: In certain circumstances the Data Subject can request that the personal data held on them is erased. These circumstances include withdrawing consent, the data is no longer required for it's original purpose or the processing was unlawful in the first place.
+* The right to data porting: The Data Subject can request that their information is available for porting to another provider, in a clear, machine readble format.
+* A Data Controller can no longer charge for data requests made by a Data Subject, and must respond within 30 days. However, the Data Controller may charge if data requests are excessive from a Data Subject, and can have a longer turn around than 30 days, although the Data Controller will have to justify and prove the reason for the delay.
+
+A lot of the other rights remain mostly the same as under the Data Protection Directive such as the requirement to have a privacy notice and the right to rectification of held data.
+
+TAGS:privacy,infosec,GDPR
