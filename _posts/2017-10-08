@@ -1,0 +1,26 @@
+Nokia N900, PostMarketOS and automatically turning off the screen
+---------
+
+The Nokia N900[1] has to be my favorite handheld device of all time, even more so than the Nintendo Gameboy ;)
+
+I recently discovered PostmarketOS[2], based on Alpine Linux[3] that intends to be a replacement phone OS with a 10 year lifespan. This also led me to discover that the N900 has mostly mainline Linux Kernel Support.
+
+The one thing I wanted to happen was that the screen powers off when the keyboard slides closed. Which is done by editing `/etc/acpi/handler.sh` as such:
+
+
+	KP_SLIDE_OPEN)
+		adjust_keypad_bl 255	
+		echo 0 > /sys/devices/platform/omapdrm.0/graphics/fb0/blank
+		;;
+	KP_SLIDE_CLOSE)
+		adjust_keypad_bl 0
+		echo 1 > /sys/devices/platform/omapdrm.0/graphics/fb0/blank
+
+
+This looks like it would also be the place to do things with the other hardware buttons on the device. More to come on this device!
+
+[1] <https://en.wikipedia.org/wiki/Nokia_N900>
+[2] <https://www.postmarketos.org/>
+[3] <https://alpinelinux.org/>
+
+TAGS:development,infosec
