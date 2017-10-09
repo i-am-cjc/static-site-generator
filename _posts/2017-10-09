@@ -1,0 +1,17 @@
+Minimal Viable Computer III The Search for Spock
+---------
+
+Well, not really a minimal viable computer, but my favorite toy. Here are some notes for installation of PostMarketOS onto the N900
+
+Most of this information is available on the wiki[1] But still worth noting some of my difficulties / changes.
+
+* Installing the uboot bootloader required root, and also would only install via the command line. This required installing 'rootsh' from the Maemo Package Manager and then installing uboot via apt-get.
+* See previous post for Modifying the ACPI handler to turn off the screen when closing the keyboard and turning it on when opening.
+* Compile the OS and setup as per [1]
+* The screen might say that the hardware keyboard isn't supported, but it is, you can enter the encryption passcode on the device.
+* The wiki's notes on battery life don't seem to be working for me.
+* Best hardware every, just could do with some more ram ;)
+
+[1] <https://wiki.postmarketos.org/wiki/Nokia_N900_(nokia-rx51)>
+
+TAGS:development,infosec,minimalism
