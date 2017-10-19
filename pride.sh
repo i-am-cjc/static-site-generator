@@ -6,7 +6,7 @@ ADV=_output/advisories/index.html
 ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PREPROCESSOR=Markdown.pl
-POSTCOUNT=10
+POSTCOUNT=15
 
 echo ">> Wiping _output"
 mkdir -p _output
@@ -106,10 +106,6 @@ for A in $(ls -r _advisories/); do
 
     LINK="<a href=\"/advisories/$A\">$A</a> $LINE<br />"
     
-    if [ "$count" -le "$POSTCOUNT" ] 
-    then
-        echo $LINK >> $INDEX
-    fi
     echo $LINK >> $ADV
 
     count=$(($count+1))
