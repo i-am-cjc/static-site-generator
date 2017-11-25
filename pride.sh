@@ -6,7 +6,7 @@ ADV=_output/advisories/index.html
 ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PREPROCESSOR=Markdown.pl
-POSTCOUNT=15
+POSTCOUNT=5
 
 echo ">> Wiping _output"
 mkdir -p _output
@@ -25,7 +25,8 @@ cat $HEADER > $ADV
 cat $HEADER > $TAGINDEX
 
 echo "</h2>" >> $INDEX
-cat $MENU >> $INDEX
+#cat $MENU >> $INDEX
+perl $PREPROCESSOR _pages/about >> $INDEX
 echo " / posts</h2>" >> $ARCHIVE
 echo " / advisories</h2>" >> $ADV
 echo " / tags</h2>" >> $TAGINDEX
@@ -45,6 +46,7 @@ done
 count=1
 
 echo ">> Generating POSTS"
+echo "<h3>posts<small> (<a href=\"/posts\">more</a>)</small></h3>" >> $INDEX
 for POST in $(ls -r _posts/); do 
     DATE=$(echo $POST | cut -d"-" -f1,2,3)
     LINE=$(cat _posts/$POST | head -n 1)
@@ -96,9 +98,9 @@ for TAG in $(ls _output/tag/); do
     echo $LINK >> $TAGINDEX
 done
 count=1
-echo "<br />" >> $INDEX
 
 echo ">> Generating ADVISORIES"
+echo "<h3>advisories<small> (<a href=\"/advisories\">more</a>)</small></h3>" >> $INDEX
 for A in $(ls -r _advisories/); do 
     LINE=$(cat _advisories/$A | head -n 1)
 
@@ -107,6 +109,10 @@ for A in $(ls -r _advisories/); do
     LINK="<a href=\"/advisories/$A\">$A</a> $LINE<br />"
     
     echo $LINK >> $ADV
+    if [ "$count" -le "$POSTCOUNT" ] 
+    then
+        echo $LINK >> $INDEX
+    fi
 
     count=$(($count+1))
     FILE=_output/advisories/$A/index.html
