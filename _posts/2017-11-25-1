@@ -1,0 +1,9 @@
+Link Dump
+---------
+
+Small LD this time, hoping to improve the format a little and add some commentary. 
+
+* [RCE in Github's Atom Editor](https://statuscode.ch/2017/11/from-markdown-to-rce-in-atom/) - Some clever chaining of issues here to acheive a remote code execution in the popular electron based editor
+* [Painting stolen and being sold on the Dark Web](https://www.wired.co.uk/article/painting-stolen-new-zealand-sale-gottfried-lindauer-chief-ngatai-raure) - A painting was stolen in NZ in the month of April and it has shown up on a darknet market for sale. What a world we live in!
+
+TAGS:linkdump,infosec

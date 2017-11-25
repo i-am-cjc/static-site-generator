@@ -16,3 +16,7 @@ a:hover, a:active {
 	margin: 50px auto 50px;
 	font-size: 85%;
 }
+
+code {
+	white-space: pre-wrap;
+}

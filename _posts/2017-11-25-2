@@ -1,0 +1,71 @@
+Minimal Viable Computer IV The Voyage Home
+---------
+
+How minimal can we go? I have always toyed with designing a CPU, be it building a Z80 based machine, to writing emulators for made up systems. 
+
+I have been writing a simple emulator for a system that is a hybrid of Caxton Foster's Blue CPU, which had a massive 16 OPcodes, and introducing a simple "display" that is essentially a 32x32 monochrome screen.(that is easy to implement as a CLI system)
+
+The Specs are as follows:
+
+* 16 Instructions, detailed below
+* 4096 memory locations, each with 16bits / 2 bytes in each (8k of memory over a 16bit bus)
+* A single register, A
+* A program counter, PC
+* Instruction Register, IR, that stores the memory pulled in the memory at the PC address.
+* A 32x32 monochrome display that is read from 0xFBF to 0xFFF (ie the top of memory)
+
+
+The instructions are mostly the same as the Blue CPU, except the Console Switch OP Code is replaced with a call that some ficticious display will "render" the screen.
+
+* 0x0 - NOP - No Operation
+* 0x1 - ADD - Set A to be the sum of A and the provided memory address, ie 10AA would sum the contents of A and what ever is in memory at the address of 0x0AA
+* 0x2 - XOR - Set A to be the XOR of A and the provided memory address
+* 0x3 - AND - Set A to be the AND of A and the provided memory address
+* 0x4 - OR  - Set A to be the OR of A and the provided memory address
+* 0x5 - NOT - Set A to be the NOT of A
+* 0x6 - LDA - Set A to be the contents of the provided memory address
+* 0x7 - STA - Save A to the provided memory address
+* 0x8 - SRJ - Set A to PC AND 0xFFF, set the PC to provided memory address
+* 0x9 - JMA - If A & 0x8000 then PC = ADDR
+* 0xA - JMP - PC = ADDR
+* 0xB - INP - A = get a character
+* 0xC - OUT - Write out a character that is in A
+* 0xD - RAL - Rotate A left
+* 0xE - DRW - Draw the screen
+* 0xF - HLT - Halt the CPU
+
+An example program written in assembly for helloworld:
+
+	LDA 0x014
+	OUT
+	LDA 0x015
+	OUT
+	LDA 0x016
+	OUT
+	OUT
+	LDA 0x017
+	OUT
+	LDA 0x018
+	OUT
+	LDA 0x017
+	OUT
+	LDA 0x019
+	OUT
+	LDA 0x016
+	OUT
+	LDA 0x01a
+	OUT
+	HLT
+
+Which would have the data for hello world after the halt. This program in hex is:
+
+	00000000  60 14 c0 00 60 15 c0 00  60 16 c0 00 c0 00 60 17  |`...`...`.....`.|
+	00000010  c0 00 60 18 c0 00 60 17  c0 00 60 19 c0 00 60 16  |..`...`...`...`.|
+	00000020  c0 00 60 1a c0 00 f0 00  00 68 00 65 00 6c 00 6f  |..`......h.e.l.o|
+	00000030  00 77 00 72 00 64                                 |.w.r.d|
+
+In which you can see the required characters at the end of the binary dump
+
+Currently I have the emulator working for most things. There is no assembler, but there is a disassembler built into the emulator.
+
+TAGS:minimalism,development
