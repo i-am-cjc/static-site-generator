@@ -1,6 +1,6 @@
+#!/bin/bash
 HEADER=_templates/header.html
 FOOTER=_templates/footer.html
-MENU=_templates/menu.html
 INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/posts/index.html
@@ -25,7 +25,6 @@ cat $HEADER > $ADV
 cat $HEADER > $TAGINDEX
 
 echo "</h2>" >> $INDEX
-#cat $MENU >> $INDEX
 perl $PREPROCESSOR _pages/about >> $INDEX
 echo " / posts</h2>" >> $ARCHIVE
 echo " / advisories</h2>" >> $ADV
