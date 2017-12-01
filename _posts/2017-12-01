@@ -1,0 +1,42 @@
+Advent of Code Day 1
+----------
+
+It's that time of year again!!!!!!
+
+<http://adventofcode.com/2017/day/1> for details of the puzzle.
+
+Here is my very quick and dirty python to solve day one part one.
+
+    total = 0
+    for index in range(0, len(test)):
+        x = int(test[index], 10)
+        if index + 1 >= len(test):
+            y = int(test[0])
+        else:
+            y = int(test[index+1], 10)
+
+        if x == y:
+            total += x
+
+    print(total)
+                                                
+Not attempting to do any level of engineering here, just solve these easy levels as they are pretty simple.
+
+The 2nd level was a slight change that required some minor changes
+
+    test2 = test + test
+    dist = int(len(test)/2)
+
+    total = 0
+    for index in range(0, len(test)):
+        x = int(test2[index], 10)
+        y = int(test2[index + dist])
+
+        if x == y:
+            total += x
+
+    print(total)
+
+Done. See you tomorrow
+
+TAGS:development
