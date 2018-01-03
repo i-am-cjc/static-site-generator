@@ -19,4 +19,7 @@ a:hover, a:active {
 
 code {
 	white-space: pre-wrap;
+    background-color: black;
+    color: lime-green;
+    padding: 3px;
 }

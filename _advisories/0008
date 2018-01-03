@@ -6,6 +6,7 @@ This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(d
 
 ### Timeline
 * 2017-09-10: Vendor Notified
+* 2018-01-01: CVE-2017-1000434 assigned
 
 ### Product
 
@@ -25,6 +26,7 @@ Not yet determined.
 ### References
 * [Plugin](https://wordpress.org/plugins/furikake/)
 * [CWE Definition of Open Redirects](http://cwe.mitre.org/data/definitions/601.html)
+* [CVE-2017-1000434](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-1000434)
 
 ### Legal
 The information contained within this advisory is supplied "as-is" with no warranties or guarantees of fitness of use or otherwise.
