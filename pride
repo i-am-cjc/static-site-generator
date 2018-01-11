@@ -45,7 +45,7 @@ done
 count=1
 
 echo ">> Generating POSTS"
-echo "<h3>posts<small> (<a href=\"/posts\">more</a>)</small></h3>" >> $INDEX
+echo "<h3>posts<small> (<a href=\"/posts\">more</a> | <a href=\"/tags\">tags</a>)</small></h3>" >> $INDEX
 for POST in $(ls -r _posts/); do 
     DATE=$(echo $POST | cut -d"-" -f1,2,3)
     LINE=$(cat _posts/$POST | head -n 1)
