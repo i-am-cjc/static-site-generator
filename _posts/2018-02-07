@@ -1,0 +1,36 @@
+Infosec Intro- Hydra
+------------------
+
+This post I am going to focus on Hydra.
+
+### What is it
+
+As per the man page, "Hydra is a parallelized login cracker that supports numerous protocols to attack". Hydra supports more protocols you can shake a stick at, although I mostly use it for SSH, RDP and MSSQL.
+
+### Why
+
+Sometimes, there are weak passwords on systems, it's always worth trying to grab some of those low hanging fruits if you can. It's also a good tool for testing any lockout policies / IP banning you may be implementing.
+
+### Example
+
+For example, I have a Raspberry Pi setup with a particularly weak password. We know the default username is pi, so lets use the top 250 passwords from the infamous rockyou password list.
+
+	# hydra -l pi -P /root/rockyoutop250.txt ssh://192.168.56.101 
+	Hydra v8.6 (c) 2017 by van Hauser/THC - Please do not use in military or secret service organizations, or for illegal purposes.
+
+	Hydra (http://www.thc.org/thc-hydra) starting at 2018-02-07 11:15:51
+	[WARNING] Many SSH configurations limit the number of parallel tasks, it is recommended to reduce the tasks: use -t 4
+	[DATA] max 16 tasks per 1 server, overall 16 tasks, 250 login tries (l:1/p:250), ~16 tries per task
+	[DATA] attacking ssh://192.168.56.101:22/
+	[22][ssh] host: 192.168.56.101   login: pi   password: iloveyou
+	1 of 1 target successfully completed, 1 valid password found
+
+As we can see this very quickly found the password of "iloveyou", naughty user.
+
+### References
+
+* [Hydra Homepage](https://www.thc.org/thc-hydra/)
+* [Hydra Github](https://github.com/vanhauser-thc/thc-hydra)
+
+
+TAGS:infosec,infosecintro
