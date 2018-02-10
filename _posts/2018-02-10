@@ -1,0 +1,9 @@
+Mozilla Observatory Addon
+------------------
+
+Started writing an addon for Firefox (and maybe chrome later) that will allow you to check the current site with Mozilla Observatory. Only a quick PoC at the moment but it works and is useful in my daily life!
+
+Available at <https://addons.mozilla.org/en-US/firefox/addon/open-in-observatory/>
+
+
+TAGS:infosec,development
