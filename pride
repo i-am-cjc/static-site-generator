@@ -5,6 +5,7 @@ INDEX=_output/index.html
 ADV=_output/advisories/index.html
 ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
+PROJINDEX=_output/projects/index.html
 PREPROCESSOR=Markdown.pl
 POSTCOUNT=5
 
@@ -15,6 +16,7 @@ mkdir -p _output/posts
 mkdir -p _output/advisories
 mkdir -p _output/tags
 mkdir -p _output/tag
+mkdir -p _output/projects
 
 echo ">> Copying assets"
 cp -r _assets/* _output
@@ -22,6 +24,7 @@ cp -r _assets/* _output
 cat $HEADER > $INDEX
 cat $HEADER > $ARCHIVE
 cat $HEADER > $ADV
+cat $HEADER > $PROJINDEX
 cat $HEADER > $TAGINDEX
 
 echo "</h2>" >> $INDEX
@@ -29,6 +32,7 @@ perl $PREPROCESSOR _pages/about >> $INDEX
 echo " / posts</h2>" >> $ARCHIVE
 echo " / advisories</h2>" >> $ADV
 echo " / tags</h2>" >> $TAGINDEX
+echo " / projects</h2>" >> $PROJINDEX
 
 echo ">> Generating PAGES"
 mkdir -p _output/page
@@ -121,7 +125,32 @@ for A in $(ls -r _advisories/); do
     cat $FOOTER >> $FILE
 done
 
+count=1
+
+echo ">> Generating PROJECTS"
+echo "<h3>projects<small> (<a href=\"/projects\">all</a>)</small></h3>" >> $INDEX
+for A in $(ls -r _projects/); do 
+    LINE=$(cat _projects/$A | head -n 1)
+
+    mkdir -p _output/projects/$A
+
+    LINK="<a href=\"/projects/$A\">$LINE</a><br />"
+    
+    echo $LINK >> $PROJINDEX
+    if [ "$count" -le "$POSTCOUNT" ] 
+    then
+        echo $LINK >> $INDEX
+    fi
+
+    count=$(($count+1))
+    FILE=_output/projects/$A/index.html
+    cat $HEADER > $FILE
+    echo " / <a href=\"/projects\">projects</a> / $LINE</h2>" >> $FILE
+    cat _projects/$A | perl $PREPROCESSOR >> $FILE
+    cat $FOOTER >> $FILE
+done
 cat $FOOTER >> $INDEX
 cat $FOOTER >> $ARCHIVE
 cat $FOOTER >> $ADV
 cat $FOOTER >> $TAGINDEX
+cat $FOOTER >> $PROJINDEX
