@@ -146,9 +146,10 @@ for A in $(ls -r _projects/); do
     FILE=_output/projects/$A/index.html
     cat $HEADER > $FILE
     echo " / <a href=\"/projects\">projects</a> / $LINE</h2>" >> $FILE
-    cat _projects/$A | perl $PREPROCESSOR >> $FILE
+    cat _projects/$A | tail -n +3 | perl $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
+
 cat $FOOTER >> $INDEX
 cat $FOOTER >> $ARCHIVE
 cat $FOOTER >> $ADV
