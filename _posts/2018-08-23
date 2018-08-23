@@ -1,0 +1,8 @@
+Link Dump
+---------
+
+* [Black Hat SEO hijacking the back button](https://dejanseo.com.au/competitor-hack/) - Absolutely brilliant, SEO guy hijacks the back button to direct the user to a fake google results page, with clones of his competitors sites to observate the interactions.. unethitcal, but brilliant. 
+* [Australia Gov Password security](https://www.theregister.co.uk/2018/08/22/western_australia_password_security/) - West Australian Gov has weak passwords, just like the rest of the world.
+* [Trivial RCE with Ghostscript](http://openwall.com/lists/oss-security/2018/08/21/2) - Anything using Ghostscript such as ImageMagick can trivially lead to Remote Code Execution.
+
+TAGS:linkdump,infosec
