@@ -6,7 +6,7 @@ ADV=_output/advisories/index.html
 ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PROJINDEX=_output/projects/index.html
-PREPROCESSOR=Markdown.pl
+PREPROCESSOR="pandoc -f markdown -t html"
 POSTCOUNT=5
 
 echo ">> Wiping _output"
@@ -28,7 +28,7 @@ cat $HEADER > $PROJINDEX
 cat $HEADER > $TAGINDEX
 
 echo "</h2>" >> $INDEX
-perl $PREPROCESSOR _pages/about >> $INDEX
+$PREPROCESSOR _pages/about >> $INDEX
 echo " / posts</h2>" >> $ARCHIVE
 echo " / advisories</h2>" >> $ADV
 echo " / tags</h2>" >> $TAGINDEX
@@ -42,7 +42,7 @@ for PAGE in $(ls _pages/); do
     FILE=_output/$PAGE/index.html
     cat $HEADER > $FILE
     echo " / $PAGE </h2>" >> $FILE
-    cat _pages/$PAGE | perl $PREPROCESSOR >> $FILE
+    cat _pages/$PAGE | $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
 
@@ -72,9 +72,9 @@ for POST in $(ls -r _posts/); do
     echo " / <a href=\"/posts\">posts</a> / $LINE</h2>" >> $FILE
     if [ -f _assets/$POST.jpg ]; then
         echo "<img class=\"feature\" src=\"/$POST.jpg\" />" >> $FILE
-        tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+        tail -n +4 _posts/$POST | grep -v "TAGS" | $PREPROCESSOR >> $FILE
     else
-        tail -n +4 _posts/$POST | grep -v "TAGS" | perl $PREPROCESSOR >> $FILE
+        tail -n +4 _posts/$POST | grep -v "TAGS" | $PREPROCESSOR >> $FILE
     fi
 
     echo "<strong>Tags: </strong>" >> $FILE
@@ -121,7 +121,7 @@ for A in $(ls -r _advisories/); do
     FILE=_output/advisories/$A/index.html
     cat $HEADER > $FILE
     echo " / <a href=\"/advisories\">advisories</a> / $A</h2>" >> $FILE
-    cat _advisories/$A | perl $PREPROCESSOR >> $FILE
+    cat _advisories/$A | $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
 
@@ -146,7 +146,7 @@ for A in $(ls -r _projects/); do
     FILE=_output/projects/$A/index.html
     cat $HEADER > $FILE
     echo " / <a href=\"/projects\">projects</a> / $LINE</h2>" >> $FILE
-    cat _projects/$A | tail -n +3 | perl $PREPROCESSOR >> $FILE
+    cat _projects/$A | tail -n +3 | $PREPROCESSOR >> $FILE
     cat $FOOTER >> $FILE
 done
 

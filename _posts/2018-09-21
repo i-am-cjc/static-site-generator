@@ -1,0 +1,8 @@
+Slight update to Pride
+---------------
+
+I've changed my static site generator so that it uses pandoc rather than constantly grabbing Markdown.pl
+
+I have also moved hosting to github pages as it's less server maintenance to perform.
+
+TAGS:infosec
