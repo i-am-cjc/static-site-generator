@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Another round of httpd logging on a server</h2>
+<p>A simple bit of bash scripting through the httpd access.log files to determine counts of URLs that have been accessed as well as the ip address that they have been accessed from.</p>
+<pre><code>count | url
+   24 | /
+   10 | /phpMyAdmin/scripts/setup.php
+    9 | /rom-0
+    9 | /pma/scripts/setup.php
+    8 | /myadmin/scripts/setup.php</code></pre>
+<p>A large amount of the attempts were variations on php my admin access.</p>
+<p>Access per ip address was totalled up and then sorted. I then looked up the location of the IP as below.</p>
+<pre><code>count | location
+   23 | Moscow, Russia
+    9 | Khakiv, Ukraine
+    7 | London, England
+    5 | Radomsko, Poland
+    4 | Nowe Skalmierzyce, Poland</code></pre>
+<p>As opposed to the sshd access logs, which mostly seem to originate in China, the http access seems to come from Eastern Europe sort of area.</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

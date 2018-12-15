@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / ZICO2 VM Walkthrough</h2>
+<p>Another year, another boot2root VM to play. This time Zico2 from <a href="https://www.vulnhub.com/entry/zico2-1,210/" class="uri">https://www.vulnhub.com/entry/zico2-1,210/</a></p>
+<p>I like these VMs when they have a theme, this one was of a sys admin who was testing some different CMS systems.</p>
+<p>As always, start with an nmap scan, we get ports ssh on port 22, a webserver on 80 and 111. As always with a webserver, we fire up dirb against it to see if there is anything interesting sticking around.</p>
+<p>We find /dbadmin which is very interesting, and this has a copy of <code>phpliteadmin</code> running which is vulnerable to an issue where you can name the database file whatever you want. See <a href="https://www.exploit-db.com/exploits/24044/" class="uri">https://www.exploit-db.com/exploits/24044/</a> for more information on this vulnerability. This means that if we can include the file somehow, we can potentially perform a Local File Include (LFI) and execute some PHP!</p>
+<p>Also in the database we see some hashed passwords, which despite not being of any use later, we discover the root password is <code>34kroot34</code> with some searching for the hash on Google. This doesn't let us SSH in with it though, denied.</p>
+<p>After some poking around on the main page on the webserver we notice this: <code>http://192.168.56.101/view.php?page=tools.html</code>, Looks like an LFI to me! so we do <code>http://192.168.56.101/view.php?page=../../usr/databases/hack.php</code> and we are presented with the phpinfo as per for Proof of Concept linked above. Great! Now, we want something more usable, lets create a really simple PHP shell.</p>
+<pre><code> &lt;?php $output = shell_exec($_GET[&#39;x&#39;]); echo &quot;&lt;pre&gt;$output&lt;/pre&gt;&quot;; ?&gt;</code></pre>
+<p>Using that pre output so its easier to read! After some poking around the file sytem with our shell, we issue:</p>
+<pre><code>view.pgp?page=../../usr/databases/shell.php&amp;x=ls /home/zico </code></pre>
+<p>and discover the wordpress install there, the config files tend to have some credentials in and its always worth noting these down, because people tend to re-use passwords, even through they shouldn't! As we include the file, because it's php it actually gets executed in our shell, so we use grep to actually show the file by getting rid of the opening PHP tags:</p>
+<pre><code>view.php?page=../../usr/databases/shell.php&amp;x=grep -v &quot;&lt;?&quot; /home/zico/wordpress/wp-config.php</code></pre>
+<p>which gives us some file output, including <code>define('DB_PASSWORD', 'sWfCsfJSPV9H3AmQzw8');</code> and then in turn allows us to SSH in as zico, great.</p>
+<p>Looking at the command history the zico user has been running some commands with sudo, so we check what we can do with <code>sudo -l</code> and we see that we can tar and zip, interesting! After scouring the man pages for both tar and zip, we see zip can run commands to &quot;test&quot; archives, great, so similar to how we have used vim in the past to get a shell, we can do the same here with this gem of a line:</p>
+<pre><code>sudo -u root zip todo.zip to_do.txt -T --TT=&quot;sh -c /bin/bash&quot;</code></pre>
+<p>we are presented with a root shell and thus we are done!</p>
+<p>Happy New Year!!!</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

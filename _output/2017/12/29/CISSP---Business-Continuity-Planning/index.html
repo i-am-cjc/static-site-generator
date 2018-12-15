@@ -1,0 +1,121 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / CISSP - Business Continuity Planning</h2>
+<p>As part of my ongoing study towards the CISSP exam, as with the GDPR exam I passed recently, I am going to write some short notes / posts about specific topics that will help me. Maybe someone else will read this as well and find them useful.</p>
+<p>This is a long one...</p>
+<p>Business Continuity Planning(BCP) is the assessment of organizational risks to process and people with the aim to create a plan for minimizing or mitigating the risks. This allows a business to continue operating when a disruptive event occurs with little impact.</p>
+<p>One thing to remember is the different between BCP and Disaster Recovery (DR). DR is the set of actions that occur if BCP as failed.</p>
+<p>BCP has four steps:</p>
+<ul>
+<li>Project Scope and Planning</li>
+<li>Business Impact Assessment</li>
+<li>Continuity Planning</li>
+<li>Approval and Implementation</li>
+</ul>
+<p>Obviously, there is no one-size-fits-all solution for a business and these steps will require some customisation in order to fit the unique requirements. It might be worth working with project management people within your organisation in order to determine what approach will fit best for your organisation.</p>
+<h3 id="bcp-team-selection">BCP Team Selection</h3>
+<p>Whilst traditionally, the BCP has always fallen solely on the IT/Security Departments, it's more effective to ensure all critical aspects of the business are involved. This has the benefit of all are aware of the plan should disaster strike, and also being involved at the planning stage, other parts of the business may have valuable insight into the day to day operations. At a minimum, the BCP team should consist of the following:</p>
+<ul>
+<li>Members of the business representing all core departments</li>
+<li>Members of the business from key support departments</li>
+<li>IT representative with technical expertise</li>
+<li>Security Representative with knowledge of the BCP Process</li>
+<li>Legal representatives</li>
+<li>Members of Senior management</li>
+</ul>
+<h3 id="resource-requirements">Resource requirements</h3>
+<p>There will be a large amount of resources required in order to perform the full BCP effort, and it will be required over the 3 phases of the BCP.</p>
+<ul>
+<li><em>Development</em> - The development of the BCP will take significant effort by the staff involved. This will be spread across the four steps of the BCP plan.</li>
+<li><em>Testing, Training and Maintenance</em> - This stage will require some hardware and software, but again will be mostly focussed on the staff involved.</li>
+<li><em>Implementation</em> - If disaster strikes, and the BCP team elects to conduct the BCP, it will require significant, company wide resources. It will most likely at the time become the main focus of most if not all of the organisation. With this in mind it is essential to ensure that it is required before enacting the BCP.</li>
+</ul>
+<p>Whilst the BCP requires expenditure at all levels, from purchases redunant computing systems all the way to the opposite end of the spectrum with the purchase of equipment to write out the first draft and notes of a BCP on paper, it is easy to overlook the importance and requirement of manual labour required to successfully implment the BCP, do not forget about the people!</p>
+<h3 id="legal-and-regulatory-requirements">Legal and regulatory Requirements</h3>
+<p>It's important to be aware of any legal of regulatory requirements for your area of business when designing your BCP. Having a legal representative for the business involved in all stages of the BCP will allow them to offer insight into it.</p>
+<p>Even if you are not bound by any laws, you will most likely have SLAs with customers which will have to be an important part of deciding on aspects of the BCP in terms of priorities of actions.</p>
+<p>Having these in place not only will ensure a smooth return to business, but in some cases could result in extra clients who would prefer a vendor who can offer these guarentees if disaster should strike!</p>
+<h2 id="business-impact-assessment">Business Impact Assessment</h2>
+<p>So, you have the BCP team formed and have completed the four stages of preparation. Now is the time to start the critical part, the Business Impact Assessment (BIA). The BIA will identify the most critical parts of the business that must carry on regardless, identify threats to them and the impact said threats will have. THis will allow you to priortise the required manpower to the risks threatening the business.</p>
+<p>There are two ways to approach the prioritisation of the threats, <em>Quantitative Decision Making</em> and <em>Qualitative Decision Making</em>. The former is pure mathematics giving a score to each threat and potentially a monetary value, allowing you to rank based on these figures. The latter takes non-numerical values into account, allowing you to put focus on places that might suffer based on other concerns such as workforce stability or customer confidence.</p>
+<p>Whilst it's tempting to go with the pure numbers approach and ignore the other way, there are plenty of scenarios in which the team will approach with a qualitative decision, for example a short financial loss with a smaller client might be taken in order to keep a bigger client happy, which long term is the better financial decision. Of course this sort of decision can only be made by the senior management.</p>
+<h3 id="identify-priorities">Identify Priorities</h3>
+<p>The initial task of the BIA that the BCP team will perform is to identify the business priorities. This of course is highly dependant on the type of business you are in, for example a factory might have injury amongst the workforce as a high priority, whereas an software development business might focus more on technical infrastructre.</p>
+<p>The BCP team will need to come together to create a comprehensive list of business processes and rank them. At this point each member of the BCP team could draw up the processes from within their department in order to make the task less daunting, and thenm come together to create a master list of processes.</p>
+<p>In order to have an approach that is both Quantitative <em>AND</em> qualitative, we have the master process list that is a qualitative approach, and then we start to add quantitative numbers.</p>
+<p>The first quantitative number is the Asset Value (AV) that will be attached to each asset on the list, which will be the monetary value. The second value will be the <em>Maximum Tolerable Downtime</em> (MTD) (also known as the Maximum Tolerable Outage) The MTD is the longest time that a business function can be unavailable without causing harm to the business. This also leads to another metric, the <em>Recovery Time Objective</em> (RTO) which is the amount of time that we aim to have the business function available again. The aim of the BCP process is to ensure that the RTO is less than the MTD.</p>
+<h3 id="risk-identification">Risk Identification</h3>
+<p>The next step of a BIA is to identify the risks posed to your business. Risks to business come in two forces, man-made and natural risks, some of these will be business specific, some of which will be natural threats such as flood or fire. The BCP team should not be concerned with the likely hood of risks at this stage, and should attempt to identify as many as possible. (This is a qualitative approach)</p>
+<h3 id="likelihood-assessment">Likelihood Assessment</h3>
+<p>After identifying the risks, the BCP team should then start to consider how likely each of the risks is going to occur. In order to keep things consistent (and add some quantitative numbers) the team should determine the <em>Annualised Rate of Occurance</em> (ARO) for each risk. Some of these will be available through public statistics, or even via insurance agencies who may keep these sort of statistics.</p>
+<h3 id="impact-assessment">Impact Assessment</h3>
+<p>The impact assessment is the more critical parts of the BIA. This is the point that you will take all the gathered data and determine the impact each will have on the business should it occur. For each risk documented, we will have three metrics:</p>
+<ul>
+<li><em>Exposure Factor</em> The amount of damage that the risk poses. For example an expert might deterime that a flood would cause 30% of the building to be damage, the <em>EF</em> of the building bing flooded is 30%.</li>
+<li><em>Single Loss Expectancy</em> The monetary loss that is incurred each time the risk occurs, which can be calculated as <code>SLE = AV x EF</code>. That is the asset value multiplied by the exposure factor. ie if the building is worth #1,000,000 and we have a <em>EF</em> of 30% of flood, the <em>SLE</em> would be <code>1,000,000 x 0.3 = 300,000</code></li>
+<li><em>Annualised Loss Expectancy</em> is the monetary loss expected to occur as a result of the risk harming the asset over the course of the year. These risks will not happen each year but is useful for attempting to prioritize risks. The <em>ALE</em> is calculated as <code>ALE = SLE x ARO</code>, which is the Single Loss Expectancy multiplied by the Annual Rate of Occurance. In our building example, if a flood is predicted to occur every 50 years, then we have <code>300,000 x (1/50) = 6,000</code> So we have an <em>ALE</em> of #6000</li>
+</ul>
+<p>You must remember to still consider qualitative points as well as the quantitative formulas above.</p>
+<h3 id="resource-prioritisation">Resource Prioritisation</h3>
+<p>The initial prioritisation can simple be a list of the risks that are in ALE descending order, however we then need to consider the qualitative approach. For example an Alarm company might prioritise theft and vandalism above fire or flood, even if the latter might cause more damage, the former would cause significantly more reputational damage.</p>
+<h2 id="continuity-planning">Continuity Planning</h2>
+<p>Now that we have identified the scope of the BCP and we have performed a BIA, we now must focus on developing and implementing a continuity plan in order to minimise the impact of the identified risks.</p>
+<h3 id="strategy-development">Strategy Development</h3>
+<p>This phase will bridge the gap between the BIA and the continuity planning phase of the BCP development.</p>
+<p>Looking back to the MTD estimates created during the BIA, now is the time to dertermine which risks will be mitigated by the BCP. Obviously every risk from the BIA can't be addressed with a zero downtime posture, some will be an acceptable risks, some will be such a low chance of occurance that it isn't worth putting the effort into addressing.</p>
+<p>Upon determining which risks require mitigating, we are ready to move onto the provisions and processing phase of continuity planning.</p>
+<h3 id="provisions-and-process">Provisions and Process</h3>
+<p>This is the meat of the plan, what steps will be taken for each risk, and the specific processes will take place to ensure that the RTO is hit.</p>
+<ul>
+<li>People - The top priority is always human life. Always. The BCP should not put anyone in harms way. People should be given all the required resources in order to complete their assigned tasks, be it hotel rooms or equipment required for the BCP to be enacted.</li>
+<li>Building and Facilities - Always plan for secondary sites if required. Especially if its a manufacturing business. Harden your current building, if the building is in a flood plane, prepare for this in order to mitigate the risk.</li>
+<li>Infrastructure - No matter the business, there will be some IT backbone for communiucations, customer interaction or order processing. Make sure to have provisions such as UPS or electronic safe fire supression systems. Make sure to have redenancy as well in the form of spare systems and communication links.</li>
+</ul>
+<h3 id="plan-approval">Plan Approval</h3>
+<p>Upon completion of the design phase, its time to gain approval from the top level management of the business, hopefully senior management has been involved from the begining of the planning stages.</p>
+<h3 id="plan-implementation">Plan Implementation</h3>
+<p>Upon receiving approval from management, its time to implement the plan. The BCP team should decide upon an implementation schedule that uses resource dedicated to the program to acheive the Provessions and Process.</p>
+<h3 id="training-and-education">Training and Education</h3>
+<p>All staff that are involved, either directly, or indirectly should receive some sort of training appropriate for their role. Every member of the organisation should be made aware of the plan and given a brief overview to give them confidence the business has considered all risks and the impact they may have. Those with direct BCP responsibilities should be trained on their specific tasks should disaster strike.</p>
+<h2 id="bcp-documentation">BCP Documentation</h2>
+<p>Documentation is Critical, it allows the BCP methodology to provide benefits such as ensuring staff have access to the plan if none of the BCP staff are available</p>
+<h3 id="continuity-planning-goals">Continuity Planning Goals</h3>
+<p>The plan should state its goals, defined on the first meeting of the BCP team and will most likely remain unchanged throughout the lifetime of the BCP. ### Statements</p>
+<ul>
+<li>Statement of Importance - Ideally this needs to be signed by senior management to stress the importance of the document</li>
+<li>Statement of Priorities - Should list the critical business functions and the order they need to be restored in.</li>
+<li>Statement of Organisational Responsiblity - Also from senior management, this statement explains that the BCP is an organisation wide responsibility</li>
+<li>Statement of Urgency and Timing - Contains the timescales of the implementation time table.</li>
+</ul>
+<h3 id="risk-assessment">Risk Assessment</h3>
+<p>This section will recap the decision making process during the BIA. Also includes the quantitative figures for the AV, EF, ARO, SLE and ALE etc.</p>
+<h3 id="risk-acceptancemitigation">Risk Acceptance/Mitigation</h3>
+<p>This section contains the outcome of the stategy development portion of the BCP. It should cover all risks identified and outline why it was eithe rdeemed acceptable, or outline the risk management provisions and process put into place.</p>
+<h3 id="vital-records-program">Vital Records Program</h3>
+<pre><code>If we needed to rebuild the organisation today in a new location without access to any computers and files, what records would we need?</code></pre>
+<h3 id="emergency-response-guidelines">Emergency Response Guidelines</h3>
+<p>Outlines the organisational and individual responsilibities for response to an emergency.</p>
+<ul>
+<li>Immediate response procedures</li>
+<li>A list of individuals who should be notified of an incident</li>
+<li>Secondary response procedures that the first responder should take whilst waiting for the BCP team to assemble</li>
+</ul>
+<p>The guide lines should be accessible to anyone in the company who may be a first responder in the case of an incident.</p>
+<h3 id="maintenance">Maintenance</h3>
+<p>The BCP and its documentation needs to be reviewed often.</p>
+<h3 id="testing-and-exercises">Testing and Exercises</h3>
+<p>A formalised plan should be created to perform dry runs and full on tests of the plan to ensure that it is kept up to date with the state of the business.</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+<i><a href="/tag/cissp">cissp</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

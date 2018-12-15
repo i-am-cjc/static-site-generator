@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Running the honeypot VPS on a non-standard port</h2>
+<h2 id="ssh-login-attempts">SSH Login attempts</h2>
+<p>Running the SSHD on a different port than standard, no deny hosts locking out anything led to a mere 300 attempts to login as root. No other users were tried.</p>
+<pre><code>Attempts | Login
+300      | root</code></pre>
+<p>A combination of a non-standard port and running a software solution such as denyhosts would dramatically reduce the login attempts from hundreds of thousands, down to hundreds.</p>
+<p>I have been slacking somewhat with these reports and making use of the VPS. Perhaps focussing more on the httpd side of things now that I have investigated the effects of port / deny hosts on the SSHD</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

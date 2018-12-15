@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/advisories">advisories</a> / 0004</h2>
+<h1 id="stored-xss-in-wp-user-notes">Stored XSS in WP User Notes</h1>
+<h3 id="credit">Credit</h3>
+<p>This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>2016-11-06 Vendor Notified</li>
+</ul>
+<h3 id="product">Product</h3>
+<p>This plugin adds a text editor area to each User Profile in the dashboard for Administrators to keep private notes about each User.</p>
+<h3 id="risk-severity-rating">Risk / Severity Rating</h3>
+<p>Not calculated</p>
+<h3 id="description-and-impact">Description and Impact</h3>
+<p>The notes field for each user isn't properly sanitized and can contain javascript. Given that this only affects admins this really isn't a major issue. However,</p>
+<pre><code>  $notes = (!empty($_POST[&#39;user_notes_note&#39;]))?stripslashes($_POST[&#39;user_notes_note&#39;]):&#39;&#39;;
+update_user_meta($user_id, &#39;user-notes-note&#39;, $notes);</code></pre>
+<h3 id="proof-of-concept">Proof of Concept</h3>
+<p>Simply entering the notes with javascript in <code>&lt;script&gt;</code> tags is enough to execute code in the context of other administrators.</p>
+<h3 id="solution">Solution</h3>
+<p>Disable the plugin until an upgrade is available</p>
+<h3 id="references">References</h3>
+<ul>
+<li>XSS <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">here</a></li>
+</ul>
+<h3 id="legal">Legal</h3>
+<p>The information contained within this advisory is supplied &quot;as-is&quot; with no warranties or guarantees of fitness of use or otherwise.</p>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

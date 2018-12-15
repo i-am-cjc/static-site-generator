@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Infosec Weekly</h2>
+<p>In the not so distant past, I wrote a short article once per week about some of the more interesting Information Security news items for a tech website. I'm gonna do the same here, it keeps me interested in the news and forces me to think about some of the items critically.</p>
+<h3 id="incorrect-handling-of-password-checking-with-luks">Incorrect Handling of password checking with LUKS</h3>
+<p>With physical access to a machine that encrypts its rootfs with LUKS, after a set number of failed attempts, it's possible to drop to a root shell on the system. This would allow an attacker to either brute force the encryption passphrase, or make a copy of the drive without having to remove it.</p>
+<ul>
+<li><a href="https://bugzilla.redhat.com/show_bug.cgi?id=1395134">Redhat Bug report</a></li>
+<li><a href="http://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-4484">CVE Entry</a></li>
+</ul>
+<h3 id="nginx-priv-esclation">Nginx priv esclation</h3>
+<p>On debian based systems, the packaged version of nginx had log files owned by root. It is then possible to symlink this file to another abitrary file (through a compromised web application say) so that upon the logs being rotated said file is written to. Via this it's possible to escalate from the www-data to root.</p>
+<ul>
+<li><a href="http://legalhackers.com/advisories/Nginx-Exploit-Deb-Root-PrivEsc-CVE-2016-1247.html">Vulnerability Report</a></li>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2016-1247">CVE Entry</a></li>
+</ul>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

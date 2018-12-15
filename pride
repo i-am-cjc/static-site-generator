@@ -7,7 +7,7 @@ ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PROJINDEX=_output/projects/index.html
 PREPROCESSOR="pandoc -f markdown -t html"
-POSTCOUNT=5
+POSTCOUNT=10
 
 echo ">> Wiping _output"
 mkdir -p _output
@@ -49,7 +49,7 @@ done
 count=1
 
 echo ">> Generating POSTS"
-echo "<h3>posts<small> (<a href=\"/posts\">more</a> | <a href=\"/tags\">tags</a>)</small></h3>" >> $INDEX
+echo "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a>)</small></h3>" >> $INDEX
 for POST in $(ls -r _posts/); do 
     DATE=$(echo $POST | cut -d"-" -f1,2,3)
     LINE=$(cat _posts/$POST | head -n 1)
@@ -103,7 +103,7 @@ done
 count=1
 
 echo ">> Generating ADVISORIES"
-echo "<h3>advisories<small> (<a href=\"/advisories\">more</a>)</small></h3>" >> $INDEX
+echo "<h3>advisories<small> (<a href=\"/advisories\">all</a>)</small></h3>" >> $INDEX
 for A in $(ls -r _advisories/); do 
     LINE=$(cat _advisories/$A | head -n 1)
 

