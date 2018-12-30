@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Running denyhosts on the honeypot</h2>
+<p>Unsurprisingly, there was a significant reduction in the number of attempts as the denyhosts daemon bans IP addresses after a specific number of attempts. Overall there was 277 IP Addresses that were added to the blacklist. From the blacklisted hosts, there was a further 1673 attempts rejected. There was a total of 2117 failed attempts, down from the usual numbers in the 100,000 sort of range.</p>
+<h2 id="ssh-login-attempts">SSH Login attempts</h2>
+<p>Even quieter over this period</p>
+<pre><code>Attempts | Login
+1270     | root
+103      | ubnt
+69       | admin
+49       | support
+27       | guest
+20       | pi
+13       | ftpuser</code></pre>
+<p>Trailing off very quickly thanks to deny hosts, the pi username has shot up the rankings this week!</p>
+<p>Next week, different port, no denyhosts.</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

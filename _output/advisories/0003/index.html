@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/advisories">advisories</a> / 0003</h2>
+<h1 id="reflected-xss-in-wp-download-codes">Reflected XSS in WP Download Codes</h1>
+<h3 id="credit">Credit</h3>
+<p>This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>2016-07-15: Vendor Notified</li>
+<li>2016-11-21 Advisory Published</li>
+</ul>
+<h3 id="product">Product</h3>
+<p>The plugin enables to generation and management of download codes for different types of files (zip, mp3, ...). <em>Author</em>: <a href="http://www.misantropolis.de/2009/08/wp-download-codes/">Blog post</a></p>
+<h3 id="risk-severity-rating">Risk / Severity Rating</h3>
+<p>Not Calculated</p>
+<h3 id="description-and-impact">Description and Impact</h3>
+<p>The <code>yourcode</code> parameter when viewing a download code form allows for XSS.</p>
+<pre><code>`$html .= dc_msg( &#39;code_enter&#39; ) .&#39; &lt;input type=&quot;text&quot; name=&quot;code_&#39; . $shortcode_id . &#39;&quot; value=&quot;&#39; . ( $post_code != &quot;&quot; ? $post_code : ( $_GET[&#39;yourcode&#39;] != &quot;&quot; ? $_GET[&#39;yourcode&#39;] : &quot;&quot; ) ) . &#39;&quot; size=&quot;20&quot; /&gt; &#39;;`</code></pre>
+<h3 id="proof-of-concept">Proof of Concept</h3>
+<p><code>http://wordpress.site/download-code/?yourcode=%22%3E%3Cscript%20src=data:%26comma;alert(1)//</code></p>
+<h3 id="solution">Solution</h3>
+<p>Disable the plugin until an upgrade is available</p>
+<h3 id="references">References</h3>
+<ul>
+<li>XSS <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">here</a></li>
+</ul>
+<h3 id="legal">Legal</h3>
+<p>The information contained within this advisory is supplied &quot;as-is&quot; with no warranties or guarantees of fitness of use or otherwise.</p>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

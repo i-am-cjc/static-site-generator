@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Firefox privacy and settings</h2>
+<p>A guide on setting up Firefox for better privacy than default. This is mostly for the next time I have to set this up, ideally I need to write or use a pre-made user.js file that will do as much of this as possible.</p>
+<h2 id="basic-settings">Basic Settings</h2>
+<ul>
+<li>General -&gt; When firefox starts -&gt; Use a blank page</li>
+<li>Search -&gt; Remove all besides DuckduckGo and wikipedia, set ddg to be default, untick provide search suggestions.</li>
+<li>Privacy -&gt; Enable Do not Track</li>
+<li>Security -&gt; Disable Remember logins for sites</li>
+<li>Advanced -&gt; Data Choices -&gt; disable firefox health report</li>
+</ul>
+<h2 id="settings-in-aboutconfig">Settings in about:config</h2>
+<h3 id="disable-firefox-hello">Disable Firefox Hello</h3>
+<p>In about:config, search for <code>loop.enabled</code> and set this to <code>false</code>, I guess the only way to get this sort of thing used in the current market is to bundle it by default. bad.</p>
+<h3 id="disable-pocket">Disable Pocket</h3>
+<p>In about:config, search for <code>pocket.enabled</code> and set this to <code>false</code>. Should really be an addon, must have been paid a lot for this. Disable it!</p>
+<h3 id="social-nonsense">Social nonsense</h3>
+<p>In about:config, search for <code>social</code> and set the booleans to <code>false</code>. Set the whitelist string to <code>&quot;&quot;</code>.</p>
+<h3 id="or-get-a-pre-made-user.js">Or, get a pre-made user.js</h3>
+<p>There are plenty of customer user.js files for firefox that store all your preferences instead of doing them manually like above such as at <a href="https://github.com/pyllyukko/user.js">this one</a>.</p>
+<h2 id="addons">Addons</h2>
+<h3 id="ublock-origin">uBlock origin</h3>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/ublock-origin/">link</a></p>
+<p>Blocks adverts, not only for the reason of not seeing them, or saving bandwidth, or stopping tracking.. but also since advertisers are used to deliver malware as of late, that too! see <a href="https://en.wikipedia.org/wiki/Malvertising">Malvertising</a>.</p>
+<h3 id="disconnect.me">Disconnect.me</h3>
+<p><a href="https://addons.mozilla.org/en-GB/firefox/addon/disconnect/">link</a></p>
+<p>Stops social media sites such as facebook tracking you across the internet. Facebook tracks users regardless of if they are logged in or not. See <a href="http://www.makeuseof.com/tag/doesnt-matter-youre-not-facebook-theyre-still-tracking/">here</a>.</p>
+<h3 id="https-everywhere">HTTPS Everywhere</h3>
+<p><a href="https://www.eff.org/https-everywhere">link</a></p>
+<p>Attempts to use SSL for sites known to support it to avoid using unencrypted connections.</p>
+<h3 id="noscript">Noscript</h3>
+<p><a href="https://addons.mozilla.org/en-US/firefox/addon/noscript/">link</a></p>
+<p>Blacklist javascript from running, whitelist as required. Generally disruptive to web browsing, but better to be safe than sorry right?</p>
+<strong>Tags: </strong>
+<i><a href="/tag/privacy">privacy</a></i>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

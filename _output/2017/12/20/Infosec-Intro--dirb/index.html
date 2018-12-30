@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Infosec Intro- dirb</h2>
+<p>Going to write some basic introductions to some of the tools that I use for the vulnhub posts (Hi Zac!), if in doubt read the man page!</p>
+<p>This post I am going to focus on the dirb web scanner.</p>
+<h3 id="what-is-it">What is it</h3>
+<p>dirb is a fantastic utility that allows for a quick scan for directories and objects on a webserver. You can specify your own wordlist for looking for specific URLs, or use the default that is a great for some initial recon of the webserver.</p>
+<h3 id="why">Why</h3>
+<p>Whilst this is not a complicated tool, dirb is ideal for those first stages of active engagement with a target's webserver. It doesn't offer any functionality that will attack a target, it instead will provide potential targets for further interactions. Be aware this tool is essentially brute forcing to see what URLs are available and it will be seen as loud in terms of network activity and will place a lot of occurances of your activity in webserver logs of the target.</p>
+<h3 id="examples">Examples</h3>
+<p>dirb is invoked with the following command line with arguments</p>
+<pre><code>dirb &lt;url_base&gt; [&lt;wordlist_file(s)&gt;] [options]</code></pre>
+<p>A nice simple example would be to run it against cjc.im, with the <code>-R</code> option that will prompt you for looking in directories that have been found, as well as using the default wordlist file</p>
+<pre><code># dirb https://cjc.im/ -R
+
+-----------------
+DIRB v2.22
+By The Dark Raver
+-----------------
+
+START_TIME: Wed Dec 20 14:52:56 2017
+URL_BASE: https://cjc.im/
+WORDLIST_FILES: /usr/share/dirb/wordlists/common.txt
+OPTION: Interactive Recursion
+
+-----------------
+
+GENERATED WORDS: 4612
+---- Scanning URL: https://cjc.im/ ----
+==&gt; DIRECTORY: https://cjc.im/about/ 
+==&gt; DIRECTORY: https://cjc.im/advisories/  
+==&gt; DIRECTORY: https://cjc.im/css/
+==&gt; DIRECTORY: https://cjc.im/img/
++ https://cjc.im/index.html (CODE:200|SIZE:1471)  
+==&gt; DIRECTORY: https://cjc.im/page/ 
+==&gt; DIRECTORY: https://cjc.im/posts/
+==&gt; DIRECTORY: https://cjc.im/tag/
+==&gt; DIRECTORY: https://cjc.im/tags/
+---- Entering directory: https://cjc.im/about/ ----
+(?) Do you want to scan this directory (y/n)? n 
+Skipping directory.
+
+... cut for brevity ...
+ 
+-----------------
+END_TIME: Wed Dec 20 15:00:18 2017
+DOWNLOADED: 4612 - FOUND: 1</code></pre>
+<p>You can also specify a plethora of other options to allow you to fine tune your scanning such as:</p>
+<ul>
+<li>-a to change the agent string</li>
+<li>-S to operate in silent mode, which wont write each test to screen for when you might be operating on a slow connection to a remote server</li>
+<li>-z to add a delay in milliseconds to make the bruteforcing less aggressive</li>
+</ul>
+<p>Another example might be to look for iis specific urls with a delay:</p>
+<pre><code># dirb https://cjc.im /usr/share/wordlists/dirb/vulns/iis.txt -z 100</code></pre>
+<p>(Pro-tip: I don't run IIS)</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="http://dirb.sourceforge.net/">dirb homepage</a></li>
+<li><a href="https://tools.kali.org/web-applications/dirb">Kali docs</a></li>
+</ul>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+<i><a href="/tag/infosecintro">infosecintro</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/advisories">advisories</a> / 0008</h2>
+<h1 id="open-redirect-in-furikake-wordpress-plugin">Open redirect in Furikake Wordpress Plugin</h1>
+<h3 id="credit">Credit</h3>
+<p>This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>2017-09-10: Vendor Notified</li>
+<li>2018-01-01: CVE-2017-1000434 assigned</li>
+</ul>
+<h3 id="product">Product</h3>
+<h3 id="description-and-impact">Description and Impact</h3>
+<p>The <code>furikake-redirect</code> parameter on a page allows for a redirect to an attacker controlled page</p>
+<pre><code>classes/Furigana.php:       header(&#39;location:&#39;.urldecode($_GET[&#39;furikake-redirect&#39;]));</code></pre>
+<h3 id="proof-of-concept">Proof of Concept</h3>
+<p><code>http://wp-site/?furikake-redirect=https%3A%2F%2Fcjc.im%2Fadvisories</code></p>
+<p>would redirect the user to the site specified in the furikake-redirect variable</p>
+<h3 id="solution">Solution</h3>
+<p>Not yet determined.</p>
+<h3 id="references">References</h3>
+<ul>
+<li><a href="https://wordpress.org/plugins/furikake/">Plugin</a></li>
+<li><a href="http://cwe.mitre.org/data/definitions/601.html">CWE Definition of Open Redirects</a></li>
+<li><a href="https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2017-1000434">CVE-2017-1000434</a></li>
+</ul>
+<h3 id="legal">Legal</h3>
+<p>The information contained within this advisory is supplied &quot;as-is&quot; with no warranties or guarantees of fitness of use or otherwise.</p>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

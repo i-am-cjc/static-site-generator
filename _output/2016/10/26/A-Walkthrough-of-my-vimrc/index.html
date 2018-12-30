@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / A Walkthrough of my vimrc</h2>
+<p>An ever evolving file, my vim config is generally tailored towards development using a fairly standard webstack. This post is mostly justifying to myself why some of the file is required, and will probably lead to some being removed.</p>
+<h3 id="plugins">Plugins</h3>
+<pre><code>Plugin &#39;gmarik/Vundle.vim&#39;
+Plugin &#39;itchyny/lightline.vim&#39;
+Plugin &#39;sjl/gundo.vim&#39;
+Plugin &#39;scrooloose/nerdtree&#39;
+Plugin &#39;jeetsukumaran/vim-buffergator&#39;</code></pre>
+<ul>
+<li>Vundle - The plugin manager itself</li>
+<li>Lightline - Have a nice status bar at the bottom of each buffer</li>
+<li>Gundo - Fancy undo tree functionality with diff between the current state and the state in the undo tree</li>
+<li>Nerdtree - Nice in-vim file browser, I have seen lots of arguments saying this is pointless, but it looks nice and I am used to it. Maybe I will try without this in the future</li>
+<li>BufferGator - Easy interface for buffers.</li>
+</ul>
+<h3 id="leader-controls">Leader controls</h3>
+<p>The leader key is a great thing, so much so I am considering getting a keyboard that I can program the layout for to use this at a keyboard level rather than just in vim, but I digress...</p>
+<pre><code>let mapleader = &quot;\&lt;Space&gt;&quot;</code></pre>
+<p>Set the leader key to space, since it's always got a thumb on it</p>
+<pre><code>nnoremap &lt;Leader&gt;. :o .&lt;CR&gt;
+nnoremap &lt;Leader&gt;w :w&lt;CR&gt;
+nnoremap &lt;Leader&gt;x :wq&lt;CR&gt;</code></pre>
+<p>Allow opening and saving of files with the leader key.</p>
+<pre><code>imap jj &lt;esc&gt;</code></pre>
+<p>When in insert mode, pressing j twice will return to normal mode. I saw several solutions to avoid having to reach all the way to the esc key to do this (miles away!) this seemed the quickest, and I don't think there are (m)any words that have jj in it.</p>
+<pre><code>nnoremap &lt;Leader&gt;h &lt;c-w&gt;&lt;Left&gt;
+nnoremap &lt;Leader&gt;l &lt;c-w&gt;&lt;Right&gt;
+nnoremap &lt;Leader&gt;k &lt;c-w&gt;&lt;Up&gt;
+nnoremap &lt;Leader&gt;j &lt;c-w&gt;&lt;Down&gt;</code></pre>
+<p>Move around windows with hjkl</p>
+<pre><code>nnoremap &lt;Leader&gt;u :GundoToggle&lt;CR&gt;
+nnoremap &lt;Leader&gt;b :BuffergatorToggle&lt;CR&gt;
+nnoremap &lt;Leader&gt;t :NERDTreeToggle&lt;CR&gt;</code></pre>
+<p>Have easier access to plugins using the leader key</p>
+<p>The full file is located on my github account <a href="https://github.com/i-am-cjc/dotfiles">here</a> amongst a few other config files.</p>
+<strong>Tags: </strong>
+<i><a href="/tag/development">development</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

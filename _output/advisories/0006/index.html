@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/advisories">advisories</a> / 0006</h2>
+<h1 id="reflected-xss-in-wp-mail-plugin">Reflected XSS in wp-mail plugin</h1>
+<h3 id="credit">Credit</h3>
+<p>This vulnerability has been discovered and reported by Carl Clegg (carl(at)cjc(dot)im)</p>
+<h3 id="timeline">Timeline</h3>
+<ul>
+<li>2016-07-23: Vendor Notified</li>
+<li>2016-07-26: Fixed in version 1.2</li>
+<li>2016-11-21: Advisory Published</li>
+</ul>
+<h3 id="product">Product</h3>
+<p>WP Mail plugin is simply a wp network mail or message system. User can send mail or messages to other users over one wp network.</p>
+<h3 id="versions-affected">Versions Affected</h3>
+<p>WP Mail &lt;= 1.2</p>
+<h3 id="risk-severity-rating">Risk / Severity Rating</h3>
+<p>Not calculated</p>
+<h3 id="description-and-impact">Description and Impact</h3>
+<p>The <code>replyto</code> parameter when composing a mail allows for a reflected XSS.</p>
+<pre><code>$replyTo = isset($_GET[&#39;replyto&#39;]) ? $_GET[&#39;replyto&#39;] : &#39;&#39;;
+...
+&lt;input type=&quot;text&quot; class=&quot;form-control&quot; placeholder=&quot;Enter receiver&#39;s wordpress email&quot; name=&quot;reciever_mail&quot; required=&quot;required&quot; value=&quot;&lt;?php echo !empty($replyTo) ? $replyTo : $to; ?&gt;&quot;&gt;</code></pre>
+<h3 id="proof-of-concept">Proof of Concept</h3>
+<p><code>http://wordpress.site/wp-admin/admin.php?page=wp_mail_compose&amp;replyto=%22%3E%3Cscript+src%3Ddata%3A%26comma%3Balert%281%29%2F%2F</code></p>
+<p>would execute <code>alert(1)</code> but could be used to run something more malicious</p>
+<h3 id="solution">Solution</h3>
+<p>Upgrade to version 1.2</p>
+<h3 id="references">References</h3>
+<ul>
+<li>XSS <a href="https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS)">here</a></li>
+<li><a href="http://www.cvedetails.com/cve/CVE-2017-5942/">CVE-2017-5942</a></li>
+</ul>
+<h3 id="legal">Legal</h3>
+<p>The information contained within this advisory is supplied &quot;as-is&quot; with no warranties or guarantees of fitness of use or otherwise.</p>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

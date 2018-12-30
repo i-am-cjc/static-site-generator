@@ -7,7 +7,7 @@ ARCHIVE=_output/posts/index.html
 TAGINDEX=_output/tags/index.html
 PROJINDEX=_output/projects/index.html
 PREPROCESSOR="pandoc -f markdown -t html"
-POSTCOUNT=10
+POSTCOUNT=5
 
 echo ">> Wiping _output"
 mkdir -p _output
