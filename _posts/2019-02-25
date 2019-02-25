@@ -1,0 +1,13 @@
+Pride.py
+---------------
+
+Well, I've decided to rewrite the Static Site Generator in Python for a more
+cross platform experience. Here's hoping it works.
+
+For now it's merely a direct functionality port to python, inefficient and
+slow, but the site is working. I can now start making the functionality 
+better, introduce some templating and better features.
+
+I also updated the style... again. (still no dirty JavaScript though!)
+
+TAGS:ssg,development
