@@ -108,12 +108,9 @@ for post in reversed(os.listdir("_posts")):
     append(f, " / <a href=\"/posts\">posts</a> / " + line + "</h1>")
     datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d')
 
-    append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %m, %Y') + "</time>")
-    content = markdown.markdown("\n".join(file_contents[3:-2]))
-    append(f, content)
-
-    append(f, "<strong>Tags: </strong>")
-
+    append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %m, %Y') + "</time> ")
+    
+    
     # TAGS
     tags = file_contents[-2].split(":")[-1].split(",")
 
@@ -125,6 +122,9 @@ for post in reversed(os.listdir("_posts")):
         append(f, "<i><a href=\"/tag/" + tag + "\">" + tag + "</a></i> ")
         append('_output/tag/' + tag + '/body.html', link)
     
+    content = markdown.markdown("\n".join(file_contents[3:-2]))
+    append(f, content)
+
     append(f, footer_content)
 
 print(">> Generating TAGS")
