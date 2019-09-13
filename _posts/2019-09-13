@@ -1,0 +1,15 @@
+Pride.py and updates
+---------------
+
+Some updates dear diary etc...
+
+* Made some slight improvements to pride.py, allowing for disabling of advisories and projects (this could be made more generic in the future for arbitrary sections). I plan on using this static site generator for other sites which wont need either of them.
+* I finally updated my CV to reflect my current employment status.
+* I need to write some about the threat intelligence tool I have been writing and using.
+* I need to work on my book some.
+* Discovered a bug where a post file on here requires a newline at the end.. 🤔
+* Discovered a bug where emoji don't post... Damnit.
+* Fixed a bug where projects were not linked correctly.
+* Fixed a bug where the dates were shown wrong on the individual post page.
+
+TAGS:ssg,development
