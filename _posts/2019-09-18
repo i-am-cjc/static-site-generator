@@ -1,0 +1,6 @@
+Atom feed
+---------------
+
+Added an atom feed using [python-feedgen](https://github.com/lkiesow/python-feedgen) which makes it very easy. The feed is linked from the main page.
+
+TAGS:ssg,development

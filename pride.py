@@ -3,6 +3,8 @@ import shutil as sh
 import os
 import markdown
 import datetime
+import configparser
+from feedgen.feed import FeedGenerator
 
 # This is a line by line convert of the old
 # shell script, optimisation to come in the 
@@ -18,11 +20,15 @@ def md(f):
     with open(f, 'r') as fin:
         return markdown.markdown(fin.read())
 
-"""Config - This really should be an external file, but fuck it"""
+
+config_reader = configparser.ConfigParser()
+config_reader.read('config.ini')
+pride_config = config_reader['pride']
+
 config = {
-    "adv": True, 
-    "proj": True,
-    "postCount": 5
+    "adv": pride_config.getboolean('Advisories'), 
+    "proj": pride_config.getboolean('Projects'),
+    "postCount": int(pride_config['PostCount'])
 }
 
 """Constants"""
@@ -89,7 +95,13 @@ for page in os.listdir("_pages"):
 count = 0
 
 print(">> Generating POSTS")
-append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a>)</small></h3>")
+fg = FeedGenerator()
+fg.title('cjc.im')
+fg.id('https://cjc.im')
+fg.author({'name':'Carl Clegg', 'email':'carl@cjc.im'})
+fg.link( href='https://cjc.im', rel='alternate')
+fg.link( href='https://cjc.im/feed.xml', rel='self')
+append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a> | <a href=\"/feed.xml\">feed</a>)</small></h3>")
 for post in reversed(os.listdir("_posts")):
     file_contents = open("_posts/" + post).read().split("\n")
     date = "-".join(post.split("-")[0:3])
@@ -108,6 +120,10 @@ for post in reversed(os.listdir("_posts")):
 
     if count < config["postCount"]:
         append(files['index'], link)
+        fe = fg.add_entry()
+        fe.title(line)
+        fe.link(href="https://cjc.im/" + dir)
+        fe.id("https://cjc.im/" + dir)
     
     count += 1
 
@@ -202,3 +218,5 @@ if config["proj"]:
 if config["adv"]:
     append(files["adv"], footer_content)
 append(files["tag"], footer_content)
+
+fg.atom_file('_output/feed.xml')
