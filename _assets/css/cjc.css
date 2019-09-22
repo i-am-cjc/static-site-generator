@@ -1,4 +1,4 @@
-/* https://kitsunyan.github.io/blog/css/general.css */
+/* A modification of https://kitsunyan.github.io/blog/css/general.css */
 html {
 	background-color: #ffffff;
 	color: #303030;
@@ -7,7 +7,7 @@ html {
 
 body {
 	max-width: 800px;
-	min-width: 800px;
+	padding: 5px;
 	margin: 1.5em auto;
 }
 
