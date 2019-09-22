@@ -159,7 +159,7 @@ for tag in os.listdir("_output/tag"):
     tag_body = "_output/tag/" + tag + "/body.html"
     
     append(tag_index, header_content)
-    append(tag_index, " / <a href=\"/tag/" + tag + "\">tags</a> / " + tag + "</h1>")
+    append(tag_index, " / <a href=\"/tags/\">tags</a> / " + tag + "</h1>")
     with open(tag_body, 'r') as tag_body_file:
         append(tag_index, tag_body_file.read())
     append(tag_index, footer_content)
