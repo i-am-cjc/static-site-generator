@@ -1,0 +1,21 @@
+onlooker.io
+---------------
+
+A project that I have been working on for close to a year is getting close to the stage that I want to offer it as a service to other people. 
+
+Since working in information security I've noticed a lot of things I tend to do are monitoring of various sorts. To this end, I started writing a collection of scripts that automates a lot of this allowing me to focus on other things. Over the course of the year, these quick hacked together scripts have become modules in a system.
+
+Together, these modules can be used for monitoring for keywords of interest across various places on the internet for either purposes of detecting data leaks / breaches, to seeing an increase in chatter about a product. There are also a few modules that monitor domains. Some of the key modules are:
+
+* PasteBin - Monitor for keywords (such as email, or other personal data) on Pastebin, which is frequently used to dump breaches and credentials.
+* Reported Phishing - onlooker monitors several lists that report on known phishing pages (and has caught a few compromised wordpress sites that it monitors hosting phishing kits).
+* Certificate Transparency Logs - Keep track of domains and subdomain SSL/TLS certificates.
+* DNS Records - Monitor A, AAAA, MX and TXT records for changes.
+* URL Monitoring - Get notified of changes to a webpage / script / file. (I have used this to monitor open directories on phishing pages to get notified of Phishing Kits being uploaded)
+* Canary URLs - Generate canary links that will log any access (including IP and user agent).
+
+Onlooker monitors these and more, with more modules being added as quick as I can write them. Notifications can then happen via a few methods such as email, Slack, Discord or Microsoft Teams.
+
+Currently, there is no interface to this, so it's a bit of a manual bit of work (I'll be working on that soon), however, if you're interested in helping me test this, slide into my DMs on [twitter](https://twitter.com/i_am_cjc), or with the [onlooker](https://twitter.com/onlookerio) account.
+
+TAGS:onlooker,development,infosec
