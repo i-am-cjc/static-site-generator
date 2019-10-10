@@ -1,0 +1,10 @@
+Pride Updates for onlooker.io
+---------------
+
+onlooker.io needs something on the website, I don't particularly have any skills in web design (have you seen this wonderful styling on here!). I've spent a bit of time changing Pride, my static site generator, to be a little more generic so I can use it to create a website and blog for onlooker focussed shizzle.
+
+Simple changes thanks to the external config added, such as site name, base url, author name etc can now all be used.
+
+👀
+
+TAGS:onlooker,development,infosec,ssg

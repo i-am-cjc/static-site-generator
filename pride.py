@@ -28,7 +28,11 @@ pride_config = config_reader['pride']
 config = {
     "adv": pride_config.getboolean('Advisories'), 
     "proj": pride_config.getboolean('Projects'),
-    "postCount": int(pride_config['PostCount'])
+    "postCount": int(pride_config['PostCount']),
+    "title": pride_config['title'],
+    "baseURL": pride_config['BaseURL'],
+    "author": pride_config['Author'],
+    "email": pride_config['Email']
 }
 
 """Constants"""
@@ -61,7 +65,7 @@ if config["proj"]:
     os.mkdir("_output/projects")
 
 # Write the header to :allthefiles:
-header_content = open(files['head']).read()
+header_content = open(files['head']).read().replace("{TITLE}", config["title"])
 footer_content = open(files['foot']).read()
 
 append(files['index'], header_content)
@@ -96,11 +100,11 @@ count = 0
 
 print(">> Generating POSTS")
 fg = FeedGenerator()
-fg.title('cjc.im')
-fg.id('https://cjc.im')
-fg.author({'name':'Carl Clegg', 'email':'carl@cjc.im'})
-fg.link( href='https://cjc.im', rel='alternate')
-fg.link( href='https://cjc.im/feed.xml', rel='self')
+fg.title(config["title"])
+fg.id('https://' + config['baseURL'])
+fg.author({'name':config['author'], 'email':config['email']})
+fg.link( href='https://' + config['baseURL'], rel='alternate')
+fg.link( href='https://' + config['baseURL'] + '/feed.xml', rel='self')
 append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a> | <a href=\"/feed.xml\">feed</a>)</small></h3>")
 for post in reversed(os.listdir("_posts")):
     file_contents = open("_posts/" + post).read().split("\n")
@@ -122,8 +126,8 @@ for post in reversed(os.listdir("_posts")):
         append(files['index'], link)
         fe = fg.add_entry()
         fe.title(line)
-        fe.link(href="https://cjc.im/" + dir)
-        fe.id("https://cjc.im/" + dir)
+        fe.link(href="https://" + config['baseURL'] + "/" + dir)
+        fe.id("https://" + config['baseURL'] + "/" + dir)
     
     count += 1
 

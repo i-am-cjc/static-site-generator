@@ -3,11 +3,11 @@ html {
 }
 
 body {
-	max-width: 800px;
+	max-width: 640px;
 	padding: 5px;
 	margin: 1.5em auto;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 17px;
+	font-size: 14px;
 	background-color: white; 
 }
 
