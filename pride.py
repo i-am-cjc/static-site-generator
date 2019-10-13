@@ -32,7 +32,8 @@ config = {
     "title": pride_config['title'],
     "baseURL": pride_config['BaseURL'],
     "author": pride_config['Author'],
-    "email": pride_config['Email']
+    "email": pride_config['Email'],
+    "twitter": pride_config['Twitter']
 }
 
 """Constants"""
@@ -65,16 +66,16 @@ if config["proj"]:
     os.mkdir("_output/projects")
 
 # Write the header to :allthefiles:
-header_content = open(files['head']).read().replace("{TITLE}", config["title"])
+header_content = open(files['head']).read().replace("{TITLE}", config["title"]).replace("{TWITUSER}", config["twitter"])
 footer_content = open(files['foot']).read()
 
-append(files['index'], header_content)
-append(files['arc'], header_content)
+append(files['index'], header_content.replace("{OGDESC}", config['title']))
+append(files['arc'], header_content.replace("{OGDESC}", config['title'] + " archive"))
 if config["adv"]:
-    append(files['adv'], header_content)
+    append(files['adv'], header_content.replace("{OGDESC}", config['title'] + " advisories"))
 if config["proj"]:
-    append(files['proj'], header_content)
-append(files['tag'], header_content)
+    append(files['proj'], header_content.replace("{OGDESC}", config['title'] + " projects"))
+append(files['tag'], header_content.replace("{OGDESC}", config['title'] + " tags"))
 
 append(files['index'], "</h1>")
 append(files['index'], md('./_pages/about'))
@@ -91,7 +92,9 @@ os.mkdir("_output/page")
 for page in os.listdir("_pages"):
     os.mkdir("_output/" + page)
     file = "_output/" + page + "/index.html"
-    append(file, header_content)
+    #p_header_content = header_content.replace("{OGURL}", config['baseURL'] + "/" + page)
+    p_header_content = header_content.replace("{OGDESC}", config['title'] + " - " + page + " by " + config["author"])
+    append(file, p_header_content)
     append(file, " / " + page + "</h1>")
     append(file, md("./_pages/" + page))
     append(file, footer_content)
@@ -134,7 +137,7 @@ for post in reversed(os.listdir("_posts")):
     append(files['arc'], link)
 
     f = "_output/" + dir + "/index.html"
-    append(f, header_content)
+    append(f, header_content.replace("{OGDESC}", line))
     append(f, " / <a href=\"/posts\">posts</a> / " + line + "</h1>")
     datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d')
 
@@ -162,7 +165,7 @@ for tag in os.listdir("_output/tag"):
     tag_index = "_output/tag/" + tag + "/index.html"
     tag_body = "_output/tag/" + tag + "/body.html"
     
-    append(tag_index, header_content)
+    append(tag_index, header_content.replace("{OGDESC}", tag))
     append(tag_index, " / <a href=\"/tags/\">tags</a> / " + tag + "</h1>")
     with open(tag_body, 'r') as tag_body_file:
         append(tag_index, tag_body_file.read())
@@ -185,7 +188,7 @@ if config["adv"]:
         count += 1
 
         f = "_output/advisories/" + adv + "/index.html"
-        append(f, header_content)
+        append(f, header_content.replace("{OGDESC}", line))
         append(f, " / <a href=\"/advisories\">advisories</a> / " + adv + "</h1>")
         
         with open("_advisories/" + adv) as file_contents:
@@ -208,7 +211,7 @@ if config["proj"]:
         count += 1
 
         f = "_output/projects/" + prj + "/index.html"
-        append(f, header_content)
+        append(f, header_content.replace("{OGDESC}", line))
         append(f, " / <a href=\"/projects\">projects</a> / " + prj + "</h1>")
         
         with open("_projects/" + prj) as file_contents:
