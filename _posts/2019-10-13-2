@@ -1,0 +1,102 @@
+Security is Dead 1 - Passwords
+---------------
+
+I've often joked with friends that I will write a book on Information Security, It seems to have gone in the direction of an introduction on certain topics for people who might care, but are not in the industry.
+
+What follows is a draft of the chapter on passwords.
+
+# Passwords
+
+## What is a password?
+Wikipedia defines a password as:
+
+    A password is a word or string of characters used for user authentication to prove identity or access approval to gain access to a resource (example: an access code is a type of password), which is to be kept secret from those not allowed access.
+
+A password is a set of characters, words, symbols numbers that is used to enable a person (or, another system) to authenticate themselves, proving they are who they claim to be. As part of the authentication process, passwords are usually paired with a user name, allowing a user to have a unique combination that is secret, allowing them to "securely" authenticate with a resource, and with the amount of accounts you have on the Internet, most people are very familiar with the concept to some level.
+
+## The History of the computer password
+Whilst passwords existed before computers, as far back as the Roman Military, in computer use, they have been used back as far as 1961, one of MIT's computers had a LOGIN command that required the user to enter her password, but like with modern systems it didn't print the characters to screen. This was a pretty amazing feature considering the age, this would have prevented anyone from watching a user enter a password and using it themselves which is known as shoulder surfing, a lot of modern systems replace each character with a * or a circle character which allows a user to know their keyboard is working. Almost 60 years later and this basic Username and Password is still the default authentication method. Great.
+
+Most likely, everyone you know has a phone, and probably accounts on apps and websites like Facebook or Snapchat, most of which using the good old username and password combination, but with that, advice has traditionally been to use "complex" passwords that are a combination of letters, numbers and symbols. Enforcing these rules leads to users creating passwords that are not ideal, such as `Password1` passing the complexity requirements for a lot of systems assuming they enforce them, These typically range from adding a number, which leads to insecure passwords like `password1` or to the needlessly complex requirement of having a number, a symbol, a capital letter, or a mixture thereof, which is how we get to our good friend `Password1`. But even if a user created a password that was hard for a human to guess, say, `|i*g^%GH`, someone using a computer to automatically check all 8 character length password would not take long to crack this. We have been trained to memorise passwords that are difficult for us to remember, and easy to crack. 
+
+## Common Passwords
+According to SplashData, who compile the top passwords from data breaches the top 10 passwords from 2017 were:
+
+* `123456` - Great.
+* `Password` - See, there is that capital letter at the start adding to the security of it!
+* `12345678` - Much more secure than #1
+* `qwerty` - That looks familiar from somewhere....
+* `12345` - Less secure than #1 or #3, that's why it is less popular, although it is the same combination as my luggage!
+* `123456789` - Sigh
+* `letmein` - Open seseme!
+* `1234567` - Come onnnn 
+* `football` - is neither a fun sport, nor a good password...
+* `iloveyou` - I love you too, and that's why I need to have a word with you about passwords my love.
+
+
+## Click here if you've forgotten your password
+So even if you've got the most secure password ever, something that might negate all that good work you've done is the ability to reset your password should you forget it.
+
+In the past, the way to reset a password was based solely on a few questions that were set when creating the account. Your date of birth, your first pet's name or your Mother's maiden name were common ones. Unfortuntately these questions are not difficult to guess or find out and with that little bit of knowledge, a bad guy could gain access to your account by resetting your password.
+
+Now in most modern systems, a password reset requires a link to be sent to your email, which you can then click and reset your password from there. This would negate the guessing of the answers to secret questions. This does however mean that your email is the gateway to all accounts, protect it wisely!
+
+## How is your password saved on a website?
+You might be thinking, "How does a website store my password?", and you're onto a good question there because depending on how it is stored can mean there are some more threats that you should be aware of in your online life. 
+
+The journey of a password starts on your computer or phone or tablet, you type it into a box, then it's validated somehow against a known copy of your password. For webservices this would be stored most likely in a database on a server somewhere on the internet / in the cloud ☁. When the internet was young, sometimes this was just stored as the plain text version of your password, so if your password was Password1 this was stored in the database, but as you can imagine, this is not ideal. An admin could see your passwords on the server. Or if the data was breached, a bad guy could just see your password! 
+To solve this, we hash a password.
+
+## Hashing
+Passwords, for websites, or even computers are usually stored in a form known as a "hash". Understanding how hashing a password works isn't important, all you need to know is that a hash is a black box that when given an input (I.e. your password), it should produce an output that is unique to the input. Additionally, this should be a one-way process, meaning that it is not obvious from the output what the input was. The hashing function also needs to be deterministic so that for the same input, the output is always the same.
+
+An example of this would be a hashing function called "sha256", which would turn the horrible password of `password` into `6b3a55e0261b0304143f805a24924d0c1c44524821305f31d9277843b8a10f4e`. So when a website wants to verify the user and password are correct, it performs the sha256 hash on the password that the user enters and see if it matches the hashed value stored on the server. This means that the website would not know what the password is based solely on the hash that it keeps stored. However, knowing a list of common passwords and the hashing function used, its possible to build up a database of hashes so that you know that when you see `6b3a55e0261b0304143f805a24924d0c1c44524821305f31d9277843b8a10f4e`, it's actually password. This would also mean that if two users shared the same password, the hash would be the same. This problem is solved by using salting.
+
+This problem is actually a useful feature in other domains, for example if you run a hash function across a set of files and you want to find duplicates, if the contents of the file are exactly the same, then the hash should be the same, you can also use this to verify files downloaded from the internet have not been modified. Although a "hash collision" is where two different inputs produce the same output hash. Go read about the *pigeon hole principle* if you want to know more and go down that rabbit hole 🐇
+
+## Salting
+Salting is the process of adding on a random string or bit of data to each user's password before it is hashed so that even when two users share the same password, the password hash that we store for each of the users won’t be the same. For example, our lovely user is still using the password of password, however now that we are salting the passwords, we add salt of 6 random characters to the end of the password, in this example, "abcdef" so then run the hash against `passwordabcdef`, which when hashed gives us `1a7d8a297d27da26806a242253747eb89335a487b017889173cbe73e33ca2ecd`, which isn't the same as when we hashed this without a salt. Following this another user using the same password, however, by using a different salt of "uvwxyz" we run the hash function against `passworduvwxyz` to get `2ffffedc299bcf0c25de41b3174fdfd5d11c3248d8c9d520fa80a4370a682dd2`, again different from the other two times we ran the hash function. So even though the users have the same passwords, the salted hash stored on the server is not the same. By doing this, we protect against anyone looking at the data knowing that both users have the same password. Of course, we have to store the salt on the server too so that when the user enters password we know what to salt it with before hashing, but this is acceptable as we are defending against the stored hash having the same value between two users sharing the same password. This has the added benefit of making it harder to crack the passwords if the data is leaked as the hashes can’t be precomputed into a rainbow table either.
+
+## Beyond the Password
+So given that the password isn't going away, is there a way to improve it, or augment it to make it more secure?
+
+Password advice has had a bit of a renaissance recently after decades of advice, first off, advice that increases the probability that your password will not be cracked or guessed.
+
+### Changing passwords often
+One of the long-standing pieces of advice that has been around for ages, is that of changing your passwords often, this is especially common in enterprise environments where it is sometimes enforced on the user. Forcing the user to change password after a set time introduces its own set of problems, and I myself struggle with this archaic process. First off, this is going to tempt the user to use terrible passwords, for example, if a user must change it every month there might be a temptation to use a system like `Password1June` in June, `Password1July` in July etc. If I must change it every year, `Password12018` and `Password12019`. Even worse, a user might just write it on a post-it-note which will be lurking around their computer or under their keyboard. You can also be sure that if a bad guy sees your password is `Password12018` and that doesn't work in 2019, they are going to try `Password12019` as well.
+
+The idea behind cycling passwords often came about out of the fear that stolen credentials could be used by the bad guys months, or years after that they have been stolen, but more recently the better advice is that detecting suspicious logins to services would provide more protection than your average user having a password such as `Password1August`. Things as simple as the location a login is from can be enough to detect a suspicious session, for example, if a user usually logs in from London then a login from China might be suspicious and require an extra step to attempt to verify the user (Just like your bank might stop a transaction in a similar manner). Some systems take this even further by calculating impossible travel times, a user might frequently travel from London to China, but they shouldn't be able to login from both the countries in the same hour.
+
+### Passphrases
+It’s more secure to have a password that is longer, what is sometimes referred to as a passphrase, than it is to have something short. `There’s no business like show business` would be much harder to crack than `p@ssw0rd1`, but most systems require such an arbitrary symbols, letters, numbers, etc. and some even put a maximum limit on the length!
+
+### Unique Passwords
+Keep each password unique for each account, sounds like a lot of work for a normal person. However, the bad guys are always on the lookout. If you use a single password, and one of these services is hacked, or someone guesses the password, that's all your accounts that could be at risk. It could even be that time you want to watch Netflix at someone's house, and they see you enter `Password123` on the tv, they would now know your password for Amazon, or your bank. Whilst your mates might not care, the bad guys will, and the same thing happens on the internet, websites can be compromised and then your password is out there!
+Therefore password managers and services have popped up.
+
+### Password Managers
+Password Managers are brilliant. It's really a simple concept that helps you to use unique passwords for each account. By doing this should one of the sites get breached you have limited the damage to that one site. Whereas if you were to use that password for everything, they bad guys will now have access to all your accounts, even if you use a system. Password Systems Before password managers were really a thing, some people, and myself included used a "system" to create unique passwords, for example, we might have a master password like `SuperSekretPassword`, which we then append the name of the site to, such as "google", so our google password would be `SuperSekretPasswordGoogle`, the hardcore might have even hashed this to make it less obvious. Even then, it can still be worked out by the astute bad guy.
+
+You know what, I'd even go so far as to say, a password protected spreadsheet with unique passwords is better than using the same password for everything. Of course, this would not be the best idea should you lose the file, so a service providing this is much better.
+
+### Multi factor
+An extension to having just a user name and password, would be to have a user name, password AND another factor. A second factor is generally something you have, which can take the form of a hardware key or device that will generate a time based code, or you might have to accept the login on your phone or in an app that sends you a push notification. It can also be in the form of a SMS text message to your phone, although this is generally considered insecure as it's possible to hijack SMS messages.
+
+Upon logging in with your user name and correct password, you will then be prompted either for a code from your second factor, or some apps will popup on your phone, which has the benefit of notification if someone has your password and tries to log in as you. Apple in particular sends a great notification to a known device with the location of the user attempting to log in.
+
+Taking this concept even further, the holy trinity of user authentication is the combination of:
+
+* Something you are.
+* Something you have. 
+* Something you know. 
+
+"Something you are" is something that is unique to you and only you, such as a finger print, iris scan or in lots of modern devices, your face. Although we have all seen the movies where the villain (or hero) removes a hand, finger, eye to open a door to a nuclear missile or something. (Shame they relied on a single factor for that nuclear silo door, can't get the password out of a dead man).
+
+"Something you have" is generally a physical item that contains a unique code or property that can be verified, so an authenticator app on your smartphone, or an SMS to a phone at a push.
+
+"Something you know" would be your password (and username) that should be kept secret. 
+
+Sure, you can't change your fingerprint, so is this a bad idea for your phone? I'd argue that it is more than fine for most people. A normal person's threat model contains the situation where a phone is either lost somewhere, say left in on a plane, or that someone will steal it. Unless you are the target of a nation state or other Advanced Persistent Threat (or APT as we call it in the industry) the unfortunate soul who steals your phone isn't going to be able to do much with it. (unless they take your finger along for the ride, and then you have bigger problems) Fingerprints are fine for authentication to a mobile device.
+
+
+TAGS:infosec,securityisdead
