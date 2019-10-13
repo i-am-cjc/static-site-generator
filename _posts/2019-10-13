@@ -1,0 +1,10 @@
+Opengraph and twitter meta tags for pride
+---------------
+
+In my ongoing efforts to improve my static site generator, [pride](https://github.com/i-am-cjc/pride), to be a little more generic, I have added some basic meta tags for when sharing pages / posts. 
+
+I have also created the first iteration of the [onlooker.io](https://onlooker.io) site that is using this static site generator.
+
+Hopefully, when I post this onto twitter after uploading it will work 🤞🤞🤞
+
+TAGS:onlooker,development,ssg
