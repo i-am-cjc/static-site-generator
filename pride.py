@@ -58,8 +58,7 @@ except:
 print(">> Copying assets")
 sh.copytree("_assets/", "_output/")
 os.mkdir("_output/posts")
-if config["adv"]:
-    os.mkdir("_output/advisories")
+os.mkdir("_output/advisories")
 os.mkdir("_output/tags")
 os.mkdir("_output/tag")
 if config["proj"]:
@@ -71,8 +70,7 @@ footer_content = open(files['foot']).read()
 
 append(files['index'], header_content.replace("{OGDESC}", config['title']))
 append(files['arc'], header_content.replace("{OGDESC}", config['title'] + " archive"))
-if config["adv"]:
-    append(files['adv'], header_content.replace("{OGDESC}", config['title'] + " advisories"))
+append(files['adv'], header_content.replace("{OGDESC}", config['title'] + " advisories"))
 if config["proj"]:
     append(files['proj'], header_content.replace("{OGDESC}", config['title'] + " projects"))
 append(files['tag'], header_content.replace("{OGDESC}", config['title'] + " tags"))
@@ -80,8 +78,7 @@ append(files['tag'], header_content.replace("{OGDESC}", config['title'] + " tags
 append(files['index'], "</h1>")
 append(files['index'], md('./_pages/about'))
 append(files['arc'], ' / posts</h1>')
-if config["adv"]:
-    append(files['adv'], ' / advisories</h1>')
+append(files['adv'], ' / advisories</h1>')
 append(files['tag'], ' / tags</h1>')
 if config["proj"]:
     append(files['proj'], ' / projects</h1>')
@@ -109,6 +106,7 @@ fg.author({'name':config['author'], 'email':config['email']})
 fg.link( href='https://' + config['baseURL'], rel='alternate')
 fg.link( href='https://' + config['baseURL'] + '/feed.xml', rel='self')
 append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a> | <a href=\"/feed.xml\">feed</a>)</small></h3>")
+
 for post in reversed(os.listdir("_posts")):
     file_contents = open("_posts/" + post).read().split("\n")
     date = "-".join(post.split("-")[0:3])
@@ -123,10 +121,11 @@ for post in reversed(os.listdir("_posts")):
         except:
             pass
 
-    link = "<a href=\"/" + dir + "\">" + date + "</a> " + line + "<br />" 
-
+    link = "<a href=\"/" + dir + "\">" + date + " " + line + "</a><br />" 
+    main_link = "<a href=\"/" + dir + "\">" + line + "</a><br />"
+    
     if count < config["postCount"]:
-        append(files['index'], link)
+        append(files['index'], main_link)
         fe = fg.add_entry()
         fe.title(line)
         fe.link(href="https://" + config['baseURL'] + "/" + dir)
@@ -176,24 +175,25 @@ count = 0
 
 if config["adv"]:
     append(files['index'], "<h3>advisories<small> (<a href=\"/advisories\">all</a>)</small></h3>")
-    print(">> Generating ADVISORIES")
-    for adv in reversed(os.listdir("_advisories")):
-        line = open("_advisories/" + adv).readlines()[0]
-        os.mkdir("_output/advisories/" + adv)
-        link = "<a href=\"/advisories/" + adv + "\">" + adv + "</a> " + line + "<br />"
+print(">> Generating ADVISORIES")
+for adv in reversed(os.listdir("_advisories")):
+    line = open("_advisories/" + adv).readlines()[0]
+    os.mkdir("_output/advisories/" + adv)
+    link = "<a href=\"/advisories/" + adv + "\">" + adv + "</a> " + line + "<br />"
 
-        append(files["adv"], link)
-        if count < 5:
+    append(files["adv"], link)
+    if count < 5:
+        if config["adv"]:
             append(files["index"], link)
-        count += 1
+    count += 1
 
-        f = "_output/advisories/" + adv + "/index.html"
-        append(f, header_content.replace("{OGDESC}", line))
-        append(f, " / <a href=\"/advisories\">advisories</a> / " + adv + "</h1>")
-        
-        with open("_advisories/" + adv) as file_contents:
-            append(f, markdown.markdown(file_contents.read()))
-        append(f, footer_content)
+    f = "_output/advisories/" + adv + "/index.html"
+    append(f, header_content.replace("{OGDESC}", line))
+    append(f, " / <a href=\"/advisories\">advisories</a> / " + adv + "</h1>")
+    
+    with open("_advisories/" + adv) as file_contents:
+        append(f, markdown.markdown(file_contents.read()))
+    append(f, footer_content)
 
 count = 0
 
