@@ -1,0 +1,16 @@
+LD015 - Ransomware, idiots and nose candy
+---------
+
+This week in the world of Infosec and beyond! (Also reader mode in Firefox and Safari Mobile = a usable web, almost)
+
+* [Major ASP.NET hosting provider infected by ransomware](https://www.zdnet.com/article/major-asp-net-hosting-provider-infected-by-ransomware/) - Another webhosting provider hit by ransomware, with the not just the customer data, but the provider data being subject to the ransom.
+* [Google Begins Testing Extension Manifest V3 in Chrome Canary](https://www.bleepingcomputer.com/news/software/google-begins-testing-extension-manifest-v3-in-chrome-canary/) - Newer versions of Chrome change so that the `webRequest` API so that addons can only monitor requests and not modify them, essentially neutering most AdBlocking software, what a *surprise* from an Advertising Behemoth like Google. I read somewhere that this might still be allowed in enterprise deployments… great use for the average user there. 
+* [Apple Store worker texts himself customer's intimate photo](https://www.bbc.co.uk/news/technology-50405688) - An abuse of trust by an Apple employee whilst working on a customer's phone. It's quite scary how much these little devices become our most trusted store of personal data. 
+* [Thieves caught after posing on Instagram with cars](https://www.bbc.co.uk/news/uk-england-leeds-50406858) - Thieves create self incriminating evidence… sigh 🤦🏼‍
+* [Pemex Ransomware](https://www.bleepingcomputer.com/news/security/mexicos-pemex-oil-suffers-ransomware-attack-49-million-demanded/) - On November 10th Pemex (Mexico's state owned oil company) suffered a ransomware attack affecting less than 5% of their systems. In a statement made on twitter, operation and production systems continue to operate normally.
+* [Cyber Emergency!](https://www.itnews.com.au/news/malware-drive-by-attack-triggered-australias-first-cyber-emergency-534028) 🚨🚨🚨**CYBER EMERGENCY** 🚨🚨🚨 Spawning from a website that had been compromised, a small number of users were infected with malware that is claimed to be part of a state sponsored attack.
+* [Let's get the party started](https://news.sky.com/story/wild-boar-discover-and-snort-17000-of-cocaine-in-tuscan-forest-11861940) - Wild boars snort a hell of a lot of nose candy! 👃🍬
+
+👋
+
+TAGS:linkdump,infosec

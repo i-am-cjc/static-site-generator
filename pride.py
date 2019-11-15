@@ -111,7 +111,7 @@ for post in reversed(os.listdir("_posts")):
     file_contents = open("_posts/" + post).read().split("\n")
     date = "-".join(post.split("-")[0:3])
     line = file_contents[0]
-    title = line.replace(" ", "-")
+    title = line.replace(" ", "-").replace(",", "-")
     dir = "/".join(date.split("-")) + "/" + title
     directory = "_output"
     for d in dir.split("/"):

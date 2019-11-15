@@ -1,0 +1,12 @@
+LD014 - Bluekeep, accidental data breach and more
+---------
+
+I need to get back on with these ♥
+
+* [Bluekeep seen in the wild](https://www.microsoft.com/security/blog/2019/11/07/the-new-cve-2019-0708-rdp-exploit-attacks-explained/) - Looks like the metasploit module for the infamous BlueKeep / CVE-2019-0708 vulnerability has been adapter to install coin miners on vulnerable machines.
+* [Not all data breaches are malicious!](https://www.bbc.co.uk/news/uk-england-beds-bucks-herts-50333367) - The University of Hertfordshire sent an email with an attachment containing around 2000 names and emails to a group of students. It was reported to ICO by the Univerisity
+*  [Breach Excuse Generator](https://whythefuckwasibreached.com/) - An amusing site that gives you an excuse. (The fucking Russians used a 0-day exploit to breach our high security servers. But we have since made everyone promise to be super super careful, so it will never happen again)
+
+👋
+
+TAGS:linkdump,infosec
