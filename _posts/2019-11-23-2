@@ -1,0 +1,16 @@
+LD016 - Politics and Disney
+---------
+
+Quite a few political related security articles this week, with Brexit coming (maybe...) I can only see these sorts of articles happening more often. 
+
+* [Thousands of hacked Disney+ accounts are already for sale](https://www.zdnet.com/google-amp/article/thousands-of-hacked-disney-accounts-are-already-for-sale-on-hacking-forums/) - Only hours after launch, Disney+ accounts are for sale on various forums. Similar to what the other streaming platforms have dealt with for years, Disney is discovering there is a black market for stolen accounts.
+* [Nintendo Switch game is crashing Roku devices](https://gamerant.com/pokemon-sword-shield-roku-device-crash/) - A popular Pokemon game for the Nintendo Switch is causing certain Roku media devices to crash. The game is sending out packets on the wireless network to discover other players for multiplayer functionality, this is then being read by the Roku devices and causing a crash.
+* [Fedora Developers commit a sin](https://www.phoronix.com/scan.php?page=news_item&px=Fedora-Workstation-Vi-To-Nano) 😡 Fedora developers lose mind and propose switch to nano as default editor instead of the perfect editor, Vi.
+* [Humble Book Bundle: Cybersecurity 2019 by Packt](https://www.humblebundle.com/books/cybersecurity-2019-packt-books) Humble Cybersecurity Bundle, might have some good reads, always cheap if you want.
+* [Offshore Bank Targeted By Phineas Fisher Confirms it Was Hacked](https://www.vice.com/amp/en_us/article/ne8p9b/offshore-bank-targeted-phineas-fisher-confirms-hack-cayman-national-bank) - Hacker(s) managed to hack into large bank, steal documents and money and now offer money to others to carry out politically motivated hacks.
+* [Arron Banks's private Twitter messages leaked by hacker ](https://www.theguardian.com/uk-news/2019/nov/19/arron-bankss-private-twitter-messages-leaked-by-hacker) - Founder of pro-brexit group leave.eu had twitter account hacked and used to publish 2.5gb of twitter data for anyone to download for over 24hours. Several twitter accounts were locked for mentioning the breach
+* [How Attackers Could Hijack Your Android Camera to Spy on You](https://www.checkmarx.com/blog/how-attackers-could-hijack-your-android-camera) - An issue in the Google Camera app gave attackers a way to silently take photos and videos on an Android device without requesting permission to do so.
+
+👋
+
+TAGS:linkdump,infosec

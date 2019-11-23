@@ -1,0 +1,25 @@
+Automated cat feeder
+---------
+
+The other weekend I was _rudely_ awoken by two little bastards (my cats) wanting some food like the greedy little things they are. Whilst half asleep I decided that I could solve this problem, with the solution being I don't have to get out of bed at 5am on a weekend.
+
+So, the obvious thing here, that has been done to death is the automated cat feeder, nothing special, it just has to dispense biscuits at a specific time (or remote controlled maybe in the future). Ok, I can do this, so I sketched up an idea:
+
+![Solution](/img/cat-feeder.png)
+
+Pretty simple, here's a list of what it required:
+
+* A low-tech 3D printed body which is made from layers of foam board
+* A Raspberry Pi, because who doesn't already have a few lying around. In this case I used a pi0w for the ability to control it wirelessly
+* A servo, to control the flow of the biscuits, I ordered these online for next day (i.e. the Sunday)
+* Something for a biscuit hopper.
+
+The software for controlling this was adapted from [here](http://reefwingrobotics.blogspot.com/2017/02/raspberry-pi-and-towerpro-sg90-micro.html) as it was the first search result for "Raspberry Pi Servo" 👌
+
+In the end, it was not a very pretty solution, but it worked and I get to sleep some time!
+
+![Solution](/img/cat-feeder.gif)
+
+👋
+
+TAGS:development
