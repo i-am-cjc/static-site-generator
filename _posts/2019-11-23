@@ -5,7 +5,7 @@ The other weekend I was _rudely_ awoken by two little bastards (my cats) wanting
 
 So, the obvious thing here, that has been done to death is the automated cat feeder, nothing special, it just has to dispense biscuits at a specific time (or remote controlled maybe in the future). Ok, I can do this, so I sketched up an idea:
 
-![Solution](/img/cat-feeder.png)
+![A diagram sketch of the solution](/img/cat-feeder.png)
 
 Pretty simple, here's a list of what it required:
 
@@ -18,7 +18,7 @@ The software for controlling this was adapted from [here](http://reefwingrobotic
 
 In the end, it was not a very pretty solution, but it worked and I get to sleep some time!
 
-![Solution](/img/cat-feeder.gif)
+![An animated GIF of the working prototype](/img/cat-feeder.gif)
 
 👋
 
