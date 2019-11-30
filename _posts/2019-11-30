@@ -1,0 +1,16 @@
+LD017 - Cat and Mouse and Ransomware
+---------
+
+Note to self: Don't monitor various feeds for the word "cyber" (to get cybersecurity, cyberattack, _cyberpunk_). When Tesla announces the cyber truck, onlooker.io has sent me so many articles about it I am bored of it now.
+
+* [T-Mobile breach](https://techcrunch.com/2019/11/22/more-than-1-million-t-mobile-customers-exposed-by-breach/) - 1.5% of the telecom companies customers' personal data "exposed" to bad actors.
+* [Open Docker API is bad](https://www.zdnet.com/google-amp/article/a-hacking-group-is-hijacking-docker-systems-with-exposed-api-endpoints/) - Bad guys using open Docker API to take over systems and mine Monero.
+* [Ransomware attack on vets](https://nakedsecurity.sophos.com/2019/11/26/national-veterinary-associates-catches-dose-of-ransomware/) - Not all targets are massive companies, any network is a target.
+* [Prepare for the end of the world](https://back7.co/home/raspberry-pi-recovery-kit) - Really cool rugged Raspberry Pi based system.
+* [More Ransomware?](https://www.databreaches.net/es-cyber-attack-causes-prosegur-security-company-to-shut-down-its-network/) - Spanish multinational security company Prosegur announced that it was the victim of a cybersecurity incident disrupting its telecommunication platform.
+* [Forget bugs, fear mammals](https://www.infosecurity-magazine.com/news/pests-force-estonian-government/) - Pests chew through important cables 🐭 yum!
+* [Kids Smart watches a bad idea](https://threatpost.com/iot-smartwatch-childrens-personal-gps-data/150656/) - Another case of a "smart" watch designed for parents to track their children that has _shit_ security.
+
+👋
+
+TAGS:linkdump,infosec
