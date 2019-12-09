@@ -1,0 +1,46 @@
+LD018 - Databreaches and more
+---------
+
+A little late with this one, no one reads it so whatever. Also do they even need a title???
+
+Trying to change the formating of these slightly as the list just looks a little rubbish compared to the rest of the style.
+
+## Millions of SMS messages exposed
+
+Security Researchers discover a massive database containing millions of messages, most of which were sent from businesses to potential customers. Looks like it was an exposed database that was left without any credentials required. Good stuff. The database also contained credentials 🤯
+
+Source: [Techcrunch](https://techcrunch.com/2019/12/01/millions-sms-messages-exposed/)
+
+## Amazon's Ring becomes the scariest surveillance company
+
+Part 1 of a Motherboard series about the "smart" doorbell company now owned by behemoth Amazon. 
+
+Source: [Motherboard](https://www.vice.com/en_us/article/zmjp53/how-ring-went-from-shark-tank-reject-to-americas-scariest-surveillance-company)
+
+## Sinkholed
+
+Susam Pal loses their domain in a mixup as part of a botnet takedown
+
+Source: [susam.im](https://susam.in/blog/sinkholed/)
+
+## Japanese taxpayer data lost when drives sold online
+
+Taxpayer's personal data was accidentally auctioned off when the drives containing the data was left un destroyed on leased drives
+
+Source: [nhk.org.jp](https://www3.nhk.or.jp/nhkworld/en/news/20191206_24/)
+
+## Evernote gave away user data to DEA
+
+As part of an investigation, Evernote gave a suspect's data to aid as part of the investigation. Maybe don't use a service you don't control when performing illegal activities 🤷‍♂️
+
+Source: [Motherbpard](https://www.vice.com/en_us/article/j5yyxp/evernote-search-warrant-gave-data-to-us-government)
+
+## How does a cyber crime gang operate?
+
+NCSC published a new report to help people understand how this business model works.
+
+Source: [NCSC](https://www.ncsc.gov.uk/news/ncsc-publishes-new-report-criminal-online-activity)
+
+👋
+
+TAGS:linkdump,infosec
