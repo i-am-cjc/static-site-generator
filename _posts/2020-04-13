@@ -1,0 +1,23 @@
+Automata on the Nintendo GameBoy
+---------
+
+It's been a while.
+
+I recently saw the sad news that [John Conway](https://en.wikipedia.org/wiki/John_Horton_Conway) has passed away. 
+This reminded me of a time in 2012 when I wrote a Cellular Automata "game" for the Nintendo GameBoy 
+as part of the [Ludum Dare](http://ludumdare.com/compo/ludum-dare-24/) game jam.
+
+I had to make a few improvements tonight before uploading it, and I am very impressed with the fact that I can 
+spin up a Docker container and install the Gameboy Dev KIT rpm file I have had since then and it allowed me to 
+compile a new version of the rom without any issues. What a time to be alive.
+
+![Screenshot](/img/Automata1.png)
+![Screenshot](/img/Automata2.png)
+
+[Here](/files/Automata.gb) you can download it and have a play.
+
+RIP Mr Conway.
+
+👋
+
+TAGS:development
