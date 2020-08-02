@@ -181,7 +181,7 @@ if config["adv"]:
     append(files['index'], "<table><thead><tr><th>ID</th><th>Title</th></thead><tbody>")
 
 print(">> Generating ADVISORIES")
-for adv in reversed(os.listdir("_advisories")):
+for adv in sorted(os.listdir("_advisories"), reverse=True):
     line = open("_advisories/" + adv).readlines()[0]
     os.mkdir("_output/advisories/" + adv)
     link = "<a href=\"/advisories/" + adv + "\">" + adv + "</a> " + line + "<br />"
