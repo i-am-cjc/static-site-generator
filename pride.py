@@ -107,7 +107,7 @@ fg.link( href='https://' + config['baseURL'], rel='alternate')
 fg.link( href='https://' + config['baseURL'] + '/feed.xml', rel='self')
 append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a> | <a href=\"/feed.xml\">feed</a>)</small></h3>")
 
-for post in reversed(os.listdir("_posts")):
+for post in sorted(os.listdir("_posts"), reverse=True):
     file_contents = open("_posts/" + post).read().split("\n")
     date = "-".join(post.split("-")[0:3])
     line = file_contents[0]
