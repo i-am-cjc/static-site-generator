@@ -12,6 +12,10 @@ body {
 	line-height: 1.2;
 }
 
+#main {
+	max-width: 50em;
+}
+
 img {
 	max-width: 100%;
 }
