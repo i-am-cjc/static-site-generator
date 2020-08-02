@@ -1,0 +1,25 @@
+paste.cjc.im
+---------
+
+It's been a while again!
+
+I've been working on the same side-project (onlooker) for over a year, and had the desire to make something else.
+
+In a virtual hack-a-thon I have created [paste.cjc.im](https://paste.cjc.im) which is a simple pastebin-style tool. 
+
+What makes this different from others is:
+
+* Data is encrypted using the browser's crypto module using AES-CBC
+* The "paste" is stored in the anchor of the URL, and thus never gets sent to the server. (This was partially a feature, and partially so I don't have to run any sort of storage or API 👍)
+
+For example [this](https://paste.cjc.im/#eyJkYXRhIjoi0q9cdTAwMTHnXHRH5ld/e5fIXGbo7PpU/alBQTRcdKDoO0MkkO/6jCIsIml2Ijoi/mtWmadcXKBw3mIsa046npQifQ==) has the key "superSEKRETkey"
+
+The anchor part of the URL contains a javascript object encoded in base64 that contains the ciphertext and the initialisation vector.
+
+As part of this I also put together [qr.cjc.im](https://qr.cjc.im) that can encode a paste into a single QR code for sharing in meatspace, the same paste as above:
+
+![QR Code example](/img/qr-example.png)
+
+👋
+
+TAGS:development,infosec
