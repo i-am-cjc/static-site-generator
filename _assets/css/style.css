@@ -6,10 +6,44 @@ code {
 }
 
 body {
-	font-size: 1.3em;
-	font-family: monospace;
+	font-size: 12px;
+	font-family: univers,-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+	text-align: left;
+	line-height: 1.2;
 }
 
 img {
 	max-width: 100%;
+}
+
+table {
+	font-size: 12px;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: 1px solid #bfbfbf;
+	width: 100%;
+}
+
+table td {
+	border-bottom: 1px solid #bfbfbf;
+	padding: 3px;
+}
+
+thead {
+	border: 1px solid black;
+	background: #EEE;
+	text-align: left;
+}
+
+th {
+	padding: 3px;
+}
+
+h1, h2 {
+	font-size: 12px;
+}
+
+a {
+	text-decoration: none;
+	color: #004499
 }

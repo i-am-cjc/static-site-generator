@@ -77,7 +77,7 @@ append(files['tag'], header_content.replace("{OGDESC}", config['title'] + " tags
 
 append(files['index'], "</h1>")
 append(files['index'], md('./_pages/about'))
-append(files['arc'], ' / posts</h1>')
+append(files['arc'], ' / notes</h1>')
 append(files['adv'], ' / advisories</h1>')
 append(files['tag'], ' / tags</h1>')
 if config["proj"]:
@@ -105,7 +105,8 @@ fg.id('https://' + config['baseURL'])
 fg.author({'name':config['author'], 'email':config['email']})
 fg.link( href='https://' + config['baseURL'], rel='alternate')
 fg.link( href='https://' + config['baseURL'] + '/feed.xml', rel='self')
-append(files['index'], "<h3>posts<small> (<a href=\"/posts\">all</a> | <a href=\"/tags\">tags</a> | <a href=\"/feed.xml\">feed</a>)</small></h3>")
+append(files['index'], "<h2>notes / <a href=\"/posts\">archive</a> </h2>")
+append(files['index'], "<table><thead><tr><th>Date</th><th>Title</th></thead><tbody>")
 
 for post in sorted(os.listdir("_posts"), reverse=True):
     file_contents = open("_posts/" + post).read().split("\n")
@@ -122,7 +123,7 @@ for post in sorted(os.listdir("_posts"), reverse=True):
             pass
 
     link = "<a href=\"/" + dir + "\">" + date + " " + line + "</a><br />" 
-    main_link = "<a href=\"/" + dir + "\">" + line + "</a><br />"
+    main_link = "<tr><td>" + date + "</td><td><a href=\"/" + dir + "\">" + line + "</a></td></tr>"
     
     if count < config["postCount"]:
         append(files['index'], main_link)
@@ -137,7 +138,7 @@ for post in sorted(os.listdir("_posts"), reverse=True):
 
     f = "_output/" + dir + "/index.html"
     append(f, header_content.replace("{OGDESC}", line))
-    append(f, " / <a href=\"/posts\">posts</a> / " + line + "</h1>")
+    append(f, " / <a href=\"/posts\">notes</a> / " + line + "</h1>")
     datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d')
 
     append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %d, %Y') + "</time> ")
@@ -159,6 +160,8 @@ for post in sorted(os.listdir("_posts"), reverse=True):
 
     append(f, footer_content)
 
+append(files['index'], "</tbody></table>")
+
 print(">> Generating TAGS")
 for tag in os.listdir("_output/tag"):
     tag_index = "_output/tag/" + tag + "/index.html"
@@ -174,17 +177,20 @@ for tag in os.listdir("_output/tag"):
 count = 0
 
 if config["adv"]:
-    append(files['index'], "<h3>advisories<small> (<a href=\"/advisories\">all</a>)</small></h3>")
+    append(files['index'], "<h2>advisories / <a href=\"/advisories\">archive</a></h2>")
+    append(files['index'], "<table><thead><tr><th>ID</th><th>Title</th></thead><tbody>")
+
 print(">> Generating ADVISORIES")
 for adv in reversed(os.listdir("_advisories")):
     line = open("_advisories/" + adv).readlines()[0]
     os.mkdir("_output/advisories/" + adv)
     link = "<a href=\"/advisories/" + adv + "\">" + adv + "</a> " + line + "<br />"
+    main_link = "<tr><td><a href=\"/advisories/" + adv + "\">" + adv + "</a></td><td>" + line + "</td></tr>"
 
     append(files["adv"], link)
     if count < 5:
         if config["adv"]:
-            append(files["index"], link)
+            append(files["index"], main_link)
     count += 1
 
     f = "_output/advisories/" + adv + "/index.html"
@@ -195,19 +201,21 @@ for adv in reversed(os.listdir("_advisories")):
         append(f, markdown.markdown(file_contents.read()))
     append(f, footer_content)
 
+append(files['index'], "</tbody></table>")
+
 count = 0
 
 if config["proj"]:
     print(">> Generating Projects")
-    append(files['index'], "<h3>projects<small> (<a href=\"/projects\">all</a>)</small></h3>")
+    append(files['index'], "<h2>projects</h2>")
+    append(files['index'], "<table><thead><tr><th>Title</th></thead><tbody>")
     for prj in reversed(os.listdir("_projects")):
         line = open("_projects/" + prj).readlines()[0]
         os.mkdir("_output/projects/" + prj)
         link = "<a href=\"/projects/" + prj + "\">" + line + "</a><br />"
-
+        main_link = "<tr><td>" + link + "</td></tr>"
         append(files["proj"], link)
-        if count < 5:
-            append(files["index"], link)
+        append(files["index"], main_link)
         count += 1
 
         f = "_output/projects/" + prj + "/index.html"
@@ -217,6 +225,8 @@ if config["proj"]:
         with open("_projects/" + prj) as file_contents:
             append(f, markdown.markdown(file_contents.read()))
         append(f, footer_content)
+
+append(files['index'], "</tbody></table>")
 
 append(files["index"], footer_content)
 append(files["arc"], footer_content)
