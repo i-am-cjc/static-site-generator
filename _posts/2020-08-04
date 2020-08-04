@@ -1,0 +1,12 @@
+snitch.cjc.im
+---------
+
+Resurrected an old project that was a basic URL canary tool
+
+You can find and use it at [snitch.cjc.im](https://snitch.cjc.im). 
+
+This is definitely not a replacement for a real canary product, but its a nice little tool to see if anything is potentially "snitching" on links you send. 
+
+👋
+
+TAGS:development,infosec
