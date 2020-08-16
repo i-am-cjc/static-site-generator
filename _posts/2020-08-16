@@ -1,0 +1,32 @@
+Anatomy of a Phish 1
+---------
+
+I've been collecting a few phishing examples over the years and wanted to write about it. There also seems to be common techniques that could be grouped together across different Phishing Attacks.
+
+![Body of a phishing email](/img/aoap1-1.png)
+
+In this example the email, the attacker sends a fairly bare bones email with a link to remittance advice, urgency or financial motivation is usually the way attackers attempt to get you to click on a link in an email. The email in question was sent from a compromised contact of the receiver, so not only was it from a known contact, but it also passed [DMARC](https://en.wikipedia.org/wiki/DMARC). Passing DMARC means from a technical perspective, the email is legitimate.
+
+The link in the email goes to a file shared on dropbox.
+
+![Dropbox Shared File](/img/aoap1-2.png)
+
+The use of file sharing sites, such as Dropbox is used because they usually wont be blocked as they have legitimate uses. This could have easily been OneDrive too. Some organisations opt to block file sharing sites, but this is a difficult choice based on the risk appetite of the organisation, as it could have some impact legitimate business function.
+
+What's interesting in this case (and the reason why I saved this Phishing attempt in particular), is that the shared file is a HTML form that looks like a shared file and login page. Usually, these would be hosted on a hacked webserver, and more often then not Wordpress.  
+
+![HTML File](/img/aoap1-3.png)
+
+![HTML Login](/img/aoap1-4.png)
+
+Additionally the content of the HTML file was obfuscated in order to bypass any systems that might inspect email attachments or downloads. The unobfuscated data shows us that the form in the HTML file posts to a random free hosting site PHP file.
+
+![HTML Source](/img/aoap1-5.png)
+
+This, like with hosted phishing kits will then either log the attempts to a file, or send an email to an attacker controlled mailbox.
+
+If you enjoy this sort of content, leave a comment below.... Just kidding, there are no comments and no one reads this anyway!
+
+👋
+
+TAGS:infosec,phishing
