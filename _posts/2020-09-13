@@ -1,0 +1,26 @@
+Anatomy of a Phish 2
+---------
+
+This next example of phishing is something I don't see all to often in my work or personal life recently, and that is phishing that targets credit card details. Usually it's all about the credentials.
+
+![Body of a phishing email](/img/aoap2-1.png)
+
+In this email body, it is purporting to be from OVH, a widely used European hosting company. My french is non-existant, but it looks as if there is an invoice due to the total of 16.49 euros. The email also uses a sense of urgency towards the end threatening suspension of account should there be no action.
+
+Interestingly, the link in the body of the email has the text of an OVH URL, however the link actually goes to another domain. I am also not sure what the use of "passwd" parameter is on the URL, I guess this might be something that OVH do with links to invoices, to have a one-time URL to access an a payment page and avoid logging in. Something that the sender of this email is capitalising on. 
+
+The first link goes to a page that is just a redirector (which may then send different people to different URLs, I can't remember as this email looks to be from around June and I've slept since then 😴)
+
+![Redirector page as part of a phishing mail chain](/img/aoap2-2.png)
+
+Amusingly, there are some PHP warnings on this redirector page if you catch it quickly before it redirects, referencing a file "antibots.php" that is a common file used in Phishing Kits to try and stop known IP addresses from researches, or cyber security companies from accessing the page. Whilst there is an error, the page does redirect to the final page in the chain:
+
+![HTML File](/img/aoap2-3.png)
+
+Like with hosted phishing kits will then either log the captured card details to a file, or send an email to an attacker controlled mailbox.
+
+If you enjoy this sort of content, leave a comment below.... Just kidding, there are no comments and no one reads this anyway!
+
+👋
+
+TAGS:infosec,phishing
