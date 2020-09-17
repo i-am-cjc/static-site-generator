@@ -7,7 +7,7 @@ code {
 
 body {
 	font-size: 13px;
-	font-family: univers,-apple-system,system-ui,BlinkMacSystemFont,'Segoe UI',Roboto,'Helvetica Neue',sans-serif;
+	font-family: monospace;
 	text-align: left;
 	line-height: 1.2;
 }
