@@ -11,7 +11,7 @@ code {
 }
 
 body {
-	font-size: 13px;
+	font-size: 18px;
 	font-family: monospace;
 	text-align: left;
 	line-height: 1.3;
@@ -44,7 +44,7 @@ table td {
 
 thead {
 	border: 1px solid black;
-	background: #EEE;
+	background: #6c6c6a;
 	text-align: left;
 }
 
