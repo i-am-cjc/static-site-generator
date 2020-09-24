@@ -1,50 +1,40 @@
-
 code {
 	white-space: pre-wrap;
-	font-family: monospace;
 	line-height: 1.2em;
-	background-color: black;
-	color: lime;
-	width: 100%;
-	display: block;
 	padding: 4px;
 }
 
 body {
-	font-size: 18px;
-	font-family: monospace;
 	text-align: left;
 	line-height: 1.3;
-	background-color: #222;
-	color: wheat;
 }
 
 #main {
-	max-width: 50em;
+	max-width: 60em;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 img {
 	max-width: 100%;
-	padding: 8px;
-	border: 1px solid #004499;
+	border-radius: .5em;
+	clear: both;
+  display: block;
+  margin-right: auto;
+	margin-left: auto;
 }
 
 table {
-	font-size: 12px;
-	border-collapse: collapse;
+
 	border-spacing: 0px;
-	border: 1px solid #bfbfbf;
 	width: 100%;
 }
 
 table td {
-	border-bottom: 1px solid #bfbfbf;
 	padding: 3px;
 }
 
 thead {
-	border: 1px solid black;
-	background: #6c6c6a;
 	text-align: left;
 }
 
@@ -52,10 +42,7 @@ th {
 	padding: 3px;
 }
 
-h1, h2 {
-	font-size: 12px;
-}
-
-a {
-	color: #d1e1f9
+p {
+ 	text-align: justify;
+  text-justify: auto;
 }
