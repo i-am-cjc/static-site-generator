@@ -1,0 +1,24 @@
+Anatomy of a Phish 3
+---------
+
+Today let's look at a very common type of phishing. This one pretends to be a voicemail received by the victim and including a transcribed message. 
+
+![Body of a phishing email](/img/aoap3-1.png)
+
+There are a couple of interesting "features" of this email. 
+
+First off, the sender has included a fake "From a safe senders list." message at the top in green. This sort of banner is common in corporate email systems, and by fakeing it the phisher can attempt to gain some credibility. I've used this very tactic in a simulated phishing exercise and it works wonders 😢
+
+Secondly, the email address of the victim is included in the body of the email, attempting to add a personal touch. Infact, the subject of the email (not shown) contains the user part of the email (i.e. *user*@example.com).
+
+Lastly, the "Message Highlight" shows a partial transcription, but it only teases the content, trying to get the victim to find out more.
+
+As usual, the aim of this is to get the victim to click on a link and enter credentials, which the attacker can then use for further fraud or information from the inbox.
+
+![Credential Capture page](/img/aoap3-2.png)
+
+If you enjoy this sort of content, leave a comment below.... Just kidding, there are no comments and no one reads this anyway!
+
+👋
+
+TAGS:infosec,phishing

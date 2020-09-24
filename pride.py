@@ -139,7 +139,7 @@ for post in sorted(os.listdir("_posts"), reverse=True):
     append(f, " / <a href=\"/posts\">notes</a> / " + line + "</h1>")
     datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d')
 
-    append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %d, %Y') + "</time> | in ")
+    append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %d, %Y') + "</time> in ")
     
     
     # TAGS
