@@ -121,7 +121,7 @@ for post in sorted(os.listdir("_posts"), reverse=True):
         except:
             pass
 
-    link = "<a href=\"/" + dir + "\">" + date + " " + line + "</a><br />" 
+    link = "<a href=\"/" + dir + "\">" + date + "</a> " + line + "<br />" 
     
     if count < config["postCount"]:
         append(files['index'], link)
@@ -175,7 +175,6 @@ count = 0
 
 if config["adv"]:
     append(files['index'], "<h2>advisories / <a href=\"/advisories\">archive</a></h2>")
-    append(files['index'], "<table><thead><tr><th>ID</th><th>Title</th></thead><tbody>")
 
 print(">> Generating ADVISORIES")
 for adv in sorted(os.listdir("_advisories"), reverse=True):
