@@ -1,0 +1,34 @@
+The end of onlooker
+---------
+
+In this post, I am going to write a little about a side project that I have been working on for the past couple of years, onlooker.
+
+It all started with a pastebin scraper, using the official scraping API, before they messed that up for researchers. The initial idea was to monitor all pastes to spot for any data leaks related to $dayjob.
+
+After the pastebin scraper and a lot of refactoring, several modules were added to onlooker:
+
+* Availability - A basic module that checked the uptime of a URL, providing alerts when said URL was unresponsive.
+* Canary - Born out of an earlier project, this module implemented a canary token system.
+* Certificate Transparency Log - Monitoring the Certificate Transparency Log for domains (as well as look alike domains)
+* DNS - Monitor domains for DNS changes, useful for when a look-alike domain is registered to spot any changes that might indicate activity.
+* DNSTwist - Use the opensource [DNS Twist](https://github.com/elceef/dnstwist) to find typo domains.
+* HackerNews - Monitored HackerNews for any mention of the target domain.
+* OpenPhish / URLHaus - Monitor the feeds for specific domains or keywords.
+* PortScan - Reported on port changes on the target domain.
+* RSS - Monitored arbitrary rss feeds for any mention of the target domain or keyword.
+* SSL - Reported on the state of the SSL certificate provided, and optionally warned if the certificate was about to expire.
+* URL Monitor - Really simple module to check if the content of a URL changed, not much use for dynamic content, but was great for watching directory lists on phishing sites that left the directory open.
+* URLScan.io - Monitored public searches on URLScan.io for the target domain.
+* Whois - Monitored the domains whois records for changes.
+
+All of the modules then delivered an alert to the user, either directly, or via a simple system that allowed me to review the alert and decide if it should be released to the customer or just closed.
+
+Over the course of the two years, there was 8 "customers" who helped beta test. Based on the 64 domains monitored, over 16,000 alerts were generated.
+
+Shutting down onlooker has been quite a difficult choice for me given the amount of time I have put into it over the years. It has provided value, seeing registrations of typo domains, which in turn allowing customers to issue take down requests to happen within hours of registration, to capturing DNS changes for domains used to phish customers. But my time is very limited and something had to give.
+
+RIP onlooker, we hardly knew ye.
+
+👋
+
+TAGS:infosec,onlooker,development
