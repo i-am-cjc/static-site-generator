@@ -8,7 +8,7 @@ It all started with a pastebin scraper, using the official scraping API, before 
 After the pastebin scraper and a lot of refactoring, several modules were added to onlooker:
 
 * Availability - A basic module that checked the uptime of a URL, providing alerts when said URL was unresponsive.
-* Canary - Born out of an earlier project, this module implemented a canary token system.
+* Canary - Born out of an earlier project, this module implemented a canary token system, which is now living on as [snitch.cjc.im](https://snitch.cjc.im).
 * Certificate Transparency Log - Monitoring the Certificate Transparency Log for domains (as well as look alike domains)
 * DNS - Monitor domains for DNS changes, useful for when a look-alike domain is registered to spot any changes that might indicate activity.
 * DNSTwist - Use the opensource [DNS Twist](https://github.com/elceef/dnstwist) to find typo domains.
