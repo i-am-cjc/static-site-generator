@@ -157,9 +157,9 @@ for post in sorted(os.listdir("_posts"), reverse=True):
     # word count / time to read
     content = markdown.markdown("\n".join(file_contents[3:-2]))
     words = len(content.split(" "))
-    append(f, words + " words ")
+    append(f, str(words) + " words ")
     time_to_read = math.ceil(words / 200)
-    append(f, "(" + time_to_read + " minutes)<hr />")
+    append(f, "(" + str(time_to_read) + " minutes)<hr />")
 
     append(f, content)
 
