@@ -4,6 +4,7 @@ import os
 import markdown
 import datetime
 import configparser
+import math
 from feedgen.feed import FeedGenerator
 
 # This is a line by line convert of the old
@@ -153,8 +154,13 @@ for post in sorted(os.listdir("_posts"), reverse=True):
         append(f, "<i>#<a href=\"/tag/" + tag + "\">" + tag + "</a></i> ")
         append('_output/tag/' + tag + '/body.html', link)
     
-    append(f, "<hr />")
+    # word count / time to read
     content = markdown.markdown("\n".join(file_contents[3:-2]))
+    words = len(content.split(" "))
+    append(f, words + " words ")
+    time_to_read = math.ceil(words / 200)
+    append(f, "(" + time_to_read + " minutes)<hr />")
+
     append(f, content)
 
     append(f, footer_content)
