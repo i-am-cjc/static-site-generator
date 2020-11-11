@@ -1,0 +1,60 @@
+Onlooker Research 1 COVID
+---------
+
+Apologies, this post is image heavy...
+
+Well, I tried to kill my side project, Onlooker, but popular demand has meant I haven't (aka some of my testing users want it still), so I am going to keep it going a little longer on a slightly better server.
+
+I've added a feature, by way of using Puppeteer to run a headless browser, I can now take screenshots of websites. 
+
+With this, I've decided to monitor for specific keywords in domains, mostly found via the Certificate Transparency Log. This first post contains domains that are all related to COVID-19. What follows is a selection of interesting websites discovered by Onlooker over the course of a few days. 
+
+### Shops
+
+As you would expect, there is a _lot_ of people trying to make money out of any situation.
+
+![](/img/covid/mycovidwear.com.jpg)
+
+![](/img/covid/killcorona.com.jpg)
+
+![](/img/covid/covidplayingcards.com.jpg)
+
+![](/img/covid/protectioncovid.com.jpg)
+
+### Domains for sale
+
+Similar to above, domains that are for sale that are related.
+
+![](/img/covid/ecovidtesting.us.jpg)
+
+![](/img/covid/covidworld.com.jpg)
+
+![](/img/covid/coronavirus.eu.jpg)
+
+![](/img/covid/queenofcorona.com.jpg)
+
+![](/img/covid/covid-treatment.com.jpg)
+
+### Hoax related
+
+Not as many as I thought I would find, but there were some that were either hoax related, or just anti-restrictions
+
+![](/img/covid/covid19hoax.info.jpg)
+
+![](/img/covid/www.covidstatementofintent.com.jpg)
+
+### Comedy
+
+And now for my favorites, either porn related and a comedy domain. I've censored these for this post, but when I eventually provide a download for all these, the originals will stay
+
+![](/img/covid/sexcovid.cam.jpg)
+
+![](/img/covid/coronavirus-porn.world.jpg)
+
+![](/img/covid/coronadab.com.jpg)
+
+Until next time...
+
+👋
+
+TAGS:infosec,onlooker,development
