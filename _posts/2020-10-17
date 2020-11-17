@@ -1,0 +1,48 @@
+Onlooker Research 2 US Elections
+---------
+
+### What
+Collection of just over 3000 screenshots of domains related to the US election of 2020. 
+
+### Why
+Because it's interesting to see what domains are registered based on current events, and there are some amusing discoveries. I noticed that there are significantly more Trump related domains than there were Biden, perhaps he is just more interesting? 
+
+### How
+My side project, onlooker, monitors for several things such as DNS changes, potential hostile domains for your brand etc. I wanted to test in-line screenshoting and monitoring for keywords rather than just pure domains. 
+All of the included screenshots are from domains that have been discovered on the certificate transparency log.
+
+### Methodology 
+The basic idea here, was to select some keywords that were related to the two main contenders of the US Election and see what happened, I didn't expect to find so many in such a short time. The test ran from November the 3rd 2020 until November the 16th 2020.
+
+The keywords were: 
+
+* Trump
+* Potus
+* Biden
+* Sleepyjoe (Recommended by Lee)
+
+After collecting all the screenshots, I used a few patterns as below to remove a LOT of false positives. 
+
+* Autodiscover. 
+* cpanel.
+* spectrum
+* centrum
+* trumpfmed
+* strumpf
+* electrum
+* identity
+
+### Download:
+
+I will be seeding this for the foreseeable future :) Be warned I have NOT removed any adult or offensive content that may have appeared on these domains. 
+
+* [Magnet link](magnet:?xt=urn:btih:9a0be77a9c52fc23fc0b95ed2d9fd24d4618116c&dn=election.research&tr=udp%3a%2f%2ftracker.opentrackr.org%3a1337%2fannounce)
+* [Torrent File](/files/election.research.torrent)
+	
+If you find this interesting please hit me up on twitter @i_am_cjc or even consider sending me a few cash dollars to encourage me to do this sort of thing for other future events [here](ko-fi.com/iamcjc) <3
+
+Until next time...
+
+👋
+
+TAGS:infosec,onlooker,development
