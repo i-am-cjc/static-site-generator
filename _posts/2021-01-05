@@ -1,0 +1,55 @@
+Encrypted USB Drive for Backup
+---------
+
+Happy New Year no-one!
+
+As part of my obsession with using low powered computers, I recieved a wonderful Raspberry Pi 400 from Santa last year.
+
+One thing I worry about is the reputation that the SD card can be trashed fairly quickly, so I decided to have a real simple backup onto an external drive, which of course I wanted to be encrypted.
+
+These commands are based on using RaspberryOS, but should work on any debian based Linux distro.
+
+They also might be out of date when you read this, they are really so I can find them again in the future.
+
+Firstly, Install tools to handle encrypting, the `libblockdev-crypto2` is to allow the default lxde desktop to mount the drive and show a prompt for the keyphrase.
+
+    sudo apt install cryptsetup-bin libblockdev-crypto2
+
+Next, partition the disk, I just created one big partition for my backup drive (all data will be removed).
+
+    fdisk /dev/sdX
+
+Optionally we can fill it with random data before using it, which will prevent anyone seeing how much we have used, I rarely do this unless there was something sensitive on the drive that wasn't encrypted.
+
+    dd bs=1M if=/dev/urandom of=/dev/sdX1 status=progress
+
+Encrypt it using cryptsetup, these may not be the best settings, however in mycase I am happy with the level of protection they find, my threat model is more if I lose the drive. 
+
+    cryptsetup -h sha256 -c aes-xts-plain -s 256 luksFormat /dev/sdX1
+
+
+Next up, open the encrypted drive
+
+    cryptsetup luksOpen /dev/sdX1 private
+
+....and then format it
+
+    mkfs.ext4 /dev/mapper/private
+    
+You can then mount the drive so that it appears as a regular drive
+
+    mount /dev/mapper/private /mnt/private
+
+To unmount the drive use the following commands
+
+    umount /mnt/private
+    cryptsetup luksClose /dev/mapper/private.
+
+
+I then wrote a script using the above and rsync to provide a simple snapshot backup of my home directory.
+
+Until next time...
+
+👋
+
+TAGS:infosec,development
