@@ -142,7 +142,7 @@ a:hover {
 }
 
 img {
-	width: 100%
+	max-width: 100%
 }
 
 iframe {
@@ -180,3 +180,9 @@ code {
 	border-radius: 7px;
 	margin: 2px;
 }
+
+#main {
+    width: 666px;
+    margin: 0 auto;
+}
+
