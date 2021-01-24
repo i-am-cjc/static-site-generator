@@ -1,0 +1,83 @@
+RaspberryPi Pico
+---------
+
+or; hanging a micro-controller out of a window for 24 hours.
+
+So, as with any Raspberry Pi announcement, you know for a fact I am going to be spending money. Always happy to help a good cause, but also for £3.60 for a micro-controller I can't say no haha.
+
+One of the quickest things that I was able to do was to take the example from the official guide for logging temperatures based on the internal temp sensor. I did have some minor issues with the code such as writing to the logging file, rather than appending. This caused the issue where plugging the pico back into my workstation (currently a pi400, post coming soon) losing the data, instead I chose to append to the file, and always started writing it with a line to show a new start. This prevented losing data which is good!
+
+I will put the code at the end of this post, and maybe throw it on Github if anyone gives a flip.
+
+So, with said code, I set the pico pi outside of my window for 24 hours and logged the temperature, for no reason other than I could. Because the code output a CSV file (sort of) I then imported the file into gnumeric. (I used gnumeric rather than libre office required a lot of dependancies and java...*shudder*).
+
+The following chart represents the temperature outside my window from 23:00 on the 23rd of January 2021, to 23:00 on the 24th of January 2021.
+
+![data in a graph](/img/picopigraph.png)
+
+Over the 24 hours in the heart of the british winter, the lowest temperature was over night at -10.4 degrees celsius, and a "high" of 0 degrees celsuis during the day, a true winter's day!
+
+The code below is based on the official guide such as getting the temperature, is not production quality, and should not be used for anything serious. Please don't use this for anything that would impact human life!
+
+
+
+
+    from machine import Pin, ADC   
+    from utime import sleep   
+    
+    # See Raspberry Pi Pico datasheet for the conversion factor.   
+    CONVERSION_FACTOR = 3.3 / (65535)   
+    
+    # DELAY BETWEEN SAMPLES   
+    SAMPLE_DELAY = 10   
+    
+    led = Pin(25, Pin.OUT)   
+    led.value(0)   
+    
+    fake_time = 0   
+    sensor_temp = ADC(4)   
+
+    def flash_led(l):   
+        l.toggle()   
+        sleep(1)   
+        l.toggle()   
+        
+    def get_temp():   
+        global sensor_temp   
+        raw_data = sensor_temp.read_u16() * CONVERSION_FACTOR   
+        
+        # Convert the temperature into degrees celsius.   
+        temperature = round(27 - (raw_data - 0.706)/0.001721,2)   
+        
+        return temperature   
+    
+    # Open the file on the flash storage to log to   
+    f = open('templog.txt', 'a')   
+    f.write("# New Starting Point\ntime,temperature\n")   
+
+    while True:   
+        temperature = get_temp()   
+        
+        # csv output for later processing   
+        output = str(fake_time) + "," + str(temperature)   
+        
+        # Useful for debugging, not required when live   
+        print(output)   
+        
+        # Write it and ensure that it's flushed to flash   
+        f.write(output + "\n")   
+        f.flush()   
+        
+        # How many seconds since launch was this recorded   
+        fake_time += SAMPLE_DELAY   
+        
+        # Flash the LED so I can see something is happened :P   
+        flash_led(led)   
+        
+        # -1 as we toggle the LED for a second too   
+        sleep(SAMPLE_DELAY - 1)   
+
+
+👋
+
+TAGS:development
