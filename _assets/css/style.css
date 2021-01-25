@@ -175,7 +175,7 @@ code {
 	background-color: black;
 	display: block;
 	color: lime;
-	white-space: pre;
+	white-space: pre-wrap;
 	padding: 5px;
 	border-radius: 7px;
 	margin: 2px;
@@ -183,6 +183,7 @@ code {
 
 #main {
     width: 666px;
+    max-width: 90%;
     margin: 0 auto;
 }
 
