@@ -187,3 +187,8 @@ code {
     margin: 0 auto;
 }
 
+em {
+	color: red;
+	font-style: italic;
+}
+
