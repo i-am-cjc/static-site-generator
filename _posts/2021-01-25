@@ -1,0 +1,18 @@
+24 hours in the office
+---------
+
+### or; leaving a Raspberry Pi Pico in my office on my desk for 24 hours.
+
+Well, similar to my [previous post](/2021/01/24/RaspberryPi-Pico/), I left the pico logging temperatures for 24 hours, but this time it was just in the office, it will be interesting to see if the times when the heating was on is obvious from the readings. We did have snow over night so it was cold outside (there's no kind of atmosphere), but how cold did it get *inside*? who knows! (We do now, see the graph below!)
+
+![24 hours in the office](/img/picopigraphoffice.png)
+
+Over the 24 hours in the office, the lowest temperature was over night at 7.8 degrees celsius around 07:30, and a high of 14.87 degrees celsius when the heating was on in the afternoon. Putting the data onto the graph where we logged outside (albeit on a different day, red for outside, green for inside) we can see a similar pattern of data (i.e. it's colder at night, warmer during the day), but *significantly* warmer inside across the day as the heating prevents it from being too cold, outside doesn't care about that... *Science*.
+
+![The previous 24 hours outside as well as inside](/img/picopigraphboth.png)
+
+I also need to not run them from 23:00->23:00 as I do like to sleep sometimes...
+
+👋
+
+TAGS:development
