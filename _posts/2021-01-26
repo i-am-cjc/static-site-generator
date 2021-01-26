@@ -1,0 +1,52 @@
+Dry January Computer Edition
+---------
+
+### or; Digital Detox 2021
+
+### or; Another bunch of shite about minimalism
+
+I have not had a dry January in the traditional sense of not drinking alcohol...
+
+It's actually one of those nonsense things about using only an underpowered computer for a month. I think it was fasionable to do "iPad only" in recent years, but *fuck* that (Although I do like my iPad!) I wanted to use something that would allow me to focus on things that matter, but not totally stop me from computing! (no z80, or 386 running DOS thanks)
+
+In this case Santa brought me a RaspberryPi400 last year. This is the one that is a "keyboard computer". By that, I mean a computer that is fully embedded inside what looks like just a keyboard (see [here](https://www.raspberrypi.org/products/raspberry-pi-400/) for more information about this beast), it is reminiscient of those we had when I was younger, like the C64 or some Atari I had (800? ST? I can't really remember much beyond I tried to change the colour of the plastics with crayon as a stupid child).
+
+![an official photo of a pi400](/img/pi400.jpg)
+
+So, for the 3 people that are reading this, you're probably asking "*Why are you doing this!?*". Well, my aim is to reset my habits of playing games for *hours* instead of improving my life, or someone elses... All I really need a computer for is to write markdown files for this blog, and ssh to other systems. Most other tasks such as email and comms happen on a smart phone these days.
+
+Before starting this stupid endeavor, I saw a few issues that might arise:
+
+* Backups / Cloud Storage
+* Editing Videos (although I do 90% of this on my phone already)
+
+### How did it go?
+
+I am (starting) writing this on the 23rd of January 2021, which is over 3 weeks into the month (Look Ma, I can do math!). I have to admit, I have been loving this, the pi400 has been such a smooth experience. 
+
+The issues above turned out to be not issues at all. As expected the video editing already happens on an iOS device, and I've never done this on my desktop. The only part of this is that when I upload my videos to YouTube for the 3 people who watch them, I make a thumbnail, and surprise surprise, but GIMP does the job fine, all I needed was the "impact" font to maintain my style.
+
+![An example Thumbnail](/img/thumbnailexample.jpg)
+
+A concern I didn't have at first was that the data on the pi400, on RaspberryOS, was not encrypted by default. Whilst there is nothing majorly sensitive going on, I still consider the threat of a lost / stolen SD card to be the highest. Fortunately, this was solved by encrypting my home directory using the guide [here](https://wiki.debian.org/TransparentEncryptionForHomeFolder#Assisted_configuration) which is the same as what Ubuntu gives the option of when installing. I am sure there is an argument that there is plenty of data outside of my /home directory, but the majority of what I care about is in /home.
+
+Following on from this, I wanted to ensure backups occured, but avoiding installing some thirdparty tool that accesses a cloud service. In order to fix this, I wrote a simple script that uses rsync to copy my /home directory to an external and encrypted drive. (based off the code in my previous blog post [here](/2021/01/05/Encrypted-USB-Drive-for-Backup/)).
+
+In order to keep things lightweight I wanted to use simple tools, so naturally, I have been using VIM as my editor of choice (although I did try VSCode for the first couple of weeks as the arm builds work fine, but its overkill!). I used VLC for consumption of media, mostly via YouTube as I discovered I can just paste a YouTube URL into VLC. *amazing*. Towards the end of the month I *finally* installed and configured i3wm, which is the perfect desktop environment. *FACT*.
+
+Instead of playing games (and I put in a shocking number of hours into Flight Sim 2020, Spelunky 2 and Cyberpunk 2077 towards the end of the year), I wrote a simple [PIM](https://en.wikipedia.org/wiki/Personal_information_management) system. By *simple* I mean that it is basically a collection of Markdown files, that uses a set layout and a python script (based on my static site generator) to create a simple read-only web interface. Simple text files are best files, I want to be able to use this data in 10 years time. Investing in a proprietary system such as OneNote, or EverNote feels like a footgun. I've been a big fan of using the MarkDown  format for my blog since 2015 as it's easy to read without formatting, but its also easy to convert to other formats, such as HTML for a website. Some would say this is future proof. At least, I do. 
+
+Additionally, since I have been unable to spend time in NightCity or Spelunking into some caves, I have read a couple of books in January, which is more than I read in the whole of 2020 and I am well into my thirdbook already. A feature of my PIM is a book log which I may write something about in the future.
+
+I am seriously considering selling my desktop workstationand sticking to a pi400.
+
+### Some random notes, that are probably only really useful for me:
+
+When installing i3, to use it, we need to switch to a different login manager: `sudo sed -i s/greeter-session=pi-greeter/greeter-session=lightdm-gtk-greeter/g /etc/lightdm/lightdm.conf`
+
+Want to use ms fonts (such as impact, for YouTube thumbnails): ` sudo apt install ttf-mscorefonts-installer`
+
+
+👋
+
+TAGS:minimalism,development,ssg
