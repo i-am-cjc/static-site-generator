@@ -1,0 +1,19 @@
+Pis and Thermal Printers
+---------
+
+![Thermal Printer](/img/thermal.jpg)
+
+In a move where I am trying to move away from using software for tracking todo lists and other short things like shoppings lists, I bought a cheap thermal printer for my pi400. 
+
+These things are usually used for receipts, but it makes for a great little bit of paper that I can shove in a pocket or have on my desk ready to look at.
+
+A bit of difficulties with the device that appeared when using the built in USB serial of the device. Fortunately dmesg to the rescue. 
+
+What I really like about this device is I can simple do: `echo -e "Something to print" > /dev/usb/lp0` to print out the line. it's great. No need to _fuck_ around with drivers or anything. Additionally, by keeping all my notes and lists in markdown, they print out and are human readable. Huzzah.
+
+I then wrapped this into a shell script that adds the date of printing on the top, and a quote using fortune at the bottom, because why not.
+
+
+👋
+
+TAGS:minimalism,development
