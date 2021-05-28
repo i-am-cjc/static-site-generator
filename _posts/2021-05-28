@@ -1,0 +1,14 @@
+Networking the Thermal Printer
+---------
+
+![Thermal Printer](/img/thermal.jpg)
+
+I have improved my little thermal printer thing a little by connecting it to one of the many spare Pi0w that I had, and wrote a little web interface that basically allows anyone on the internal network to print out todo lists.
+
+Going forward I need to write some authentication for this, and probably mitigate the obvious remote code execution that is currently in it....
+
+Pretty cool though what can be written in a couple of hours. I opted to use nodejs and express to make the mini api, no source as it's shocking (i.e the RCE) and less than 10 lines so anyone could write it...
+
+👋
+
+TAGS:minimalism,development
