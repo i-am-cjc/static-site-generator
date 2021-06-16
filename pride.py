@@ -140,7 +140,8 @@ for post in sorted(os.listdir("_posts"), reverse=True):
     append(f, " / <a href=\"/posts\">notes</a> / " + line + "</h1>")
     datetime_object = datetime.datetime.strptime(date, '%Y-%m-%d')
 
-    append(f, "<time class=\"post-date\">" + datetime_object.strftime('%b %d, %Y') + "</time> in ")
+    append(f, "by: <b>Carl Clegg</b> @ ")
+    append(f, "<i>" + datetime_object.strftime('%b %d, %Y') + "</i> in ")
     
     
     # TAGS
@@ -154,14 +155,12 @@ for post in sorted(os.listdir("_posts"), reverse=True):
         append(f, "<i>#<a href=\"/tag/" + tag + "\">" + tag + "</a></i> ")
         append('_output/tag/' + tag + '/body.html', link)
     
+    append(f, "<hr><pre>")
     # word count / time to read
     content = markdown.markdown("\n".join(file_contents[3:-2]))
-    words = len(content.split(" "))
-    append(f, str(words) + " words ")
-    time_to_read = math.ceil(words / 200)
-    append(f, "(" + str(time_to_read) + " minutes)<hr />")
 
     append(f, content)
+    append(f, "</pre>")
 
     append(f, footer_content)
 
