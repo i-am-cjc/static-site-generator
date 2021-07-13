@@ -3,32 +3,41 @@
 * email: carl@cjc.im
 * web: https://cjc.im
 * phone: Available upon request.
-* The newest version of this CV is available at: https://cjc.im/current-cv
+
+## Overview
+
+An experience Information Security Analyst with a passion for improving the security of organisations that aligns with Business strategy.
 
 ## Experience
 
 ### Information Security Analyst - Hempel A/S
 October 2018 - Present
 
+#### Key Acheivments
+
+* Security Incident Management handling and review with the aim to improve security across the organisation in a controlled and data driven manner.
+* Implementing Azure Sentinel across the infrastructure to provide a single pain of glass across Microsoft Security Products, allowing for improved data sources to aid with the SOC team.
+* Organising and working with external testing and audit functions.
+
 ### Security Lead - Connect Software Solutions
 January 2016 - September 2018
 
-Key Responsibilities include:
+#### Key Acheivments
 
-* Develop and implement security controls across the company
-* Be the main point of contact regarding security incidents as part of Incident Response Plan Implemented
-* Provide company wide training on topics related to Information Security
+* Implement security controls across the company based on the CIS20 controls.
+* Developed an Incident Response plan, and be the main point of contact for incidents
+* Developed and delivered company wide awareness training on topics related to Information Security
 * Perform internal Penetration Tests and liase with suppliers for external tests
-* Setup and maintain Vulnerability Management program
+* Setup and maintained Vulnerability Management program
 * Data Protection Officer (GDPR)
 
 ### Software Developer - Connect Software Solutions
 July 2014 - April 2017 
 
-#### Key Achievments
+#### Key Acheivments
 
-* As part of the team lead improvements to build process that created the ability deploy to all supported platforms at once. Implemented automated builds using Jenkins to allow the QA team to self serve device builds
-* Implemented an internal tool to integrate Zendesk and JIRA ticketing systems across the support and development departments
+* Started the companies journey to begin with a Continuous Integration and Deployment using Jenkins.
+* Implemented middleware to integrate Zendesk and JIRA ticketing systems across the support and development departments
 * Integrated existing legacy platform with Amazon S3 to improve performance and increase backup speed.
 
 ### Freelance Work
@@ -46,5 +55,5 @@ Sheffield University 2007-2013
 
 Modules including:
 
-* Information Security - As part of a team, investigated and implemented a small botnet using a novel techniques for command and control
+* Information Security - As part of a team, investigated and implemented a simulated botnet using a novel techniques for command and control using stenography and online hosting platforms.
 * Dissertation - Investigated the ability of using news article images to predict topics of the news item (it was difficult!)
